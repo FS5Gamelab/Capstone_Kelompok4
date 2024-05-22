@@ -18,6 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/employee', function () {
+    return view('employee/index');
+});
+
+Route::get('/admin', function () {
+    return view('admin/index');
+});
+
 Route::get('/login', [AuthController::class, 'index']);
 
 Route::post('/login', [AuthController::class, 'login']);
