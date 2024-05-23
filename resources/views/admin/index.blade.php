@@ -90,7 +90,7 @@
               <div class="card-body">
                 <h6 class="card-title"></h6>
 
-                <p class="card-text">Halaman ini berisi data Orderan pelanggan, disini kita bisa menambah,mengedit dan menghapus orderan dengan mudah.</p>
+                <p class="card-text">Halaman ini berisi data Orderan pelanggan. Disini kita bisa menambah,mengedit dan menghapus orderan dengan mudah.</p>
                 <a href="" class="btn btn-primary">Ke Data Orderan</a>
               </div>
             </div>
@@ -104,7 +104,7 @@
               <div class="card-body">
                 <h6 class="card-title"></h6>
 
-                <p class="card-text">Halaman ini berisi daftar category yang ada pada webiste ini. Disini kita bisa menambah,mengedit,dan menghapus data category dengan mudah.</p>
+                <p class="card-text">Halaman ini berisi daftar category. Disini kita bisa menambah,mengedit,dan menghapus data category dengan mudah.</p>
                 <a href="" class="btn btn-primary">Ke Daftar Category</a>
               </div>
             </div>

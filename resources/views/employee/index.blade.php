@@ -1,5 +1,4 @@
 @extends('employee.master')
-
 @section('content')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -50,7 +49,7 @@
               <div class="card-body">
                 <h6 class="card-title"></h6>
 
-                <p class="card-text">Halaman ini berisi daftar orderan yang ada pada webiste ini. Disini kita bisa menambah,mengedit,dan menghapus data orderan dengan mudah.</p>
+                <p class="card-text">Halaman ini berisi daftar orderan. Disini kita bisa menambah,mengedit,dan menghapus data orderan dengan mudah.</p>
                 <a href="" class="btn btn-primary">Ke Daftar Orderan</a>
               </div>
             </div>
