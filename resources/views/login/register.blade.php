@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Form Login Modern</title>
+    <title>Form Registrasi Modern</title>
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins&display=swap'>
     <style>
@@ -111,11 +111,6 @@
             right: 25px;
             font-size: 20px;
         }
-        .remember-forgot {
-            display: flex;
-            justify-content: space-between;
-            font-size: 15px;
-        }
         .input-submit {
             width: 100%;
             height: 50px;
@@ -150,45 +145,38 @@
     <div class="wrapper">
         <div class="login_box">
             <div class="login-header">
-                <span>Login</span>
+                <span>Registrasi</span>
             </div>
-            @if($errors->any())
-                <div class="alert alert-danger" role="alert">
-                    <ul>
-                        @foreach($errors->all() as $item)
-                            <li>{{ $item }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-            <form action="{{ route('login') }}" method="POST">
-                @csrf
+            <!-- Form Registrasi -->
+            <form action="#" method="POST">
                 <div class="input_box">
-                    <input type="text" id="user" name="email" class="input-field" value="{{ old('email') }}" required>
-                    <label for="user" class="label">Email</label>
+                    <input type="text" id="user" name="username" class="input-field" required>
+                    <label for="user" class="label">Username</label>
                     <i class="bx bx-user icon"></i>
+                </div>
+                <div class="input_box">
+                    <input type="email" id="email" name="email" class="input-field" required>
+                    <label for="email" class="label">Email</label>
+                    <i class="bx bx-envelope icon"></i>
                 </div>
                 <div class="input_box">
                     <input type="password" id="pass" name="password" class="input-field" required>
                     <label for="pass" class="label">Password</label>
                     <i class="bx bx-lock-alt icon"></i>
                 </div>
-                <div class="remember-forgot">
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Ingat Saya</label>
-                    </div>
-                    <div class="forgot">
-                        <a href="#">Lupa Password?</a>
-                    </div>
+                <div class="input_box">
+                    <input type="password" id="confirm_pass" name="confirm_password" class="input-field" required>
+                    <label for="confirm_pass" class="label">Konfirmasi Password</label>
+                    <i class="bx bx-lock-alt icon"></i>
                 </div>
                 <div class="input_box">
-                    <input type="submit" class="input-submit" value="Login">
-                </div>
-                <div class="register">
-                    <span>Belum punya akun? <a href="#">Daftar</a></span>
+                    <input type="submit" class="input-submit" value="Registrasi">
                 </div>
             </form>
+            <!-- Tautan untuk login -->
+            <div class="register">
+                <span>Sudah punya akun? <a href="#">Login</a></span>
+            </div>
         </div>
     </div>
 </body>

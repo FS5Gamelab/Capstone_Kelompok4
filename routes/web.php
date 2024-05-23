@@ -26,8 +26,9 @@ Route::get('/employee', function () {
 
 Route::get('/admin', function () {
     return view('admin/index');
-});
+})->name('admin');
 
-Route::get('/login', [AuthController::class, 'index']);
 
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login']);
