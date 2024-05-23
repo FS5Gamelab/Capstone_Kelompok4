@@ -60,7 +60,7 @@
               <div class="icon">
                 <i class="fas fa-users" style="color: white"></i>
               </div>
-              <a href="" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('listEmployees') }}" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-lg-3 col-6">
@@ -73,7 +73,7 @@
               <div class="icon">
                 <i class="fas fa-th" style="color: white"></i>
               </div>
-              <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('listCategory') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -105,7 +105,7 @@
                 <h6 class="card-title"></h6>
 
                 <p class="card-text">Halaman ini berisi daftar category yang ada pada webiste ini. Disini kita bisa menambah,mengedit,dan menghapus data category dengan mudah.</p>
-                <a href="" class="btn btn-primary">Ke Daftar Category</a>
+                <a href="{{ route('listCategory') }}" class="btn btn-primary">Ke Daftar Category</a>
               </div>
             </div>
           </div>
