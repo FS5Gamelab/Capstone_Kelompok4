@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landingpages/landingpages');
 });
+
+Route::get('/about', [App\Http\Controllers\AboutController::class, 'about'])->name('about');
 
 Route::get('/employee', function () {
     return view('employee/index');
@@ -61,3 +63,4 @@ Route::post('/employees/{id}/edit', [App\Http\Controllers\EmployeesController::c
 Route::put('/employees/{id}', [App\Http\Controllers\EmployeesController::class, 'update'])->name('updateEmployees');
 
 Route::get('/employees/{id}/delete', [App\Http\Controllers\EmployeesController::class, 'destroy'])->name('deleteEmployees');
+
