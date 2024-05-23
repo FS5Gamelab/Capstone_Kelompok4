@@ -33,13 +33,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">List Employee</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                        <li class="breadcrumb-item active">List Employee</li>
-                    </ol>
+                    <h1 class="m-0">LIST EMPLOYEE</h1>
                 </div>
             </div>
         </div>
@@ -47,8 +41,9 @@
     <div class="content">
         <div class="container mt-5">
             <div class="card">
-                <div class="card-header text-right">
-                    <a href="{{ route('createEmployees') }}" class="btn btn-primary" role="button">Add Employee</a>
+                <div class="card-header text-left">
+                    <a href="{{ route('createEmployees') }}" class="btn btn-info" role="button">Add Employee</a>
+                    <a class="btn btn-dark" role="button" href="/admin">Back</a>
                 </div>
                 <div class="card-body">
                     <table class="table table-hover table-bordered" id="data-table">
