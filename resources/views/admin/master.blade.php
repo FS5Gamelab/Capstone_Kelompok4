@@ -201,7 +201,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">              
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{ route('listCategory') }}" class="nav-link">
                   <i class="nav-icon fas fa-store"></i>
                   <p>Category</p>
                 </a>
@@ -213,7 +213,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{ route('listEmployees') }}" class="nav-link">
                   <i class="nav-icon fas fa-store"></i>
                   <p>Employee</p>
                 </a>
@@ -236,7 +236,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   @yield('content')
 
 <!-- REQUIRED SCRIPTS -->
-{{-- @include('sweetalert::alert') --}}
+@include('sweetalert::alert')
 <!-- jQuery -->
 <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
