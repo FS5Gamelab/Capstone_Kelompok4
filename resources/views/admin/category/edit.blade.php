@@ -30,7 +30,7 @@
                                     <input type="text" name="type_laundry" id="type_laundry" class="form-control" required="required" value="{{ $categories->type_laundry }}" placeholder="Enter the type of laundry">
                                 </div>
                                 <div class="form-group">
-                                    <label for="working_time">Working Time (Hour)</label>
+                                    <label for="working_time">Working Time (Day)</label>
                                     <input type="number" name="working_time" id="working_time" class="form-control" required="required" value="{{ $categories->working_time }}" placeholder="Enter estimated completion">
                                 </div>
                                 <div class="form-group">

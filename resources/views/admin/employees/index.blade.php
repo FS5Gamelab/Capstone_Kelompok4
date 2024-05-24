@@ -50,7 +50,9 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
+                                <th>Profile Picture</th>
                                 <th>Employees Name</th>
+                                <th>Gender</th>
                                 <th>Phone Number</th>
                                 <th>Address</th>
                                 <th>Action</th>
@@ -60,7 +62,15 @@
                             @foreach ($employeess as $employees)
                             <tr>
                                 <td>{{ $loop->index + 1 }}</td>
+                                <td>
+                                    @if($employees->profile_picture)
+                                        <img src="{{ Storage::url('artikels/'.$employees->profile_picture) }}" style="width: 50px" alt="profile picture">
+                                    @else
+                                        No Image
+                                    @endif
+                                </td>
                                 <td>{{ $employees->employees_name }}</td>
+                                <td>{{ $employees->gender }}</td>
                                 <td>{{ $employees->phone_number }}</td>
                                 <td>{{ $employees->address }}</td>
                                 <td>

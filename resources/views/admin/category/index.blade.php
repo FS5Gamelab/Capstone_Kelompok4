@@ -51,8 +51,8 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Type of Laundry</th>
-                                <th>Working Time</th>
-                                <th>Price</th>
+                                <th>Working Time (Day)</th>
+                                <th>Price (Rp)</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -62,7 +62,7 @@
                                 <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ $categories->type_laundry }}</td>
                                 <td>{{ $categories->working_time }}</td>
-                                <td>{{ $categories->price }}</td>
+                                <td>Rp.{{ $categories->price }}.000</td>
                                 <td>
                                     <a href="{{ route('editCategory', ['id' => $categories->id]) }}" class="btn btn-warning btn-sm" role="button">Edit</a>
                                     <a onclick="confirmDelete(this)" data-url="{{ route('deleteCategory', ['id' => $categories->id]) }}" class="btn btn-danger btn-sm" role="button">Delete</a>
