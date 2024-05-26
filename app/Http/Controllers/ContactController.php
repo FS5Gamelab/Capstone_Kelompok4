@@ -10,4 +10,9 @@ class ContactController extends Controller
     {
         return view('landingpages.contact');
     }
+
+    public function contactCustomer()
+    {
+        return view('customer.contact');
+    }
 }

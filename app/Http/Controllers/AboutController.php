@@ -10,4 +10,9 @@ class AboutController extends Controller
     {
         return view('landingpages.about');
     }
+
+    public function aboutCustomer()
+    {
+        return view('customer.about');
+    }
 }

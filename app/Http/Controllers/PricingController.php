@@ -10,4 +10,9 @@ class PricingController extends Controller
     {
         return view('landingpages.pricing');
     }
+
+    public function pricingCustomer()
+    {
+        return view('customer.pricing');
+    }
 }

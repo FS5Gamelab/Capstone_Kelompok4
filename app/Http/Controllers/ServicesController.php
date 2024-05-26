@@ -10,4 +10,9 @@ class ServicesController extends Controller
     {
         return view('landingpages.services');
     }
+
+    public function serviceCustomer()
+    {
+        return view('customer.services');
+    }
 }
