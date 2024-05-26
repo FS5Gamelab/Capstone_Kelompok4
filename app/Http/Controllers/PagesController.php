@@ -10,4 +10,9 @@ class PagesController extends Controller
     {
         return view('landingpages.landingpages');
     }
+
+    public function customerPages()
+    {
+        return view('customer.customer');
+    }
 }

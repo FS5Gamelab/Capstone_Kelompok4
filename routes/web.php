@@ -25,6 +25,14 @@ Route::get('/services', [App\Http\Controllers\ServicesController::class, 'servic
 Route::get('/pricing', [App\Http\Controllers\PricingController::class, 'pricing'])->name('pricing');
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
 
+// Customer Pages
+Route::get('/customerPages', [App\Http\Controllers\PagesController::class, 'customerPages'])->name('customerPages');
+Route::get('/orderCustomer', [App\Http\Controllers\OrderController::class, 'orderCustomer'])->name('orderCustomer');
+Route::get('/aboutCustomer', [App\Http\Controllers\AboutController::class, 'aboutCustomer'])->name('aboutCustomer');
+Route::get('/serviceCustomer', [App\Http\Controllers\ServicesController::class, 'serviceCustomer'])->name('serviceCustomer');
+Route::get('/pricingCustomer', [App\Http\Controllers\PricingController::class, 'pricingCustomer'])->name('pricingCustomer');
+Route::get('/contactCustomer', [App\Http\Controllers\ContactController::class, 'contactCustomer'])->name('contactCustomer');
+
 Route::get('/employee', function () {
     return view('employee/index');
 });
