@@ -25,6 +25,7 @@ Route::get('/services', [App\Http\Controllers\ServicesController::class, 'servic
 Route::get('/pricing', [App\Http\Controllers\PricingController::class, 'pricing'])->name('pricing');
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
 
+// Dashboard
 Route::get('/employee', function () {
     return view('employee/index');
 });
@@ -33,10 +34,12 @@ Route::get('/admin', function () {
     return view('admin/index');
 });
 
+//Login
 Route::get('/login', [AuthController::class, 'index']);
 
 Route::post('/login', [AuthController::class, 'login']);
 
+// Crud
 Route::get('/category', [App\Http\Controllers\CategoriesController::class, 'index'])->name('listCategory');
 
 Route::post('/category', [App\Http\Controllers\CategoriesController::class, 'store'])->name('storeCategory');
