@@ -2,35 +2,67 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Stmt\Echo_;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    function index ()
+    public function register()
     {
-       return view('login.login');
+        return view('Auth.register', [
+            'title' => 'Register'
+        ]);
     }
-    function login (Request $request)
+
+    public function store(Request $request)
     {
-        $request->validate([
-            'email'=> 'required',
-            'password'=> 'required'
-        ],[
-            'email.required'=>'Silakan isi email',
-            'password.required'=>'Silakan isi password',
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'username' => 'required|max:255|unique:users',
+            'email' => 'required|email:dns|unique:users',
+            'password' => 'required|min:5|max:255'
         ]);
 
-        $checklogin = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
+        $validatedData['password'] = Hash::make($validatedData['password']);
 
-        if (Auth::attempt($checklogin))
-            echo ('anjaii sukses');
-        else{
-            return redirect('')->withErrors('Login gagal. Periksa kembali email dan password Anda')->withInput();
+        User::create($validatedData);
+
+        return redirect('/login')->with('success','Registrasi berhasil. Selamat datang!');
+    }
+
+    public function index()
+    {
+        return view('Auth.login', [
+            'title' => 'Login'
+        ]);
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email:dns',
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('admin');
         }
+
+
+        return back()->with('loginError', 'Login Gagal!!');
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        request()->session()->invalidate();
+
+        request()->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }

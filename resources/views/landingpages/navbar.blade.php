@@ -11,10 +11,11 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="{{ route('pages') }}" class="nav-item nav-link active">Home</a>
                         <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
+
                         <a href="{{ route('services') }}" class="nav-item nav-link">Services</a>
                         <a href="{{ route('pricing') }}" class="nav-item nav-link">Pricing</a>
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
-                        <a href="login.html" class="nav-item nav-link">Login</a>
+                        <a href="{{ route('login') }}" class="nav-item nav-link">Login</a>
                     </div>
                 </div>
             </nav>
