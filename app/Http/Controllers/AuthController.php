@@ -137,7 +137,17 @@ class AuthController extends Controller
     public function destroy($id)
     {
         $customer = Customers::findOrFail($id);
+        $user = $customer->user; // Ambil data user yang terkait dengan customer
+
+        // Hapus data customer terlebih dahulu
         $customer->delete();
+
+        // Hapus data user yang terkait
+        if ($user) {
+            $user->delete();
+        }
+
         return redirect()->route('listCustomer')->with('success', 'Customer Data Deleted Successfully');
-    }    
+    }
+
 }

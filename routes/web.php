@@ -82,5 +82,6 @@ Route::get('/customer/{id}/edit', [App\Http\Controllers\AuthController::class, '
 Route::post('/customer/{id}/edit', [App\Http\Controllers\AuthController::class, 'update'])->name('updateCustomer');
 Route::put('/customer/{id}', [App\Http\Controllers\AuthController::class, 'update'])->name('updateCustomer');
 Route::get('/customer/{id}/delete', [App\Http\Controllers\AuthController::class, 'destroy'])->name('deleteCustomer');
+Route::delete('/customer/{id}/delete', [AuthController::class, 'destroy'])->name('deleteCustomer');
 
 
