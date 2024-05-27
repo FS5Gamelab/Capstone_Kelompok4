@@ -43,6 +43,7 @@ Route::get('/admin', function () {
     return view('admin/index');
 });
 
+
 //Login
 Route::get('/login', [AuthController::class, 'index']);
 
