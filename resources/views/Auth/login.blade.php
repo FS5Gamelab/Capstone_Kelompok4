@@ -7,6 +7,7 @@
     <title>Form Login Modern</title>
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins&display=swap'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         * {
             margin: 0;
@@ -132,6 +133,7 @@
         }
         .register {
             text-align: center;
+            color: var(--black-color);
         }
         .register a {
             font-weight: 500;
@@ -149,6 +151,17 @@
 <body>
     <div class="wrapper">
         <div class="login_box">
+        @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+    </div>
+        @endif
+
+        @if (session('loginError'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('loginError') }}
+    </div>
+        @endif
             <div class="login-header">
                 <span>Login</span>
             </div>
@@ -164,14 +177,19 @@
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="input_box">
-                    <input type="text" id="user" name="email" class="input-field" value="{{ old('email') }}" required>
-                    <label for="user" class="label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control input-field @error('email')is-invalid @enderror" autofocus required value="{{ old('email') }}" required>
+                    <label for="email" class="label">Email</label>
                     <i class="bx bx-user icon"></i>
                 </div>
                 <div class="input_box">
-                    <input type="password" id="pass" name="password" class="input-field" required>
-                    <label for="pass" class="label">Password</label>
+                    <input type="password" id="password" name="password" class="input-field form-control" required>
+                    <label for="password" class="label">Password</label>
                     <i class="bx bx-lock-alt icon"></i>
+                    @error('name')
+                    <div class="invalid-feedback">
+                    Mohon isi dengan alamat email yang valid.
+                    </div>
+                    @enderror
                 </div>
                 <div class="remember-forgot">
                     <div class="remember-me">
@@ -186,7 +204,7 @@
                     <input type="submit" class="input-submit" value="Login">
                 </div>
                 <div class="register">
-                    <span>Belum punya akun? <a href="#">Daftar</a></span>
+                    <span>Belum punya akun? <a href="{{ route('register') }}">Daftar</a></span>
                 </div>
             </form>
         </div>

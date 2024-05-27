@@ -14,7 +14,7 @@
                         <a href="service.html" class="nav-item nav-link">Services</a>
                         <a href="pricing.html" class="nav-item nav-link">Pricing</a>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        <a href="login.html" class="nav-item nav-link">Login</a>
+                        <a href="{{ route('login') }}" class="nav-item nav-link">Login</a>
                     </div>
                 </div>
             </nav>

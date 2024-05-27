@@ -18,17 +18,19 @@ Route::get('/', function () {
     return view('landingpages/landingpages');
 });
 
-Route::get('/about', [App\Http\Controllers\AboutController::class, 'about'])->name('about');
+Route::get('/about', [App\Http\Controllers\AboutController::class, 'about'])->name('about')->middleware('auth');
 
 Route::get('/employee', function () {
     return view('employee/index');
-});
+})->name('about')->middleware('auth');
 
 Route::get('/admin', function () {
     return view('admin/index');
-})->name('admin');
+})->name('admin')->middleware('auth');
 
 
-Route::get('/login', [AuthController::class, 'index'])->name('login');
-Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
+Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
+Route::post('/register', [AuthController::class, 'store']);
