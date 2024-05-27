@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('landingpages/landingpages');
 });
 
+
 // Landing Pages
 Route::get('/', [App\Http\Controllers\PagesController::class, 'pages'])->name('pages');
 Route::get('/about', [App\Http\Controllers\AboutController::class, 'about'])->name('about');
@@ -35,19 +36,26 @@ Route::get('/pricingCustomer', [App\Http\Controllers\PricingController::class, '
 Route::get('/contactCustomer', [App\Http\Controllers\ContactController::class, 'contactCustomer'])->name('contactCustomer');
 
 
+Route::get('/about', [App\Http\Controllers\AboutController::class, 'about'])->name('about')->middleware('auth');
+
+
 Route::get('/employee', function () {
     return view('employee/index');
-});
+})->name('about')->middleware('auth');
 
 Route::get('/admin', function () {
     return view('admin/index');
-});
+})->name('admin')->middleware('auth');
+
 
 
 //Login
 Route::get('/login', [AuthController::class, 'index']);
 
+
+Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login']);
+
 
 // Crud
 Route::get('/category', [App\Http\Controllers\CategoriesController::class, 'index'])->name('listCategory');
@@ -81,4 +89,9 @@ Route::post('/employees/{id}/edit', [App\Http\Controllers\EmployeesController::c
 Route::put('/employees/{id}', [App\Http\Controllers\EmployeesController::class, 'update'])->name('updateEmployees');
 
 Route::get('/employees/{id}/delete', [App\Http\Controllers\EmployeesController::class, 'destroy'])->name('deleteEmployees');
+
+
+Route::post('/logout', [AuthController::class, 'logout']);
+Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
+Route::post('/register', [AuthController::class, 'store']);
 

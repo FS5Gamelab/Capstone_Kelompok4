@@ -143,7 +143,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">Logout</a>
-        <form id="logout-form" action="" method="POST" class="d-none">
+        <form id="logout-form" action="/logout" method="POST" class="d-none">
             @csrf
         </form>
       </li>
