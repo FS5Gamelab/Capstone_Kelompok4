@@ -48,6 +48,7 @@ Route::get('/employee', function () {
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'admin'])->name('admin');
 
+
 //Login
 Route::get('/login', [AuthController::class, 'index']);
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');

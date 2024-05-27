@@ -30,7 +30,7 @@
                 <p>Order</p>
               </div>
               <div class="icon">
-                <i class="fas fa-th" style="color: white"></i>
+                <i class="fas fa-shopping-cart" style="color: white"></i>
               </div>
               <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
