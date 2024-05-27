@@ -61,35 +61,26 @@ Route::post('/register', [AuthController::class, 'store']);
 
 // Crud
 Route::get('/category', [App\Http\Controllers\CategoriesController::class, 'index'])->name('listCategory');
-
 Route::post('/category', [App\Http\Controllers\CategoriesController::class, 'store'])->name('storeCategory');
-
 Route::get('/category/create', [App\Http\Controllers\CategoriesController::class, 'create'])->name('createCategory');
-
 Route::post('/category/create', [App\Http\Controllers\CategoriesController::class, 'store'])->name('storeCategory');
-
 Route::get('/category/{id}/edit', [App\Http\Controllers\CategoriesController::class, 'edit'])->name('editCategory');
-
 Route::post('/category/{id}/edit', [App\Http\Controllers\CategoriesController::class, 'update'])->name('updateCategory');
-
 Route::put('/category/{id}', [App\Http\Controllers\CategoriesController::class, 'update'])->name('updateCategory');
-
 Route::get('/category/{id}/delete', [App\Http\Controllers\CategoriesController::class, 'destroy'])->name('deleteCategory');
-
 Route::get('/employees', [App\Http\Controllers\EmployeesController::class, 'index'])->name('listEmployees');
-
 Route::post('/employees', [App\Http\Controllers\EmployeesController::class, 'store'])->name('storeEmployees');
-
 Route::get('/employees/create', [App\Http\Controllers\EmployeesController::class, 'create'])->name('createEmployees');
-
 Route::post('/employees/create', [App\Http\Controllers\EmployeesController::class, 'store'])->name('storeEmployees');
-
 Route::get('/employees/{id}/edit', [App\Http\Controllers\EmployeesController::class, 'edit'])->name('editEmployees');
-
 Route::post('/employees/{id}/edit', [App\Http\Controllers\EmployeesController::class, 'update'])->name('updateEmployees');
-
 Route::put('/employees/{id}', [App\Http\Controllers\EmployeesController::class, 'update'])->name('updateEmployees');
-
 Route::get('/employees/{id}/delete', [App\Http\Controllers\EmployeesController::class, 'destroy'])->name('deleteEmployees');
+Route::get('/customer', [App\Http\Controllers\AuthController::class, 'customer'])->name('listCustomer');
+Route::post('/customer', [App\Http\Controllers\AuthController::class, 'store'])->name('storeCustomer');
+Route::get('/customer/{id}/edit', [App\Http\Controllers\AuthController::class, 'edit'])->name('editCustomer');
+Route::post('/customer/{id}/edit', [App\Http\Controllers\AuthController::class, 'update'])->name('updateCustomer');
+Route::put('/customer/{id}', [App\Http\Controllers\AuthController::class, 'update'])->name('updateCustomer');
+Route::get('/customer/{id}/delete', [App\Http\Controllers\AuthController::class, 'destroy'])->name('deleteCustomer');
 
 

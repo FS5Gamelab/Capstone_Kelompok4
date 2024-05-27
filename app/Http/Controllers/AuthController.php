@@ -102,4 +102,42 @@ class AuthController extends Controller
     
         return view('customer.show', compact('customer', 'email', 'password'));
     }
+
+    public function customer()
+    {
+        $customers = Customers::with('user')->get();
+        return view('admin.customer.index', [
+            'customers' => $customers
+        ]);
+    }
+
+
+    public function edit($id)
+    {
+        $customer = Customers::with('user')->findOrFail($id);
+        return view('admin.customer.edit', [
+            'customer' => $customer
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validateData = $request->validate([
+            'customer_name' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:15',
+            'address' => 'required|string|max:255',
+        ]);
+
+        $customer = Customers::findOrFail($id);
+        $customer->update($validateData);
+
+        return redirect()->route('listCustomer')->with('success', 'Customer Data Updated Successfully');
+    }
+
+    public function destroy($id)
+    {
+        $customer = Customers::findOrFail($id);
+        $customer->delete();
+        return redirect()->route('listCustomer')->with('success', 'Customer Data Deleted Successfully');
+    }    
 }
