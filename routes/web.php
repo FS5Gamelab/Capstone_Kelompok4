@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +31,7 @@ Route::get('/contact', [App\Http\Controllers\ContactController::class, 'contact'
 
 
 // Customer Pages
-Route::get('/customerPages', [App\Http\Controllers\PagesController::class, 'customerPages'])->name('customerPages');
+Route::get('/customerPages', [App\Http\Controllers\PagesController::class, 'customerPages'])->name('customerPages')->middleware('auth');
 Route::get('/orderCustomer', [App\Http\Controllers\OrderController::class, 'orderCustomer'])->name('orderCustomer');
 Route::get('/aboutCustomer', [App\Http\Controllers\AboutController::class, 'aboutCustomer'])->name('aboutCustomer');
 Route::get('/serviceCustomer', [App\Http\Controllers\ServicesController::class, 'serviceCustomer'])->name('serviceCustomer');
@@ -43,17 +46,16 @@ Route::get('/employee', function () {
     return view('employee/index');
 })->name('about')->middleware('auth');
 
-Route::get('/admin', function () {
-    return view('admin/index');
-})->name('admin')->middleware('auth');
-
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'admin'])->name('admin');
 
 //Login
 Route::get('/login', [AuthController::class, 'index']);
-
-
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
+Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
+Route::post('/register', [AuthController::class, 'store']);
+
 
 
 // Crud
@@ -89,8 +91,4 @@ Route::put('/employees/{id}', [App\Http\Controllers\EmployeesController::class, 
 
 Route::get('/employees/{id}/delete', [App\Http\Controllers\EmployeesController::class, 'destroy'])->name('deleteEmployees');
 
-
-Route::post('/logout', [AuthController::class, 'logout']);
-Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
-Route::post('/register', [AuthController::class, 'store']);
 

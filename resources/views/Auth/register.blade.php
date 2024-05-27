@@ -186,26 +186,6 @@
             <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <div class="input_box mb-3">
-                    <input type="text" id="name" name="name" class="form-control input-field @error('name')is-invalid @enderror" autofocus required required value="{{ old('name') }}">
-                    <label for="name" class="label">Name</label>
-                    <i class="bx bx-user icon"></i>
-                    @error('name')
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                    Mohon masukkan nama Anda.
-                    </div>
-                    @enderror
-                </div>
-                <div class="input_box mb-3">
-                    <input type="text" id="username" name="username" class="form-control input-field @error('username')is-invalid @enderror" required value="{{ old('username') }}">
-                    <label for="username" class="label">Username</label>
-                    <i class="bx bx-lock-alt icon"></i>
-                    @error('username')
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                    Username harus diisi
-                    </div>
-                    @enderror
-                </div>
-                <div class="input_box mb-3">
                     <input type="email" id="email" name="email" class="form-control input-field @error('email')is-invalid @enderror" required value="{{ old('email') }}">
                     <label for="email" class="label">Email</label>
                     <i class="bx bx-envelope icon"></i>
@@ -216,14 +196,45 @@
                     @enderror
                 </div>
                 <div class="input_box mb-3">
-                    <input type="password" id="pass" name="password" class="form-control input-field @error('password')is-invalid @enderror" required>
-                    <label for="pass" class="label">Password</label>
+                    <input type="password" id="password" name="password" class="form-control input-field @error('password')is-invalid @enderror" required>
+                    <label for="password" class="label">Password</label>
                     <i class="bx bx-lock-alt icon"></i>
                     @error('password')
                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     Password tidak boleh kosong
                     </div>
                     @enderror
+                </div>
+                <div class="input_box mb-3">
+                    <input type="text" id="customer_name" name="customer_name" class="form-control input-field @error('customer_name')is-invalid @enderror" required value="{{ old('customer_name') }}">
+                    <label for="customer_name" class="label">Customer Name</label>
+                    <i class="bx bx-user icon"></i>
+                    @error('customer_name')
+                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    Mohon masukkan nama pelanggan.
+                    </div>
+                    @enderror
+                </div>
+                <div class="input_box mb-3">
+                    <input type="number" id="phone_number" name="phone_number" class="form-control input-field @error('phone_number')is-invalid @enderror" required value="{{ old('phone_number') }}">
+                    <label for="phone_number" class="label">Phone Number</label>
+                    <i class="bx bx-phone icon"></i>
+                    @error('phone_number')
+                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    Mohon masukkan nomor telepon yang valid.
+                    </div>
+                    @enderror
+                </div>
+                <div class="input_box mb-3">
+                    <input type="text" id="address" name="address" class="form-control input-field @error('address')is-invalid @enderror" required value="{{ old('address') }}">
+                    <label for="address" class="label">Address</label>
+                    <i class="bx bx-home icon"></i>
+                    @error('address')
+                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    Mohon masukkan alamat yang valid.
+                    </div>
+                    @enderror
+                </div>
                 <div class="input_box mb-3">
                     <input type="submit" class="input-submit btn btn-primary text-dark" value="Registrasi">
                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,15 +20,27 @@ class AuthController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'username' => 'required|max:255|unique:users',
             'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:5|max:255'
+            'password' => 'required|min:5|max:255',
+            'customer_name' => 'required|max:255',
+            'phone_number' => 'required|max:15',
+            'address' => 'required|max:255'
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);
 
-        User::create($validatedData);
+        $user = User::create([
+            'email' => $validatedData['email'],
+            'password' => $validatedData['password'],
+            'role' => 'Customer'
+        ]);
+
+        Customers::create([
+            'user_id' => $user->id,
+            'customer_name' => $validatedData['customer_name'],
+            'phone_number' => $validatedData['phone_number'],
+            'address' => $validatedData['address'],
+        ]);
 
         return redirect('/login')->with('success','Registrasi berhasil. Selamat datang!');
     }
@@ -49,12 +62,25 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('admin');
-        }
+            $user = Auth::user();
 
+            // Redirect based on user role
+            switch ($user->role) {
+                case 'Super-admin':
+                    return redirect()->intended('admin');
+                case 'Employee':
+                    return redirect()->intended('employee');
+                case 'Customer':
+                    return redirect()->intended('customerPages');
+                default:
+                    Auth::logout();
+                    return back()->with('loginError', 'Role tidak dikenali!');
+            }
+        }
 
         return back()->with('loginError', 'Login Gagal!!');
     }
+
     public function logout(Request $request)
     {
         Auth::logout();
@@ -64,5 +90,16 @@ class AuthController extends Controller
         request()->session()->regenerateToken();
 
         return redirect('/login');
+    }
+
+    public function show($id)
+    {
+        $customer = Customers::with('user')->find($id);
+    
+        // Mengakses email dan password dari user yang terkait dengan customer
+        $email = $customer->user->email;
+        $password = $customer->user->password;
+    
+        return view('customer.show', compact('customer', 'email', 'password'));
     }
 }
