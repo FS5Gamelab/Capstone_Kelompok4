@@ -10,4 +10,9 @@ class OrderController extends Controller
     {
         return view('customer.order');
     }
+
+    public function orderan()
+    {
+        return view('employee.order');
+    }
 }

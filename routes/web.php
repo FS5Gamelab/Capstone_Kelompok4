@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
@@ -32,25 +33,28 @@ Route::get('/contact', [App\Http\Controllers\ContactController::class, 'contact'
 
 // Customer Pages
 Route::get('/customerPages', [App\Http\Controllers\PagesController::class, 'customerPages'])->name('customerPages')->middleware('auth');
-Route::get('/orderCustomer', [App\Http\Controllers\OrderController::class, 'orderCustomer'])->name('orderCustomer');
-Route::get('/aboutCustomer', [App\Http\Controllers\AboutController::class, 'aboutCustomer'])->name('aboutCustomer');
-Route::get('/serviceCustomer', [App\Http\Controllers\ServicesController::class, 'serviceCustomer'])->name('serviceCustomer');
-Route::get('/pricingCustomer', [App\Http\Controllers\PricingController::class, 'pricingCustomer'])->name('pricingCustomer');
-Route::get('/contactCustomer', [App\Http\Controllers\ContactController::class, 'contactCustomer'])->name('contactCustomer');
+Route::get('/orderCustomer', [App\Http\Controllers\OrderController::class, 'orderCustomer'])->name('orderCustomer')->middleware('auth');
+Route::get('/aboutCustomer', [App\Http\Controllers\AboutController::class, 'aboutCustomer'])->name('aboutCustomer')->middleware('auth');
+Route::get('/serviceCustomer', [App\Http\Controllers\ServicesController::class, 'serviceCustomer'])->name('serviceCustomer')->middleware('auth');
+Route::get('/pricingCustomer', [App\Http\Controllers\PricingController::class, 'pricingCustomer'])->name('pricingCustomer')->middleware('auth');
+Route::get('/contactCustomer', [App\Http\Controllers\ContactController::class, 'contactCustomer'])->name('contactCustomer')->middleware('auth');
+
+
+// Employee Pages
+Route::get('/employeePages', [App\Http\Controllers\PagesController::class, 'employeePages'])->name('employeePages')->middleware('auth');
+Route::get('/orderan', [App\Http\Controllers\OrderController::class, 'orderan'])->name('orderan')->middleware('auth');
+Route::get('/aboutEmployee', [App\Http\Controllers\AboutController::class, 'aboutEmployee'])->name('aboutEmployee')->middleware('auth');
+Route::get('/serviceEmployee', [App\Http\Controllers\ServicesController::class, 'serviceEmployee'])->name('serviceEmployee')->middleware('auth');
+Route::get('/pricingEmployee', [App\Http\Controllers\PricingController::class, 'pricingEmployee'])->name('pricingEmployee')->middleware('auth');
+Route::get('/contactEmployee', [App\Http\Controllers\ContactController::class, 'contactEmployee'])->name('contactEmployee')->middleware('auth');
 
 
 Route::get('/about', [App\Http\Controllers\AboutController::class, 'about'])->name('about')->middleware('auth');
 
-
-Route::get('/employee', function () {
-    return view('employee/index');
-})->name('about')->middleware('auth');
-
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'admin'])->name('admin');
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'admin'])->name('admin')->middleware('auth');
 
 
 //Login
-Route::get('/login', [AuthController::class, 'index']);
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
@@ -68,6 +72,7 @@ Route::get('/category/{id}/edit', [App\Http\Controllers\CategoriesController::cl
 Route::post('/category/{id}/edit', [App\Http\Controllers\CategoriesController::class, 'update'])->name('updateCategory');
 Route::put('/category/{id}', [App\Http\Controllers\CategoriesController::class, 'update'])->name('updateCategory');
 Route::get('/category/{id}/delete', [App\Http\Controllers\CategoriesController::class, 'destroy'])->name('deleteCategory');
+Route::patch('/categories/{id}/restore', 'CategoriesController@restore')->name('restoreCategory');
 Route::get('/employees', [App\Http\Controllers\EmployeesController::class, 'index'])->name('listEmployees');
 Route::post('/employees', [App\Http\Controllers\EmployeesController::class, 'store'])->name('storeEmployees');
 Route::get('/employees/create', [App\Http\Controllers\EmployeesController::class, 'create'])->name('createEmployees');

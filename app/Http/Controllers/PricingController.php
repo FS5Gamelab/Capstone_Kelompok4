@@ -15,4 +15,9 @@ class PricingController extends Controller
     {
         return view('customer.pricing');
     }
+
+    public function pricingEmployee()
+    {
+        return view('employee.pricing');
+    }
 }

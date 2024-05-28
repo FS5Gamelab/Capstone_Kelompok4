@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('type_laundry');
             $table->integer('working_time');
             $table->integer('price');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,5 +27,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('categories');
+    
     }
 };

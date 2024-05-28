@@ -15,4 +15,9 @@ class ContactController extends Controller
     {
         return view('customer.contact');
     }
+
+    public function contactEmployee()
+    {
+        return view('employee.contact');
+    }
 }

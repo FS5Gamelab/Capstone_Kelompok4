@@ -41,7 +41,7 @@
     <div class="content">
         <div class="container mt-5">
             <div class="card">
-                <div class="card-header text-left">
+                <div class="card-header text-left">        
                     <a href="{{ route('createCategory') }}" class="btn btn-info" role="button">Add Category</a>
                     <a class="btn btn-dark" role="button" href="/admin">Back</a>
                 </div>

@@ -15,4 +15,9 @@ class PagesController extends Controller
     {
         return view('customer.customer');
     }
+
+    public function employeePages()
+    {
+        return view('employee.employee');
+    }
 }

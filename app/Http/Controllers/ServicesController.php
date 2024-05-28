@@ -15,4 +15,9 @@ class ServicesController extends Controller
     {
         return view('customer.services');
     }
+
+    public function serviceEmployee()
+    {
+        return view('employee.services');
+    }
 }
