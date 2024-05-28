@@ -39,12 +39,16 @@ Route::get('/pricingCustomer', [App\Http\Controllers\PricingController::class, '
 Route::get('/contactCustomer', [App\Http\Controllers\ContactController::class, 'contactCustomer'])->name('contactCustomer');
 
 
+// Employee Pages
+Route::get('/employeePages', [App\Http\Controllers\PagesController::class, 'employeePages'])->name('employeePages')->middleware('auth');
+Route::get('/orderan', [App\Http\Controllers\OrderController::class, 'orderan'])->name('orderan');
+Route::get('/aboutEmployee', [App\Http\Controllers\AboutController::class, 'aboutEmployee'])->name('aboutEmployee');
+Route::get('/serviceEmployee', [App\Http\Controllers\ServicesController::class, 'serviceEmployee'])->name('serviceEmployee');
+Route::get('/pricingEmployee', [App\Http\Controllers\PricingController::class, 'pricingEmployee'])->name('pricingEmployee');
+Route::get('/contactEmployee', [App\Http\Controllers\ContactController::class, 'contactEmployee'])->name('contactEmployee');
+
+
 Route::get('/about', [App\Http\Controllers\AboutController::class, 'about'])->name('about')->middleware('auth');
-
-
-Route::get('/employee', function () {
-    return view('employee/index');
-})->name('about')->middleware('auth');
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'admin'])->name('admin');
 
