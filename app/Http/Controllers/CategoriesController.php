@@ -43,6 +43,14 @@ class CategoriesController extends Controller
         return redirect(route('listCategory'))->with('success', 'New Category Added Successfully');
     }
 
+    public function restore(string $id)
+    {
+    $categories = Categories::onlyTrashed()->findOrFail($id);
+    $categories->restore();
+
+    return redirect(route('listCategory'))->with('success', 'Category Data Restored Successfully');
+    }
+
 
     /**
      * Display the specified resource.
