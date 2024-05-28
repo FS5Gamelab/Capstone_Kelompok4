@@ -17,16 +17,17 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-protected $fillable = [
-      'email',
-      'password',
-      'role'
- ];
+    protected $fillable = [
+        'id',
+        'email',
+        'password',
+        'role'
+    ];
 
-protected $guarded =['id']; 
+    protected $guarded =['id']; 
 
 
-public function customer()
+    public function customer()
     {
         return $this->hasOne(Customers::class);
     }
@@ -48,4 +49,9 @@ public function customer()
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function employee()
+    {
+        return $this->belongsTo(Employees::class);
+    }
 }

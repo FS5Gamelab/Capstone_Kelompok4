@@ -34,6 +34,22 @@
                                     <input type="text" name="employees_name" id="employees_name" class="form-control" required placeholder="Enter employee name">
                                 </div>
                                 <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control" required placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" id="password" class="form-control" required placeholder="Enter password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="role">Role</label>
+                                    <select name="role" id="role" class="form-control" required>
+                                        <option value="">Select Role</option>
+                                        <option value="Super-admin">Admin</option>
+                                        <option value="Employee">Employee</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="gender">Gender</label>
                                     <select name="gender" id="gender" class="form-control" required>
                                         <option value="">Select Gender</option>

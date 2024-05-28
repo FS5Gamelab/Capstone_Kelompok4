@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employees;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class EmployeesController extends Controller
@@ -36,6 +38,9 @@ class EmployeesController extends Controller
         $validateData = $request->validate([
             'profile_picture' => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'employees_name' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:5',
+            'role' => 'required|string',
             'gender' => 'required|string',
             'phone_number' => 'required|string',
             'address' => 'required|string'
@@ -44,12 +49,19 @@ class EmployeesController extends Controller
         $profile_picture = $request->file('profile_picture');
         $profile_picture->storeAs('public/artikels', $profile_picture->hashName());
 
+        $user = User::create([
+            'email' => $validateData['email'],
+            'password' => Hash::make($validateData['password']),
+            'role' => $validateData['role']
+        ]);
+
         Employees::create([
             'profile_picture' => $profile_picture->hashName(),
             'employees_name' => $request->employees_name,
             'gender' => $request->gender,
             'phone_number' => $request->phone_number,
-            'address' => $request->address
+            'address' => $request->address,
+            'user_id' => $user->id
         ]);
 
         // $employees = new Employees($validateData);
