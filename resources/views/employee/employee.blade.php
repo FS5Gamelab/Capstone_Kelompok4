@@ -125,7 +125,7 @@
         <div class="card order-card mt-2 mb-3" style="max-width: 40rem; width: 600px; height: 300px; margin: 0 auto;">
             <div class="card-up aqua-gradient"></div>
             <div class="avatar mx-auto white" style="width: 120px; height: 120px; margin-top: -60px;">
-            <img src="img/laundry.jpeg" class="rounded-circle img-fluid" alt="laundry avatar" style="width: 100%; height: auto;">
+            <img src="img/proses.jpeg" class="rounded-circle img-fluid" alt="laundry avatar" style="width: 100%; height: auto;">
 
             </div>
             <div class="card-body text-center">
