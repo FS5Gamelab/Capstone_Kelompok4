@@ -60,7 +60,7 @@
         <div class="container mt-5">
             <div class="card">
                 <div class="card-header text-left">
-                    <a class="btn btn-dark" role="button" href="/admin">Back</a>
+                    <a class="btn btn-dark" role="button" href="/admin"><i class="fas fa-arrow-left"></i> Back</a>
                 </div>
                 <div class="card-body">
                     <table class="table table-hover table-bordered" id="data-table">
@@ -81,8 +81,10 @@
                                 <td>{{ $customer->phone_number }}</td>
                                 <td>{{ $customer->address }}</td>
                                 <td>
-                                    <a href="{{ route('editCustomer', ['id' => $customer->id]) }}" class="btn btn-warning btn-sm" role="button">Edit</a>
-                                    <a onclick="confirmDelete(this)" data-url="{{ route('deleteCustomer', ['id' => $customer->id]) }}" class="btn btn-danger btn-sm" role="button">Delete</a>
+                                    <div class="btn-group" role="group">
+                                        <a href="{{ route('editCustomer', ['id' => $customer->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
+                                        <a onclick="confirmDelete(this)" data-url="{{ route('deleteCustomer', ['id' => $customer->id]) }}" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

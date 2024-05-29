@@ -12,27 +12,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+    
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet"> 
     @yield('addCss')
   </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-dark bg-dark">
+  <nav class="main-header navbar navbar-expand navbar-dark-primary elevation-4" style="background-color: #003366;">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="color: #ffffff;"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/admin" class="nav-link">Home</a>
+        <a href="/admin" class="nav-link" style="color: #ffffff;">Home</a>
       </li>
     </ul>
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
       <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+        <a class="nav-link" style="color: #ffffff;" data-widget="navbar-search" href="#" role="button">
           <i class="fas fa-search"></i>
         </a>
         <div class="navbar-search-block">
@@ -53,7 +55,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </li>
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
+        <a class="nav-link" style="color: #ffffff;" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
         </a>
@@ -111,7 +113,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </li>
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
+        <a class="nav-link" style="color: #ffffff;" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
         </a>
@@ -138,96 +140,85 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
+          <i class="fas fa-expand-arrows-alt" style="color: #ffffff;"></i>
         </a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">Logout</a>
-        <form id="logout-form" action="/logout" method="POST" class="d-none">
-            @csrf
-        </form>
-      </li>
+      
     </ul>
   </nav>
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="" class="brand-link">
-      <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">{{ $title ?? "KELOMPOK 4" }}</span>
-    </a>
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        {{-- <div class="image">
-          <img src="{{ asset('assets/dist/img/km.jfif') }}" class="img-circle elevation-2" alt="User Image">
-        </div> --}}
-        <div class="info">
-          <a href="#" class="d-block"></a>
-        </div>
-      </div>
+ <!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #003366;">
+  <!-- Brand Logo -->
+  <a href="" class="brand-link" style="background-color: #336699; color: #ffffff;">
+    <img src="img/logo_laundry.png" alt="" class="brand-image img-circle" style="opacity: 0.8;">
+    <span class="brand-text font-weight-light">{{ $title ?? "TRACK LAUNDRY" }}</span>
+  </a>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    
 
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
+    <!-- SidebarSearch Form -->
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+        <li class="nav-item menu-open">
+          <a href="#" class="nav-link active" style="background-color: #336699; color: #ffffff;">
+            <i class="nav-icon fas fa-bars"></i>
+            <p>
+              Menu
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">              
+            <li class="nav-item">
+              <a href="{{ route('listCategory') }}" class="nav-link" style="color: #ffffff;">
+                <i class="nav-icon fas fa-tshirt"></i>
+                <p>Category</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('listCustomer') }}" class="nav-link" style="color: #ffffff;">
+                <i class="nav-icon fas fa-user"></i>
+                <p>Customer</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('listEmployees') }}" class="nav-link" style="color: #ffffff;">
+                <i class="nav-icon fas fa-pen"></i>
+                <p>Employee</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link" style="color: #ffffff;">
+                <i class="nav-icon fas fa-shopping-cart"></i>
+                <p>Order</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link" style="background-color: #336699; color: #ffffff;">
+            <i class="fas fa-sign-out-alt"></i> 
+            <p>              
+              Logout
+            </p>
+          </a>
+          <form id="logout-form" action="/logout" method="POST" class="d-none">
+            @csrf
+          </form>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
+@yield('content')
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Menu
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">              
-              <li class="nav-item">
-                <a href="{{ route('listCategory') }}" class="nav-link">
-                  <i class="nav-icon fas fa-store"></i>
-                  <p>Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('listCustomer') }}" class="nav-link">
-                  <i class="nav-icon fas fa-store"></i>
-                  <p>Customer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('listEmployees') }}" class="nav-link">
-                  <i class="nav-icon fas fa-store"></i>
-                  <p>Employee</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="nav-icon fas fa-store"></i>
-                  <p>Order</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
-  @yield('content')
 
 <!-- REQUIRED SCRIPTS -->
 @include('sweetalert::alert')

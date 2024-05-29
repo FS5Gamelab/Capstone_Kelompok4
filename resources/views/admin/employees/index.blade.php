@@ -60,7 +60,7 @@
         <div class="container mt-5">
             <div class="card">
                 <div class="card-header text-left">
-                    <a href="{{ route('createEmployees') }}" class="btn btn-info" role="button"><i class="fas fa-plus"></i> Add Employee</a>
+                    <a href="{{ route('createEmployees') }}" class="btn btn-info" role="button"><i class="fas fa-plus"></i> Employee</a>
                     <a class="btn btn-dark" role="button" href="/admin"><i class="fas fa-arrow-left"></i> Back</a>
                 </div>
                 <div class="card-body">
@@ -98,8 +98,8 @@
                                     <td>{{ $employees->user->role }}</td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a href="{{ route('editEmployees', ['id' => $employees->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i> Edit</a>
-                                            <a onclick="confirmDelete(this)" data-url="{{ route('deleteEmployees', ['id' => $employees->id]) }}" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i> Delete</a>
+                                            <a href="{{ route('editEmployees', ['id' => $employees->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
+                                            <a onclick="confirmDelete(this)" data-url="{{ route('deleteEmployees', ['id' => $employees->id]) }}" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i></a>
                                         </div>
                                     </td>
                                 </tr>

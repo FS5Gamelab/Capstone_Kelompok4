@@ -42,8 +42,8 @@
         <div class="container mt-5">
             <div class="card">
                 <div class="card-header text-left">        
-                    <a href="{{ route('createCategory') }}" class="btn btn-info" role="button">Add Category</a>
-                    <a class="btn btn-dark" role="button" href="/admin">Back</a>
+                    <a href="{{ route('createCategory') }}" class="btn btn-info" role="button"><i class="fas fa-plus"></i> Category</a>
+                    <a class="btn btn-dark" role="button" href="/admin"><i class="fas fa-arrow-left"></i> Back</a>
                 </div>
                 <div class="card-body">
                     <table class="table table-hover table-bordered" id="data-table">
@@ -64,8 +64,10 @@
                                 <td>{{ $categories->working_time }}</td>
                                 <td>Rp.{{ $categories->price }}.000</td>
                                 <td>
-                                    <a href="{{ route('editCategory', ['id' => $categories->id]) }}" class="btn btn-warning btn-sm" role="button">Edit</a>
-                                    <a onclick="confirmDelete(this)" data-url="{{ route('deleteCategory', ['id' => $categories->id]) }}" class="btn btn-danger btn-sm" role="button">Delete</a>
+                                    <div class="btn-group" role="group">
+                                        <a href="{{ route('editCategory', ['id' => $categories->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
+                                        <a onclick="confirmDelete(this)" data-url="{{ route('deleteCategory', ['id' => $categories->id]) }}" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

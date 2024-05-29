@@ -45,7 +45,7 @@
                 <p>Customer</p>
               </div>
               <div class="icon">
-                <i class="fas fa-book-open" style="color: white"></i>
+                <i class="fas fa-users" style="color: white"></i>
               </div>
               <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -58,7 +58,7 @@
                 <p>Employee</p>
               </div>
               <div class="icon">
-                <i class="fas fa-users" style="color: white"></i>
+                <i class="fas fa-book-open" style="color: white"></i>
               </div>
               <a href="{{ route('listEmployees') }}" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -81,36 +81,58 @@
           
         </div>
 
-        <div class="row mt-5">
-          <div class="col-lg-6">
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h5 class="m-0">Data Orderan</h5>
+        <!-- About Start -->
+        <div class="container-fluid py-5">
+          <div class="container">
+              <div class="row align-items-center">
+                  <div class="col-lg-12">
+                      <div class="card mb-4 p-5">
+                          <div class="row no-gutters">
+                              <div class="col-lg-4">
+                                  <img class="img-fluid" src="img/about.jpg" alt="" style="max-width: 100%; height: auto;">
+                              </div>
+                              <div class="col-lg-8">
+                                  <div class="card-body">
+                                      <h6 class="text-secondary text-uppercase font-weight-medium mb-3">Learn About Us</h6>
+                                      <h1 class="mb-4">We Are Quality Laundry Provider In Your City</h1>
+                                      <h5 class="font-weight-medium font-italic mb-4">Clita sit et ipsum sed. Volup duo sea dolor rebum ea rebum kasd stet. Dolor at duo dolor sit stet.</h5>
+                                      <p class="mb-2">Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est dolor</p>
+                                      <div class="row">
+                                          <div class="col-sm-6 pt-3">
+                                              <div class="d-flex align-items-center">
+                                                  <i class="fa fa-check text-primary mr-2"></i>
+                                                  <p class="text-secondary font-weight-medium m-0">Quality Laundry Service</p>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-6 pt-3">
+                                              <div class="d-flex align-items-center">
+                                                  <i class="fa fa-check text-primary mr-2"></i>
+                                                  <p class="text-secondary font-weight-medium m-0">Express Fast Delivery</p>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-6 pt-3">
+                                              <div class="d-flex align-items-center">
+                                                  <i class="fa fa-check text-primary mr-2"></i>
+                                                  <p class="text-secondary font-weight-medium m-0">Highly Professional Staff</p>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-6 pt-3">
+                                              <div class="d-flex align-items-center">
+                                                  <i class="fa fa-check text-primary mr-2"></i>
+                                                  <p class="text-secondary font-weight-medium m-0">100% Satisfaction Guarantee</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-              <div class="card-body">
-                <h6 class="card-title"></h6>
-
-                <p class="card-text">Halaman ini berisi data Orderan pelanggan. Disini kita bisa menambah,mengedit dan menghapus orderan dengan mudah.</p>
-                <a href="" class="btn btn-primary">Ke Data Orderan</a>
-              </div>
-            </div>
           </div>
-          <!-- /.col-md-6 -->
-          <div class="col-lg-6">
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h5 class="m-0">Daftar Category</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title"></h6>
-                <p class="card-text">Halaman ini berisi daftar category cucian. Disini kita bisa menambah,mengedit,dan menghapus data category dengan mudah.</p>
-                <a href="{{ route('listCategory') }}" class="btn btn-primary">Ke Daftar Category</a>
-
-              </div>
-            </div>
-          </div>
-          <!-- /.col-md-6 -->
-        </div>
+      </div>
+      
+        <!-- About End -->
        
         <!-- /.row -->
       </div><!-- /.container-fluid -->
