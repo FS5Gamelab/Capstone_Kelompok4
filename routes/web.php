@@ -48,11 +48,7 @@ Route::get('/serviceEmployee', [App\Http\Controllers\ServicesController::class, 
 Route::get('/pricingEmployee', [App\Http\Controllers\PricingController::class, 'pricingEmployee'])->name('pricingEmployee')->middleware('auth');
 Route::get('/contactEmployee', [App\Http\Controllers\ContactController::class, 'contactEmployee'])->name('contactEmployee')->middleware('auth');
 
-
-Route::get('/about', [App\Http\Controllers\AboutController::class, 'about'])->name('about')->middleware('auth');
-
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'admin'])->name('admin')->middleware('auth');
-
 
 //Login
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
@@ -60,8 +56,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
 Route::post('/register', [AuthController::class, 'store']);
-
-
 
 // Crud
 Route::get('/category', [App\Http\Controllers\CategoriesController::class, 'index'])->name('listCategory');

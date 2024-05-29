@@ -39,6 +39,10 @@
                                     <input type="text" name="employees_name" id="employees_name" class="form-control" required value="{{ $employees->employees_name }}" placeholder="Enter employee name">
                                 </div>
                                 <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control" required value="{{ $employees->user->email }}" placeholder="Enter employee email">
+                                </div>
+                                <div class="form-group">
                                     <label for="gender">Gender</label>
                                     <select name="gender" id="gender" class="form-control" required>
                                         <option value="">Select Gender</option>
@@ -53,6 +57,14 @@
                                 <div class="form-group">
                                     <label for="address">Employee Address</label>
                                     <input type="text" name="address" id="address" class="form-control" required value="{{ $employees->address }}" placeholder="Enter employee address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="role">Role</label>
+                                    <select name="role" id="role" class="form-control" required>
+                                        <option value="">Select Role</option>
+                                        <option value="Employee" {{ $employees->user->role == 'Employee' ? 'selected' : '' }}>Employee</option>
+                                        <option value="Super-admin" {{ $employees->user->role == 'Super-admin' ? 'selected' : '' }}>Super-admin</option>
+                                    </select>
                                 </div>
                                 <div class="text-right">
                                     <a href="{{ route('listEmployees') }}" class="btn btn-outline-secondary mr-2" role="button">Cancel</a>

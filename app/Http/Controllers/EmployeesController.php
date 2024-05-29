@@ -94,13 +94,16 @@ class EmployeesController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-{
+    {
+    $employees = Employees::with('user')->findOrFail($id);
     $validateData = $request->validate([
         'profile_picture' => 'image|mimes:jpeg,jpg,png|max:2048', // Gambar tidak lagi required
         'employees_name' => 'required|string',
+        'email' => 'required|email|unique:users,email,'.$employees->user_id,
         'gender' => 'required|string',
         'phone_number' => 'required|string',
         'address' => 'required|string',
+        'role' => 'required|string|in:Employee,Super-admin'
     ]);
 
     $employees = Employees::findOrFail($id);
@@ -128,6 +131,12 @@ class EmployeesController extends Controller
         'address' => $request->address,
         'profile_picture' => $employees->profile_picture // Pastikan gambar diupdate jika ada
     ]);
+
+    // Update user data
+    $user = $employees->user;
+    $user->email = $request->email;
+    $user->role = $request->role;
+    $user->save();
 
     return redirect(route('listEmployees'))->with('success', 'Employee Data Updated Successfully');
 }

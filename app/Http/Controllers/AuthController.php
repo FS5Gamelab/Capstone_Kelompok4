@@ -69,7 +69,7 @@ class AuthController extends Controller
                 case 'Super-admin':
                     return redirect()->intended('admin');
                 case 'Employee':
-                    return redirect()->intended('employee');
+                    return redirect()->intended('employeePages');
                 case 'Customer':
                     return redirect()->intended('customerPages');
                 default:
