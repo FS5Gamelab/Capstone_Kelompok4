@@ -62,7 +62,7 @@
                                 <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ $categories->type_laundry }}</td>
                                 <td>{{ $categories->working_time }}</td>
-                                <td>Rp.{{ $categories->price }}.000</td>
+                                <td>Rp {{ number_format($categories->price, 0, ',', '.') }}.00</td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <a href="{{ route('editCategory', ['id' => $categories->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
