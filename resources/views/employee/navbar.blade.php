@@ -15,7 +15,17 @@
                     <a href="{{ route('serviceEmployee') }}" class="nav-item nav-link">Services</a>
                     <a href="{{ route('pricingEmployee') }}" class="nav-item nav-link">Pricing</a>
                     <a href="{{ route('contactEmployee') }}" class="nav-item nav-link">Contact</a>
-                    <a href="" class="nav-item nav-link">Logout</a>
+                    <li class="nav-item d-none d-sm-inline-block">
+                            <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link nav-item">
+                                <p>              
+                                    Logout
+                                    <i class="fas fa-sign-out-alt"></i> 
+                                </p>
+                            </a>
+                            <form id="logout-form" action="/logout" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                    </li>
                 </div>
             </div>
         </nav>
