@@ -158,7 +158,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    
 
     <!-- SidebarSearch Form -->
     <!-- Sidebar Menu -->
@@ -175,25 +174,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </a>
           <ul class="nav nav-treeview">              
             <li class="nav-item">
-              <a href="{{ route('listCategory') }}" class="nav-link" style="color: #ffffff;">
+              <a href="{{ route('listCategory') }}" class="nav-link {{ Request::routeIs('listCategory') ? 'active' : '' }}" style="{{ Request::routeIs('listCategory') ? 'color: #000000;' : 'color: #ffffff;' }}">
                 <i class="nav-icon fas fa-tshirt"></i>
                 <p>Category</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('listCustomer') }}" class="nav-link" style="color: #ffffff;">
+              <a href="{{ route('listCustomer') }}" class="nav-link {{ Request::routeIs('listCustomer') ? 'active' : '' }}" style="{{ Request::routeIs('listCustomer') ? 'color: #000000;' : 'color: #ffffff;' }}">
                 <i class="nav-icon fas fa-user"></i>
                 <p>Customer</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('listEmployees') }}" class="nav-link" style="color: #ffffff;">
+              <a href="{{ route('listEmployees') }}" class="nav-link {{ Request::routeIs('listEmployees') ? 'active' : '' }}" style="{{ Request::routeIs('listEmployees') ? 'color: #000000;' : 'color: #ffffff;' }}">
                 <i class="nav-icon fas fa-pen"></i>
                 <p>Employee</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="" class="nav-link" style="color: #ffffff;">
+              <a href="" class="nav-link {{ Request::routeIs('order') ? 'active' : '' }}" style="{{ Request::routeIs('order') ? 'color: #000000;' : 'color: #ffffff;' }}">
                 <i class="nav-icon fas fa-shopping-cart"></i>
                 <p>Order</p>
               </a>
