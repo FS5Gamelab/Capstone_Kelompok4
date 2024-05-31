@@ -27,8 +27,8 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3></h3>
-                <p>Order</p>
+                <p>Total Orders</p>
+                
               </div>
               <div class="icon">
                 <i class="fas fa-shopping-cart" style="color: white"></i>
