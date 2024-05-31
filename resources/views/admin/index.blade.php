@@ -41,21 +41,21 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3></h3>
-                <p>Customer</p>
+                <p>Total Customer</p>
+                <h1>{{ $customer }}</h1>
               </div>
               <div class="icon">
                 <i class="fas fa-users" style="color: white"></i>
               </div>
-              <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('listCustomer') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3></h3>
-                <p>Employee</p>
+                <p>Total Employee</p>
+                <h1>{{ $employees }}</h1>
               </div>
               <div class="icon">
                 <i class="fas fa-book-open" style="color: white"></i>
@@ -67,8 +67,8 @@
             <!-- small box -->
             <div class="small-box bg-dark">
               <div class="inner">
-                <h3></h3>
-                <p>Category</p>
+                <p>Total Category</p>
+                <h1>{{ $categories }}</h1>
               </div>
               <div class="icon">
                 <i class="fas fa-th" style="color: white"></i>
@@ -95,8 +95,8 @@
                                   <div class="card-body">
                                       <h6 class="text-secondary text-uppercase font-weight-medium mb-3">Learn About Us</h6>
                                       <h1 class="mb-4">We Are Quality Laundry Provider In Your City</h1>
-                                      <h5 class="font-weight-medium font-italic mb-4">Clita sit et ipsum sed. Volup duo sea dolor rebum ea rebum kasd stet. Dolor at duo dolor sit stet.</h5>
-                                      <p class="mb-2">Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est dolor</p>
+                                      <h5 class="font-weight-medium font-italic mb-4">Online Laundry Service with Real-Time Tracking</h5>
+                                      <p class="mb-2">Web-based online laundry services with real-time tracking provide a convenient and transparent solution for managing laundry. These services allow customers to schedule pickups, track the status of their laundry, and receive notifications, all through a web platform.</p>
                                       <div class="row">
                                           <div class="col-sm-6 pt-3">
                                               <div class="d-flex align-items-center">
