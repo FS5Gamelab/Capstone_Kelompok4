@@ -86,7 +86,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="nav-item">
               <a href="" class="nav-link {{ Request::routeIs('order') ? 'active' : '' }}" style="{{ Request::routeIs('order') ? 'color: #000000;' : 'color: #ffffff;' }}">
                 <i class="nav-icon fas fa-shopping-cart"></i>
-                <p>Order</p>
+                <p>Orders</p>
               </a>
             </li>
           </ul>
