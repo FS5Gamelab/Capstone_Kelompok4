@@ -111,7 +111,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 @yield('content')
 
 <!-- REQUIRED SCRIPTS -->
-{{-- @include('sweetalert::alert') --}}
+@include('sweetalert::alert')
 <!-- jQuery -->
 <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->

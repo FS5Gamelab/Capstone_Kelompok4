@@ -15,8 +15,8 @@
         confirmDelete = function(button) {
             var url = $(button).data('url');
             swal({
-                'title': 'Konfirmasi Hapus',
-                'text': 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
+                'title': 'Confirm Delete',
+                'text': 'Are You Sure You Want to Delete This Data?',
                 'dangermode': true,
                 'buttons': true
             }).then(function(value) {
@@ -44,6 +44,7 @@
                 <div class="card-header text-left">        
                     <a href="{{ route('createCategory') }}" class="btn btn-info" role="button"><i class="fas fa-plus"></i> Category</a>
                     <a class="btn btn-dark" role="button" href="/admin"><i class="fas fa-arrow-left"></i> Back</a>
+                    <a href="{{ route('trashCategory') }}" class="btn btn-danger" role="button"><i class="fas fa-trash"></i> Trash</a>
                 </div>
                 <div class="card-body">
                     <table class="table table-hover table-bordered" id="data-table">
