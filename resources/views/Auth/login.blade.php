@@ -59,7 +59,7 @@
                         <label for="remember">Remember me</label>
                     </div>
                     <div class="forgot">
-                        <a href="#">Forgot the password?</a>
+                        <a href="{{ route('password.request') }}">Forgot the password?</a>
                     </div>
                 </div>
                 <div class="input_box">

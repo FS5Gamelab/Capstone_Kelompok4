@@ -57,6 +57,12 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
 Route::post('/register', [AuthController::class, 'store']);
 
+//fotgot password and reset password
+Route::get('forgot-password', [AuthController::class, 'forgot'])->name('password.request');
+Route::post('forgot-password', [AuthController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->middleware('guest')->name('password.reset');
+Route::post('reset-password', [AuthController::class, 'resetPassword'])->middleware('guest')->name('password.update');
+
 // Crud
 Route::get('/category', [App\Http\Controllers\CategoriesController::class, 'index'])->name('listCategory');
 Route::post('/category', [App\Http\Controllers\CategoriesController::class, 'store'])->name('storeCategory');
