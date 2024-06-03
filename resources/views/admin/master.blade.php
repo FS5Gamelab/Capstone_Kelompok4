@@ -44,7 +44,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #003366;">
   <!-- Brand Logo -->
   <a href="" class="brand-link" style="background-color: #336699; color: #ffffff;">
-    <img src="img/logo_laundry.png" alt="" class="brand-image img-circle" style="opacity: 0.8;">
+    <img src="{{ asset('img/logo_laundry.png') }}" alt="" class="brand-image img-circle" style="opacity: 0.8;">
     <span class="brand-text font-weight-light">{{ $title ?? "TRACK LAUNDRY" }}</span>
   </a>
   <!-- Sidebar -->

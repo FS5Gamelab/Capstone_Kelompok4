@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Customers extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     protected $table = 'customers';
     protected $fillable = [
         'user_id',
@@ -15,6 +16,8 @@ class Customers extends Model
         'phone_number',
         'address'
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function user()
     {
@@ -27,6 +30,16 @@ class Customers extends Model
 
         static::deleting(function ($customer) {
             $customer->user()->delete();
+        });
+
+        static::restoring(function ($customer) {
+            if ($customer->user()->withTrashed()->exists()) {
+                $customer->user()->restore();
+            }
+        });
+
+        static::forceDeleted(function ($customer) {
+            $customer->user()->forceDelete();
         });
     }
 }

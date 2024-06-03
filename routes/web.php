@@ -57,7 +57,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
 Route::post('/register', [AuthController::class, 'store']);
 
-// Crud
+// Crud Category
 Route::get('/category', [App\Http\Controllers\CategoriesController::class, 'index'])->name('listCategory');
 Route::post('/category', [App\Http\Controllers\CategoriesController::class, 'store'])->name('storeCategory');
 Route::get('/category/create', [App\Http\Controllers\CategoriesController::class, 'create'])->name('createCategory');
@@ -67,12 +67,13 @@ Route::post('/category/{id}/edit', [App\Http\Controllers\CategoriesController::c
 Route::put('/category/{id}', [App\Http\Controllers\CategoriesController::class, 'update'])->name('updateCategory');
 Route::get('/category/{id}/delete', [App\Http\Controllers\CategoriesController::class, 'destroy'])->name('deleteCategory');
 
-Route::patch('/categories/{id}/restore', [CategoriesController::class, 'restore'])->name('restoreCategory');
-Route::delete('/categories/{id}/delete', [CategoriesController::class, 'destroy'])->name('deleteCategory');
-Route::delete('/categories/{id}/delete', [AuthController::class, 'destroy'])->name('deleteCustomer');
-Route::get('/categories/trash', [CategoriesController::class, 'trash'])->name('trashCategory');
+// Soft Delete Category
+Route::patch('/category/{id}/restore', [CategoriesController::class, 'restore'])->name('restoreCategory');
+Route::delete('/category/{id}/delete', [CategoriesController::class, 'destroy'])->name('deleteCategory');
+Route::get('/category/trash', [CategoriesController::class, 'trash'])->name('trashCategory');
 Route::delete('/category/{id}/forceDelete', [CategoriesController::class, 'forceDelete'])->name('forceDeleteCategory');
 
+// CRUD Employee
 Route::get('/employees', [App\Http\Controllers\EmployeesController::class, 'index'])->name('listEmployees');
 Route::post('/employees', [App\Http\Controllers\EmployeesController::class, 'store'])->name('storeEmployees');
 Route::get('/employees/create', [App\Http\Controllers\EmployeesController::class, 'create'])->name('createEmployees');
@@ -81,12 +82,20 @@ Route::get('/employees/{id}/edit', [App\Http\Controllers\EmployeesController::cl
 Route::post('/employees/{id}/edit', [App\Http\Controllers\EmployeesController::class, 'update'])->name('updateEmployees');
 Route::put('/employees/{id}', [App\Http\Controllers\EmployeesController::class, 'update'])->name('updateEmployees');
 Route::get('/employees/{id}/delete', [App\Http\Controllers\EmployeesController::class, 'destroy'])->name('deleteEmployees');
+
+// CRUD Customer
 Route::get('/customer', [App\Http\Controllers\AuthController::class, 'customer'])->name('listCustomer');
 Route::post('/customer', [App\Http\Controllers\AuthController::class, 'store'])->name('storeCustomer');
 Route::get('/customer/{id}/edit', [App\Http\Controllers\AuthController::class, 'edit'])->name('editCustomer');
 Route::post('/customer/{id}/edit', [App\Http\Controllers\AuthController::class, 'update'])->name('updateCustomer');
 Route::put('/customer/{id}', [App\Http\Controllers\AuthController::class, 'update'])->name('updateCustomer');
 Route::get('/customer/{id}/delete', [App\Http\Controllers\AuthController::class, 'destroy'])->name('deleteCustomer');
-Route::delete('/customer/{id}/delete', [AuthController::class, 'destroy'])->name('deleteCustomer');
+
+// Soft Delete Customer
+Route::patch('/customers/{id}/restore', [AuthController::class, 'restore'])->name('restoreCustomer');
+Route::delete('/customers/{id}/delete', [AuthController::class, 'destroy'])->name('deleteCustomer');
+Route::get('/customers/trash', [AuthController::class, 'trash'])->name('trashCustomer');
+Route::delete('/customer/{id}/forceDelete', [AuthController::class, 'forceDelete'])->name('forceDeleteCustomer');
+
 
 

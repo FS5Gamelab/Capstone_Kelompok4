@@ -61,6 +61,7 @@
             <div class="card">
                 <div class="card-header text-left">
                     <a class="btn btn-dark" role="button" href="/admin"><i class="fas fa-arrow-left"></i> Back</a>
+                    <a href="{{ route('trashCustomer') }}" class="btn btn-danger" role="button"><i class="fas fa-trash"></i> Trash</a>
                 </div>
                 <div class="card-body">
                     <table class="table table-hover table-bordered" id="data-table">

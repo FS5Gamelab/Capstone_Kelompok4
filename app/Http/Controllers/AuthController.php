@@ -134,6 +134,16 @@ class AuthController extends Controller
         return redirect()->route('listCustomer')->with('success', 'Customer Data Updated Successfully');
     }
 
+    public function restore(string $id)
+    {
+        $customer = Customers::withTrashed()->findOrFail($id);
+        
+        // Lakukan restore pada data customer
+        $customer->restore();
+
+        return redirect()->route('listCustomer')->with('success', 'Customer Data Restored Successfully');
+    }
+
     public function destroy($id)
     {
         $customer = Customers::findOrFail($id);
@@ -150,4 +160,27 @@ class AuthController extends Controller
         return redirect()->route('listCustomer')->with('success', 'Customer Data Deleted Successfully');
     }
 
+    public function trash()
+    {
+        $trashedCustomers = Customers::onlyTrashed()->get();
+        return view('admin.customer.trash', [
+            'trashedCustomers' => $trashedCustomers
+        ]);
+    }
+
+    public function forceDelete(string $id)
+    {
+        $customer = Customers::withTrashed()->findOrFail($id);
+        $user = $customer->user;
+
+        // Hapus data pelanggan secara permanen
+        $customer->forceDelete();
+
+        // Hapus pengguna terkait secara permanen jika ada
+        if ($user) {
+            $user->forceDelete();
+        }
+
+        return redirect(route('trashCustomer'))->with('success', 'Customer Data Permanently Deleted Successfully');
+    }
 }
