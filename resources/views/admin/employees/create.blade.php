@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('content')
+@section('content') <br><br>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    <div class="content">
+    <div class="content"> 
         <div class="container mt-5">
             <div class="card">
                 <div class="card-body">
