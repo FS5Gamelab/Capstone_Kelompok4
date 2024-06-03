@@ -72,52 +72,40 @@
                 <div class="col-lg-4 mb-4">
                     <div class="bg-light text-center mb-2 pt-4">
                         <div class="d-inline-flex flex-column align-items-center justify-content-center bg-secondary rounded-circle shadow mt-2 mb-4" style="width: 200px; height: 200px; border: 15px solid #ffffff;">
-                            <h3 class="text-white">Basic</h3>
+                            <h4 class="text-white">Per Price</h4>
                             <h1 class="display-4 text-white mb-0">
-                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>49<small class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Mo</small>
+                                <small class="align-top" style="font-size: 22px; line-height: 45px;">Rp.</small>7k<small class="align-bottom" style="font-size: 16px; line-height: 40px;"></small>
                             </h1>
                         </div>
                         <div class="d-flex flex-column align-items-center py-3">
-                            <p>HTML5 & CSS3</p>
-                            <p>Bootstrap 4</p>
-                            <p>Responsive Layout</p>
-                            <p>Compatible With All Browsers</p>
+                            <p>Refers to specific garments or items that <br> need to be washed separately or in small quantities.</p>
                         </div>
-                        <a href="" class="btn btn-secondary py-2 px-4">Signup Now</a>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4">
                     <div class="bg-light text-center mb-2 pt-4">
                         <div class="d-inline-flex flex-column align-items-center justify-content-center bg-primary rounded-circle shadow mt-2 mb-4" style="width: 200px; height: 200px; border: 15px solid #ffffff;">
-                            <h3 class="text-white">Standard</h3>
+                            <h4 class="text-white">Complete Wash</h4>
                             <h1 class="display-4 text-white mb-0">
-                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>99<small class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Mo</small>
+                                <small class="align-top" style="font-size: 22px; line-height: 45px;">Rp.</small>12k<small class="align-bottom" style="font-size: 16px; line-height: 40px;"></small>
                             </h1>
                         </div>
                         <div class="d-flex flex-column align-items-center py-3">
-                            <p>HTML5 & CSS3</p>
-                            <p>Bootstrap 4</p>
-                            <p>Responsive Layout</p>
-                            <p>Compatible With All Browsers</p>
+                            <p>Refers to laundry services that encompass the entire process of washing clothes, from washing, drying, to folding.</p>
                         </div>
-                        <a href="" class="btn btn-primary py-2 px-4">Signup Now</a>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4">
                     <div class="bg-light text-center mb-2 pt-4">
                         <div class="d-inline-flex flex-column align-items-center justify-content-center bg-secondary rounded-circle shadow mt-2 mb-4" style="width: 200px; height: 200px; border: 15px solid #ffffff;">
-                            <h3 class="text-white">Premium</h3>
+                            <h4 class="text-white">Dry Cleaning</h4>
                             <h1 class="display-4 text-white mb-0">
-                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>149<small class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Mo</small>
+                                <small class="align-top" style="font-size: 22px; line-height: 45px;">Rp.</small>20k<small class="align-bottom" style="font-size: 16px; line-height: 40px;"></small>
                             </h1>
                         </div>
                         <div class="d-flex flex-column align-items-center py-3">
-                            <p>HTML5 & CSS3</p>
-                            <p>Bootstrap 4</p>
-                            <p>Responsive Layout</p>
-                            <p>Compatible With All Browsers</p>
+                            <p>The process of cleaning clothes using specialized chemical solvents, vulnerable to damage if washed in the regular manner.</p>
                         </div>
-                        <a href="" class="btn btn-secondary py-2 px-4">Signup Now</a>
                     </div>
                 </div>
             </div>

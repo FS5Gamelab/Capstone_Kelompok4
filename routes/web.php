@@ -72,7 +72,13 @@ Route::get('/category/{id}/edit', [App\Http\Controllers\CategoriesController::cl
 Route::post('/category/{id}/edit', [App\Http\Controllers\CategoriesController::class, 'update'])->name('updateCategory');
 Route::put('/category/{id}', [App\Http\Controllers\CategoriesController::class, 'update'])->name('updateCategory');
 Route::get('/category/{id}/delete', [App\Http\Controllers\CategoriesController::class, 'destroy'])->name('deleteCategory');
-Route::patch('/categories/{id}/restore', 'CategoriesController@restore')->name('restoreCategory');
+
+Route::patch('/categories/{id}/restore', [CategoriesController::class, 'restore'])->name('restoreCategory');
+Route::delete('/categories/{id}/delete', [CategoriesController::class, 'destroy'])->name('deleteCategory');
+Route::delete('/categories/{id}/delete', [AuthController::class, 'destroy'])->name('deleteCustomer');
+Route::get('/categories/trash', [CategoriesController::class, 'trash'])->name('trashCategory');
+Route::delete('/category/{id}/forceDelete', [CategoriesController::class, 'forceDelete'])->name('forceDeleteCategory');
+
 Route::get('/employees', [App\Http\Controllers\EmployeesController::class, 'index'])->name('listEmployees');
 Route::post('/employees', [App\Http\Controllers\EmployeesController::class, 'store'])->name('storeEmployees');
 Route::get('/employees/create', [App\Http\Controllers\EmployeesController::class, 'create'])->name('createEmployees');

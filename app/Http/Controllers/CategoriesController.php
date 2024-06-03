@@ -98,4 +98,21 @@ class CategoriesController extends Controller
         $categories->delete();
         return redirect(route('listCategory'))->with('success', 'Category Data Deleted Successfully');
     }
+
+    public function trash()
+    {
+        $trashedCategories = Categories::onlyTrashed()->get();
+        return view('admin.category.trash', [
+            'trashedCategories' => $trashedCategories
+        ]);
+    }
+
+    public function forceDelete(string $id)
+    {
+        $category = Categories::onlyTrashed()->findOrFail($id);
+        $category->forceDelete();
+
+        return redirect(route('trashCategory'))->with('success', 'Category Data Permanently Deleted Successfully');
+    }
+
 }
