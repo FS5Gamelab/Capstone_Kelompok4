@@ -105,4 +105,11 @@ Route::get('/customers/trash', [AuthController::class, 'trash'])->name('trashCus
 Route::delete('/customer/{id}/forceDelete', [AuthController::class, 'forceDelete'])->name('forceDeleteCustomer');
 
 
+Route::get('employees', [EmployeesController::class, 'index'])->name('listEmployees');
+Route::get('employees/trash', [EmployeesController::class, 'trash'])->name('trashEmployees');
+Route::patch('employees/restore/{id}', [EmployeesController::class, 'restore'])->name('restoreEmployees');
+Route::delete('employees/delete/{id}', [EmployeesController::class, 'destroy'])->name('deleteEmployees');
+Route::delete('employees/force-delete/{id}', [EmployeesController::class, 'forceDelete'])->name('forceDeleteEmployees');
+
+
 

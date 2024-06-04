@@ -15,9 +15,9 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        $employeess = Employees::all();
+        $employees = Employees::all(); // Pastikan nama variabel adalah $employees
         return view('admin.employees.index', [
-            'employeess' => $employeess
+            'employees' => $employees // Pastikan data dikirim dengan nama 'employees'
         ]);
     }
 
@@ -145,11 +145,42 @@ class EmployeesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        $employees = Employees::findOrFail($id);
-        Storage::delete('public/artikels/' . $employees->profile_picture);
-        $employees->delete();
-        return redirect(route('listEmployees'))->with('success', 'Employee Data Deleted Successfully');
+        $employee = Employees::findOrFail($id);
+        $employee->delete();
+        return redirect()->route('listEmployees')->with('success', 'Employee Deleted Successfully');
+    }
+
+    public function trash()
+    {
+        $trashedEmployees = Employees::onlyTrashed()->with('user')->get();
+        return view('admin.employees.trash', [
+            'trashedEmployees' => $trashedEmployees
+        ]);
+    }
+
+
+
+    public function restore($id)
+    {
+        $employee = Employees::onlyTrashed()->findOrFail($id);
+        $employee->restore();
+
+        if ($employee->user) {
+            $employee->user->restore();
+        }
+
+        return redirect()->route('listEmployees')->with('success', 'Employee Restored Successfully');
+    }
+
+
+
+    public function forceDelete($id)
+    {
+        $employee = Employees::onlyTrashed()->findOrFail($id);
+        Storage::delete('public/artikels/' . $employee->profile_picture);
+        $employee->forceDelete();
+        return redirect()->route('listEmployees')->with('success', 'Employee Permanently Deleted Successfully');
     }
 }

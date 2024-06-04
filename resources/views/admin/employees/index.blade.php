@@ -1,4 +1,5 @@
 @extends('admin.master')
+
 @section('addCss')
     <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -16,10 +17,11 @@
             margin: 2px;
         }
         .table-responsive .btn i {
-            font-size: 1.2em; /* Membesarkan ikon */
+            font-size: 1.2em;
         }
     </style>
 @endsection
+
 @section('addJavascript')
     <script src="{{ asset('js/sweetalert.min.js') }}"></script>
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
@@ -30,21 +32,21 @@
         })
     </script>
     <script>
-        confirmDelete = function(button) {
-            var url = $(button).data('url');
+        function confirmDelete(id) {
             swal({
-                'title': 'Konfirmasi Hapus',
-                'text': 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
-                'dangermode': true,
-                'buttons': true
+                title: 'Konfirmasi Hapus',
+                text: 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
+                dangerMode: true,
+                buttons: true
             }).then(function(value) {
                 if (value) {
-                    window.location = url;
+                    document.getElementById('delete-form-' + id).submit();
                 }
-            })
+            });
         }
     </script>
 @endsection
+
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
@@ -62,6 +64,7 @@
                 <div class="card-header text-left">
                     <a href="{{ route('createEmployees') }}" class="btn btn-info" role="button"><i class="fas fa-plus"></i> Employee</a>
                     <a class="btn btn-dark" role="button" href="/admin"><i class="fas fa-arrow-left"></i> Back</a>
+                    <a href="{{ route('trashEmployees') }}" class="btn btn-danger" role="button"><i class="fas fa-trash"></i> Trash</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -80,26 +83,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($employeess as $employees)
+                                @foreach ($employees as $employee)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>
-                                        @if($employees->profile_picture)
-                                            <img src="{{ Storage::url('artikels/'.$employees->profile_picture) }}" alt="profile picture">
+                                        @if($employee->profile_picture)
+                                            <img src="{{ Storage::url('artikels/'.$employee->profile_picture) }}" alt="profile picture">
                                         @else
                                             No Image
                                         @endif
                                     </td>
-                                    <td>{{ $employees->employees_name }}</td>
-                                    <td>{{ $employees->user->email }}</td>
-                                    <td>{{ $employees->gender }}</td>
-                                    <td>{{ $employees->phone_number }}</td>
-                                    <td>{{ $employees->address }}</td>
-                                    <td>{{ $employees->user->role }}</td>
+                                    <td>{{ $employee->employees_name }}</td>
+                                    <td>{{ $employee->user ? $employee->user->email : 'No Email' }}</td> <!-- Tambahkan pemeriksaan relasi user -->
+                                    <td>{{ $employee->gender }}</td>
+                                    <td>{{ $employee->phone_number }}</td>
+                                    <td>{{ $employee->address }}</td>
+                                    <td>{{ $employee->user ? $employee->user->role : 'No Role' }}</td> <!-- Tambahkan pemeriksaan relasi user -->
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a href="{{ route('editEmployees', ['id' => $employees->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
-                                            <a onclick="confirmDelete(this)" data-url="{{ route('deleteEmployees', ['id' => $employees->id]) }}" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="{{ route('editEmployees', ['id' => $employee->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
+                                            <form id="delete-form-{{ $employee->id }}" action="{{ route('deleteEmployees', ['id' => $employee->id]) }}" method="POST" style="display: none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                            <button onclick="confirmDelete({{ $employee->id }})" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i></button>
                                         </div>
                                     </td>
                                 </tr>
