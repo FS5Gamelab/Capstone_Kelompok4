@@ -15,11 +15,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
   @yield('addCss')
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-dark-primary elevation-4" style="background-color: #003366;">
+  <nav class="main-header navbar navbar-expand navbar-dark-primary elevation-4 fixed-top" style="background-color: #003366;">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">

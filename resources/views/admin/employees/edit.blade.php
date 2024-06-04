@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('content')
+@section('content') <br>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">

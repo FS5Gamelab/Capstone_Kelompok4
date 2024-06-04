@@ -30,7 +30,7 @@
     </script>
 @endsection
 
-@section('content')
+@section('content') <br> <br> 
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
