@@ -26,18 +26,7 @@
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-primary py-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 ml-auto text-center text-md-right">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Topbar End -->
-
-
+    
     <!-- Navbar Start -->
     @include('customer/navbar')
     <!-- Navbar End -->
