@@ -54,7 +54,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">List Orders</h1>
+                    <h1 class="m-0">LIST ORDERS</h1>
                 </div>
             </div>
         </div>
@@ -63,15 +63,14 @@
         <div class="container mt-5">
             <div class="card">
                 <div class="card-header text-left">
-                    <a class="btn btn-dark" role="button" href="/admin"><i class="fas fa-arrow-left"></i> Kembali</a>
-                    <a href="" class="btn btn-danger" role="button"><i class="fas fa-trash"></i> Sampah</a>
+                    <a class="btn btn-dark" role="button" href="/admin"><i class="fas fa-arrow-left"></i> Back</a>
+                    <a href="" class="btn btn-danger" role="button"><i class="fas fa-trash"></i> Trash</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered" id="data-table">
                             <thead>
-                            <thead>
-                                <tr>
+                            <tr>
                                     <th>ID</th>
                                     <th>Order Number</th>
                                     <th>Order Date</th>
