@@ -65,7 +65,6 @@ Route::get('reset-password/{token}', [AuthController::class, 'showResetPasswordF
 Route::post('reset-password', [AuthController::class, 'resetPassword'])->middleware('guest')->name('password.update');
 
 // Crud Category
-
 Route::get('/category', [App\Http\Controllers\CategoriesController::class, 'index'])->name('listCategory');
 Route::post('/category', [App\Http\Controllers\CategoriesController::class, 'store'])->name('storeCategory');
 Route::get('/category/create', [App\Http\Controllers\CategoriesController::class, 'create'])->name('createCategory');
@@ -91,6 +90,13 @@ Route::post('/employees/{id}/edit', [App\Http\Controllers\EmployeesController::c
 Route::put('/employees/{id}', [App\Http\Controllers\EmployeesController::class, 'update'])->name('updateEmployees');
 Route::get('/employees/{id}/delete', [App\Http\Controllers\EmployeesController::class, 'destroy'])->name('deleteEmployees');
 
+// Soft Delete Employee
+Route::get('employees', [EmployeesController::class, 'index'])->name('listEmployees');
+Route::get('employees/trash', [EmployeesController::class, 'trash'])->name('trashEmployees');
+Route::patch('employees/restore/{id}', [EmployeesController::class, 'restore'])->name('restoreEmployees');
+Route::delete('employees/delete/{id}', [EmployeesController::class, 'destroy'])->name('deleteEmployees');
+Route::delete('employees/force-delete/{id}', [EmployeesController::class, 'forceDelete'])->name('forceDeleteEmployees');
+
 // CRUD Customer
 Route::get('/customer', [App\Http\Controllers\AuthController::class, 'customer'])->name('listCustomer');
 Route::post('/customer', [App\Http\Controllers\AuthController::class, 'store'])->name('storeCustomer');
@@ -105,12 +111,17 @@ Route::delete('/customers/{id}/delete', [AuthController::class, 'destroy'])->nam
 Route::get('/customers/trash', [AuthController::class, 'trash'])->name('trashCustomer');
 Route::delete('/customer/{id}/forceDelete', [AuthController::class, 'forceDelete'])->name('forceDeleteCustomer');
 
+
 // Soft Delete Employee
 Route::get('employees', [EmployeesController::class, 'index'])->name('listEmployees');
 Route::get('employees/trash', [EmployeesController::class, 'trash'])->name('trashEmployees');
 Route::patch('employees/restore/{id}', [EmployeesController::class, 'restore'])->name('restoreEmployees');
 Route::delete('employees/delete/{id}', [EmployeesController::class, 'destroy'])->name('deleteEmployees');
 Route::delete('employees/force-delete/{id}', [EmployeesController::class, 'forceDelete'])->name('forceDeleteEmployees');
+
+// CRUD Order
+Route::get('/orderCustomer/create', [App\Http\Controllers\OrderController::class, 'createOrder'])->name('createOrder');
+
 
 // Rute untuk halaman daftar pesanan
 Route::get('/orders', [OrderController::class, 'index'])->name('listOrders')->middleware('auth');
