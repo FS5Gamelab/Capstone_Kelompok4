@@ -88,17 +88,12 @@
     </div>
     <!-- Working Process End -->
 
-
-
-
     <!-- Footer Start -->
     @include('customer/footer')
     <!-- Footer End -->
 
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
 
     <!-- JavaScript Libraries -->
     @include('sweetalert::alert')
