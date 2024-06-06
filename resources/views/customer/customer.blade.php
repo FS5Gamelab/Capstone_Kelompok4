@@ -114,7 +114,7 @@
         <div class="card order-card mt-2 mb-3">
             <div class="card-up aqua-gradient"></div>
             <div class="avatar mx-auto white">
-            <img src="img/order_now.png" class="rounded-circle img-fluid" alt="laundry avatar">
+            <img src="{{ asset('img/order_now.png') }}" class="rounded-circle img-fluid" alt="laundry avatar">
 
 
             </div>

@@ -23,4 +23,11 @@ class Orders extends Model
     {
         return $this->belongsTo(Categories::class);
     }
+
+    public static function generateOrderNumber()
+    {
+        $noOr = uniqid();
+        $limitNo_or = substr($noOr, 0, 7);
+        return 'OR-' . strtoupper($limitNo_or);
+    }
 }

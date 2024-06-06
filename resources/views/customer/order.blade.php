@@ -23,6 +23,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    @yield('addCss')
 </head>
 
 <body>
@@ -42,55 +43,7 @@
     @include('customer/navbar')
     <!-- Navbar End -->
 
-    <!-- Page Header Start -->
-    <div class="page-header container-fluid bg-secondary pt-2 pt-lg-5 pb-2 mb-5">
-        <div class="container py-5">
-            <div class="row align-items-center py-4">
-                <div class="col-md-6 text-center text-md-left">
-                    <h1 class="mb-4 mb-md-0 text-white">Orders</h1>
-                </div>
-                <div class="col-md-6 text-center text-md-right">
-                    <div class="d-inline-flex align-items-center">
-                        <a class="btn text-white" href="">Home</a>
-                        <i class="fas fa-angle-right text-white"></i>
-                        <a class="btn text-white disabled" href="">Orders</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Page Header Start -->
-
-    <div class="content">
-        <div class="container mt-5">
-            <div class="card">
-                <div class="card-header text-left">
-                    <a href="" class="btn btn-info" role="button">Add Order</a>
-                    <a class="btn btn-dark" role="button" href="">Back</a>
-                </div>
-                <div class="card-body">
-                    <table class="table table-hover table-bordered" id="data-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>1</th>
-                                <th>2</th>
-                                <th>3</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+    @yield('content')
 
     <!-- Working Process Start -->
     <div class="container-fluid pt-5">
@@ -148,6 +101,7 @@
 
 
     <!-- JavaScript Libraries -->
+    @include('sweetalert::alert')
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
@@ -157,6 +111,7 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
+    @yield('addJavascript')
 </body>
 
 </html>

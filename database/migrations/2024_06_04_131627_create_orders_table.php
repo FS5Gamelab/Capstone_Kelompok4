@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('order_number')->unique(); // Unique order number
             $table->dateTime('order_date'); // Order date
-            $table->dateTime('delivery_date')->nullable();; // Delivery date
+            $table->dateTime('delivery_date')->nullable(); // Delivery date
             $table->unsignedBigInteger('customer_id'); // Customer ID from customers table
             $table->unsignedBigInteger('category_id'); // Laundry category ID from categories table
             $table->integer('quantity_kg'); // Quantity (kg)
