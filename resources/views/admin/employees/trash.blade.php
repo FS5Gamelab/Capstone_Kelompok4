@@ -19,6 +19,17 @@
         .table-responsive .btn i {
             font-size: 1.2em;
         }
+        @media (max-width: 576px) {
+            .table thead th,
+            .table tbody td {
+                font-size: 12px;
+                padding: 5px;
+            }
+            .table .btn-group .btn {
+                font-size: 10px;
+                padding: 3px 6px;
+            }
+        }
     </style>
 @endsection
 
@@ -29,7 +40,7 @@
     <script>
         $(function() {
             $("#data-table").DataTable();
-        })
+        });
     </script>
     <script>
         function confirmPermanentDelete(id) {
@@ -68,55 +79,53 @@
                     </a>
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover table-bordered" id="data-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Profile Picture</th>
-                                <th>Employees Name</th>
-                               
-                                <th>Gender</th>
-                                <th>Phone Number</th>
-                                <th>Address</th>
-                             
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($trashedEmployees as $trashedEmployee)
-                            <tr>
-                                <td>{{ $loop->index + 1 }}</td>
-                                <td>
-                                    @if($trashedEmployee->profile_picture)
-                                        <img src="{{ Storage::url('artikels/'.$trashedEmployee->profile_picture) }}" alt="profile picture" style="width: 50px" >
-                                    @else
-                                        No Image
-                                    @endif
-                                </td>
-                                <td>{{ $trashedEmployee->employees_name }}</td>
-                                
-                                <td>{{ $trashedEmployee->gender }}</td>
-                                <td>{{ $trashedEmployee->phone_number }}</td>
-                                <td>{{ $trashedEmployee->address }}</td>
-
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <form action="{{ route('restoreEmployees', ['id' => $trashedEmployee->id]) }}" method="POST">
-                                            @csrf
-                                            @method('PATCH')
-                                            <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-trash-restore"></i> Restore</button>
-                                        </form>
-                                        <form id="delete-form-{{ $trashedEmployee->id }}" action="{{ route('forceDeleteEmployees', ['id' => $trashedEmployee->id]) }}" method="POST" style="display: none;">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
-                                        <button onclick="confirmPermanentDelete({{ $trashedEmployee->id }})" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i> Delete Permanently</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered" id="data-table">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Profile Picture</th>
+                                    <th>Employees Name</th>
+                                    <th>Gender</th>
+                                    <th>Phone Number</th>
+                                    <th>Address</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($trashedEmployees as $trashedEmployee)
+                                <tr>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>
+                                        @if($trashedEmployee->profile_picture)
+                                            <img src="{{ Storage::url('artikels/'.$trashedEmployee->profile_picture) }}" alt="profile picture" style="width: 50px">
+                                        @else
+                                            No Image
+                                        @endif
+                                    </td>
+                                    <td>{{ $trashedEmployee->employees_name }}</td>
+                                    <td>{{ $trashedEmployee->gender }}</td>
+                                    <td>{{ $trashedEmployee->phone_number }}</td>
+                                    <td>{{ $trashedEmployee->address }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <form action="{{ route('restoreEmployees', ['id' => $trashedEmployee->id]) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-trash-restore"></i> Restore</button>
+                                            </form>
+                                            <form id="delete-form-{{ $trashedEmployee->id }}" action="{{ route('forceDeleteEmployees', ['id' => $trashedEmployee->id]) }}" method="POST" style="display: none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                            <button onclick="confirmPermanentDelete({{ $trashedEmployee->id }})" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i> Delete Permanently</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div> <!-- .table-responsive -->
                 </div>
             </div>
         </div>

@@ -64,33 +64,35 @@
                     <a href="{{ route('trashCustomer') }}" class="btn btn-danger" role="button"><i class="fas fa-trash"></i> Trash</a>
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover table-bordered" id="data-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Customer Name</th>
-                                <th>Phone Number</th>
-                                <th>Address</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($customers as $customer)
-                            <tr>
-                                <td>{{ $loop->index + 1 }}</td>
-                                <td>{{ $customer->customer_name }}</td>
-                                <td>{{ $customer->phone_number }}</td>
-                                <td>{{ $customer->address }}</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <a href="{{ route('editCustomer', ['id' => $customer->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
-                                        <a onclick="confirmDelete(this)" data-url="{{ route('deleteCustomer', ['id' => $customer->id]) }}" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered" id="data-table">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Customer Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Address</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($customers as $customer)
+                                <tr>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $customer->customer_name }}</td>
+                                    <td>{{ $customer->phone_number }}</td>
+                                    <td>{{ $customer->address }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{{ route('editCustomer', ['id' => $customer->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
+                                            <a onclick="confirmDelete(this)" data-url="{{ route('deleteCustomer', ['id' => $customer->id]) }}" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div> <!-- .table-responsive -->
                 </div>
             </div>
         </div>

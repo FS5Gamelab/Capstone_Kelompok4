@@ -24,6 +24,7 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
+
     <style>
         /* Ensure the content is not overlapped by the fixed navbar */
         body {
@@ -47,6 +48,9 @@
             }
         }
     </style>
+
+    @yield('addCss')
+
 </head>
 
 <body>
@@ -55,6 +59,7 @@
     <!-- Navbar Start -->
     @include('employee/navbar')
     <!-- Navbar End -->
+
 
     <!-- Page Header Start -->
     <div class="page-header container-fluid bg-secondary pt-2 pt-lg-5 pb-2 mb-5">
@@ -109,6 +114,10 @@
     </div>
     <!-- Content End -->
 
+
+    @yield('content')
+
+
     <!-- Working Process Start -->
     <div class="container-fluid pt-5">
         <div class="container">
@@ -160,6 +169,7 @@
     <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
     <!-- JavaScript Libraries -->
+    @include('sweetalert::alert')
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
@@ -169,6 +179,7 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
+    @yield('addJavascript')
 </body>
 
 </html>

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 
+
 class AuthController extends Controller
 {
     public function register()
@@ -102,18 +103,17 @@ class AuthController extends Controller
 
     public function sendResetLinkEmail(Request $request)
     {
-        // Validasi email
-        $request->validate(['email' => 'required|email']);
+        $request->validate([
+            'email' => 'required|email',
+        ]);
 
-        // Kirim tautan reset password
         $status = Password::sendResetLink(
             $request->only('email')
         );
 
-        // Tampilkan status berhasil atau gagal
         return $status === Password::RESET_LINK_SENT
-            ? back()->with(['status' => __($status)])
-            : back()->withErrors(['email' => __($status)]);
+            ? back()->with('status', __('Kami telah mengirimkan link reset password ke email anda'))
+            : back()->withErrors(['email' => __('Email tidak ditemukan atau tidak valid')]);
     }
 
     public function showResetPasswordForm(string $token)
@@ -143,7 +143,7 @@ class AuthController extends Controller
         );
 
         return $status === Password::PASSWORD_RESET
-            ? redirect()->route('login')->with('status', __($status))
+            ? redirect()->route('login')->with('status', __())
             : back()->withErrors(['email' => [__($status)]]);
     }
 
