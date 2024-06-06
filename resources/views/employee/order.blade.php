@@ -13,7 +13,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
@@ -23,25 +23,39 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+    <style>
+        /* Ensure the content is not overlapped by the fixed navbar */
+        body {
+            padding-top: 70px; /* Adjust this value based on your navbar height */
+        }
+        @media (max-width: 768px) {
+            .page-header .col-md-6 {
+                text-align: center !important;
+            }
+            .page-header .d-inline-flex {
+                flex-direction: column;
+            }
+            .page-header .d-inline-flex .btn {
+                margin-bottom: 10px;
+            }
+        }
+        @media (max-width: 576px) {
+            .card-header a.btn {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-primary py-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 ml-auto text-center text-md-right">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Topbar End -->
-
+    
 
     <!-- Navbar Start -->
     @include('employee/navbar')
     <!-- Navbar End -->
-    <br> <br>
+
     <!-- Page Header Start -->
     <div class="page-header container-fluid bg-secondary pt-2 pt-lg-5 pb-2 mb-5">
         <div class="container py-5">
@@ -59,38 +73,41 @@
             </div>
         </div>
     </div>
-    <!-- Page Header Start -->
+    <!-- Page Header End -->
 
+    <!-- Content Start -->
     <div class="content">
         <div class="container mt-5">
             <div class="card">
                 <div class="card-header text-left">
-                    <a href="" class="btn btn-info" role="button">Add Order</a>
-                    <a class="btn btn-dark" role="button" href="/employeePages">Back</a>
+                    <a class="btn btn-dark" role="button" href="/employeePages"><i class="fas fa-arrow-left"></i> Back</a>
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover table-bordered" id="data-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>1</th>
-                                <th>2</th>
-                                <th>3</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered" id="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Order Number</th>
+                                    <th>Order Date</th>
+                                    <th>Delivery Date</th>
+                                    <th>Customer Id</th>
+                                    <th>Category Id</th>
+                                    <th>Quantity (kg)</th>
+                                    <th>Total Price</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Orders data -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Content End -->
 
     <!-- Working Process Start -->
     <div class="container-fluid pt-5">
@@ -98,32 +115,32 @@
             <h6 class="text-secondary text-uppercase text-center font-weight-medium mb-3">Working Process</h6>
             <h1 class="display-4 text-center mb-5">How We Work</h1>
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4" style="width: 150px; height: 150px; border-width: 15px !important;">
                             <h2 class="display-2 text-secondary m-0">1</h2>
                         </div>
                         <h3 class="font-weight-bold m-0 mt-2">Order Place</h3>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4" style="width: 150px; height: 150px; border-width: 15px !important;">
                             <h2 class="display-2 text-secondary m-0">2</h2>
                         </div>
                         <h3 class="font-weight-bold m-0 mt-2">Free Pick Up</h3>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4" style="width: 150px; height: 150px; border-width: 15px !important;">
                             <h2 class="display-2 text-secondary m-0">3</h2>
                         </div>
                         <h3 class="font-weight-bold m-0 mt-2">Dry Cleaning</h3>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4" style="width: 150px; height: 150px; border-width: 15px !important;">
                             <h2 class="display-2 text-secondary m-0">4</h2>
                         </div>
@@ -135,17 +152,12 @@
     </div>
     <!-- Working Process End -->
 
-
-
-
     <!-- Footer Start -->
     @include('employee/footer')
     <!-- Footer End -->
 
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
