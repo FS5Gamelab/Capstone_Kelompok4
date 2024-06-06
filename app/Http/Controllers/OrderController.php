@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    
+    public function index()
+    {
+        $orders = Orders::all();
+        return view('admin.order.index', compact('orders'));
+    }
+
     public function orderCustomer()
     {
         return view('customer.order');
@@ -18,6 +25,8 @@ class OrderController extends Controller
     {
         return view('employee.order');
     }
+
+    
 
     public function create()
     {
