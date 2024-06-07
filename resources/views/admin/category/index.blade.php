@@ -47,35 +47,33 @@
                     <a href="{{ route('trashCategory') }}" class="btn btn-danger" role="button"><i class="fas fa-trash"></i> Trash</a>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover table-bordered" id="data-table">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Type of Laundry</th>
-                                    <th>Working Time (Day)</th>
-                                    <th>Price (Rp)</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($categoriess as $categories)
-                                <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $categories->type_laundry }}</td>
-                                    <td>{{ $categories->working_time }}</td>
-                                    <td>Rp {{ number_format($categories->price, 0, ',', '.') }}.00</td>
-                                    <td>
-                                        <div class="btn-group" role="group">
-                                            <a href="{{ route('editCategory', ['id' => $categories->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
-                                            <a onclick="confirmDelete(this)" data-url="{{ route('deleteCategory', ['id' => $categories->id]) }}" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div> <!-- .table-responsive -->
+                    <table class="table table-hover table-bordered" id="data-table">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Type of Laundry</th>
+                                <th>Working Time (Day)</th>
+                                <th>Price (Rp)</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($categoriess as $categories)
+                            <tr>
+                                <td>{{ $loop->index + 1 }}</td>
+                                <td>{{ $categories->type_laundry }}</td>
+                                <td>{{ $categories->working_time }}</td>
+                                <td>Rp {{ number_format($categories->price, 0, ',', '.') }},00</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="{{ route('editCategory', ['id' => $categories->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
+                                        <a onclick="confirmDelete(this)" data-url="{{ route('deleteCategory', ['id' => $categories->id]) }}" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->dateTime('delivery_date')->nullable(); // Delivery date
             $table->unsignedBigInteger('customer_id'); // Customer ID from customers table
             $table->unsignedBigInteger('category_id'); // Laundry category ID from categories table
+            $table->string('phone_number');
+            $table->string('address');
             $table->integer('quantity_kg'); // Quantity (kg)
             $table->integer('total_price'); // Total price
             $table->enum('status', ['queued', 'already paid', 'being picked up', 'being washed', 'being dried', 'being ironed', 'delivered', 'completed']); // Status pesanan
