@@ -14,7 +14,11 @@
                     <a href="{{ route('services') }}" class="nav-item nav-link {{ Request::routeIs('services') ? 'active' : '' }}">Services</a>
                     <a href="{{ route('pricing') }}" class="nav-item nav-link {{ Request::routeIs('pricing') ? 'active' : '' }}">Pricing</a>
                     <a href="{{ route('contact') }}" class="nav-item nav-link {{ Request::routeIs('contact') ? 'active' : '' }}">Contact</a>
-                    <a href="{{ route('login') }}" class="nav-item nav-link {{ Request::routeIs('login') ? 'active' : '' }}">Login</a>
+                    @if (Auth::check())
+                        <a href="{{ route('admin') }}" class="nav-item nav-link">Admin</a>
+                    @else
+                        <a href="{{ route('login') }}" class="nav-item nav-link {{ Request::routeIs('login') ? 'active' : '' }}">Login</a>
+                    @endif
                 </div>
             </div>
         </nav>
