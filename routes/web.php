@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
@@ -110,10 +111,19 @@ Route::delete('/customers/{id}/delete', [AuthController::class, 'destroy'])->nam
 Route::get('/customers/trash', [AuthController::class, 'trash'])->name('trashCustomer');
 Route::delete('/customer/{id}/forceDelete', [AuthController::class, 'forceDelete'])->name('forceDeleteCustomer');
 
+
+// Soft Delete Employee
+Route::get('employees', [EmployeesController::class, 'index'])->name('listEmployees');
+Route::get('employees/trash', [EmployeesController::class, 'trash'])->name('trashEmployees');
+Route::patch('employees/restore/{id}', [EmployeesController::class, 'restore'])->name('restoreEmployees');
+Route::delete('employees/delete/{id}', [EmployeesController::class, 'destroy'])->name('deleteEmployees');
+Route::delete('employees/force-delete/{id}', [EmployeesController::class, 'forceDelete'])->name('forceDeleteEmployees');
+
 // CRUD Order
 Route::get('/orderCustomer/create', [App\Http\Controllers\OrderController::class, 'createOrder'])->name('createOrder')->middleware('auth');
 Route::post('/orderCustomer', [App\Http\Controllers\OrderController::class, 'storeOrder'])->name('storeOrder')->middleware('auth');
 
 
 
-
+// Rute untuk halaman daftar pesanan
+Route::get('/orders', [OrderController::class, 'index'])->name('listOrders')->middleware('auth');

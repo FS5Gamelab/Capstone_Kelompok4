@@ -9,7 +9,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Track laundry</title>
 
-  
   <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
@@ -84,14 +83,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
             </li>
             <li class="nav-item">
-              <a href="" class="nav-link {{ Request::routeIs('order') ? 'active' : '' }}" style="{{ Request::routeIs('order') ? 'color: #000000;' : 'color: #ffffff;' }}">
+              <a href="{{ route('listOrders') }}" class="nav-link {{ Request::routeIs('listOrders') ? 'active' : '' }}" style="{{ Request::routeIs('listOrders') ? 'color: #000000;' : 'color: #ffffff;' }}">
                 <i class="nav-icon fas fa-shopping-cart"></i>
                 <p>Orders</p>
               </a>
             </li>
           </ul>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
+        <li class="nav-item">
           <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link" style="background-color: #336699; color: #ffffff;">
             <i class="fas fa-sign-out-alt"></i> 
             <p>              

@@ -9,7 +9,7 @@
     <script>
         $(function() {
             $("#data-table").DataTable();
-        })
+        });
     </script>
     <script>
         confirmDelete = function(button) {
@@ -17,13 +17,13 @@
             swal({
                 'title': 'Confirm Delete',
                 'text': 'Are You Sure You Want to Delete This Data?',
-                'dangermode': true,
+                'dangerMode': true,
                 'buttons': true
             }).then(function(value) {
                 if (value) {
                     window.location = url;
                 }
-            })
+            });
         }
     </script>
 @endsection

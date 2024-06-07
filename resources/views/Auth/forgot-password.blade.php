@@ -15,24 +15,6 @@
             </div>
             <h2>Forgot Password</h2>
 
-            <!-- Menampilkan pesan error -->
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            <!-- Menampilkan pesan sukses -->
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
-
             <!-- Formulir untuk mengirim email reset password -->
             <form action="{{ route('password.email') }}" method="POST">
                 @csrf
@@ -44,5 +26,28 @@
             </form>
         </div>
     </div>
+
+    <!-- jQuery and SweetAlert2 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- SweetAlert2 for displaying messages -->
+    <script>
+        @if ($errors->any())
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                html: '{!! implode('<br>', $errors->all()) !!}'
+            });
+        @endif
+
+        @if (session('status'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('status') }}'
+            });
+        @endif
+    </script>
 </body>
 </html>

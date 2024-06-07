@@ -11,6 +11,13 @@ use Carbon\Carbon;
 
 class OrderController extends Controller
 {
+    
+    public function index()
+    {
+        $orders = Orders::all();
+        return view('admin.order.index', compact('orders'));
+    }
+
     public function orderCustomer()
     {
         $orders = Orders::where('customer_id', Auth::id())->get();
@@ -33,7 +40,9 @@ class OrderController extends Controller
         return view('employee.index', compact('orders'));
     }
 
+
     public function createOrder()
+
     {
         $categories = Categories::all();
         return view('customer.create', compact('categories'));

@@ -43,15 +43,16 @@
     </div>
 
     <div class="content">
-        <div class="container mt-5">
-            <div class="card">
-                <div class="card-header text-left">
-                    <a href="{{ route('listCategory') }}" class="btn btn-dark" role="button">
-                        <i class="fas fa-arrow-left"></i> Back
-                    </a>
-                </div>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header text-left">
+                <a href="{{ route('listCategory') }}" class="btn btn-dark" role="button">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+            </div>
 
-                <div class="card-body">
+            <div class="card-body">
+                <div class="table-responsive">
                     <table class="table table-hover table-bordered" id="data-table">
                         <thead>
                             <tr>
