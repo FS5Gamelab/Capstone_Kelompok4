@@ -27,6 +27,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/admin" class="nav-link" style="color: #ffffff;">Home</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+      <a href="/" class="nav-link" style="color: #ffffff;">LaningPages</a>
+      </li>
     </ul>
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">

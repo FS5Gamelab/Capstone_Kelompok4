@@ -69,43 +69,42 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered" id="data-table">
-                            <thead>
-                            <tr>
-                                    <th>ID</th>
+                        <thead>
+                                <tr>
+                                    <th>No.</th>
                                     <th>Order Number</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
                                     <th>Order Date</th>
                                     <th>Delivery Date</th>
-                                    <th>Customer ID</th>
-                                    <th>Category ID</th>
-                                    <th>Quantity (kg)</th>
+                                    <th>Quantity (Kg)</th>
                                     <th>Total Price</th>
                                     <th>Status</th>
                                     <th>Action</th>
-                                    </tr>   
+                                </tr>
                             </thead>
                             <tbody>
-                                @foreach ($orders as $order)
-                                <tr>
-                                    <td>{{ $order->id }}</td>
-                                    <td>{{ $order->order_number }}</td>
-                                    <td>{{ $order->order_date }}</td>
-                                    <td>{{ $order->delivery_date }}</td>
-                                    <td>{{ $order->customer_id }}</td>
-                                    <td>{{ $order->category_id }}</td>
-                                    <td>{{ $order->quantity_kg }}</td>
-                                    <td>{{ $order->total_price }}</td>
-                                    <td>{{ $order->status }}</td>
-                                    <td>
+                                @foreach($orders as $order)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $order->order_number }}</td>
+                                        <td>{{ $order->customer->customer_name }}</td>
+                                        <td>{{ $order->category->type_laundry }}</td> <!-- Memperbaiki ID categories -->
+                                        <td>{{ $order->phone_number }}</td>
+                                        <td>{{ $order->address }}</td>
+                                        <td>{{ $order->order_date->format('d-m-Y') }}</td>
+                                        <td>{{ $order->delivery_date ? $order->delivery_date->format('d-m-Y') : 'Not set' }}</td>
+                                        <td>{{ $order->quantity_kg }}</td> <!-- Menambahkan ID quantity_kg -->
+                                        <td>Rp {{ number_format($order->total_price, 0, ',', '.') }},00</td>
+                                        <td>{{ $order->status }}</td>
+                                        <td>
                                         <div class="btn-group" role="group">
-                                            <a href="{{ route('editOrders', ['id' => $order->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
-                                            <form id="delete-form-{{ $order->id }}" action="{{ route('deleteOrders', ['id' => $order->id]) }}" method="POST" style="display: none;">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
-                                            <button onclick="confirmDelete({{ $order->id }})" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i></button>
+                                            <a href="" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
                                         </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
