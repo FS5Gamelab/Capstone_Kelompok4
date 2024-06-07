@@ -15,6 +15,11 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Orders::all();
+        $orders->transform(function ($order) {
+            $order->order_date = Carbon::parse($order->order_date);
+            $order->delivery_date = $order->delivery_date ? Carbon::parse($order->delivery_date) : null;
+            return $order;
+        });
         return view('admin.order.index', compact('orders'));
     }
 
