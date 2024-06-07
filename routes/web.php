@@ -111,7 +111,9 @@ Route::get('/customers/trash', [AuthController::class, 'trash'])->name('trashCus
 Route::delete('/customer/{id}/forceDelete', [AuthController::class, 'forceDelete'])->name('forceDeleteCustomer');
 
 // CRUD Order
-Route::get('/orderCustomer/create', [App\Http\Controllers\OrderController::class, 'createOrder'])->name('createOrder');
+Route::get('/orderCustomer/create', [App\Http\Controllers\OrderController::class, 'createOrder'])->name('createOrder')->middleware('auth');
+Route::post('/orderCustomer', [App\Http\Controllers\OrderController::class, 'storeOrder'])->name('storeOrder')->middleware('auth');
+
 
 
 

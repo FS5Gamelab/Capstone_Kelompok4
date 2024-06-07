@@ -1,36 +1,5 @@
 @extends('employee.order')
 
-@section('addCss')
-    <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css') }}">
-@endsection
-
-@section('addJavascript')
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('#data-table').DataTable();
-        });
-
-        function confirmDelete(button) {
-            var url = $(button).data('url');
-            swal({
-                title: 'Confirm Delete',
-                text: 'Are You Sure You Want to Delete This Data?',
-                icon: 'warning',
-                buttons: true,
-                dangerMode: true,
-            }).then((value) => {
-                if (value) {
-                    window.location = url;
-                }
-            });
-        }
-    </script>
-@endsection
-
 @section('content')
 <!-- Page Header Start -->
 <br> <br> <br>
@@ -56,8 +25,8 @@
     <div class="content">
         <div class="container mt-5">
             <div class="card">
-                <div class="card-header text-left">
-                    <a class="btn btn-dark" role="button" href="/admin">Back</a>
+                <div class="card-header text-left">        
+                    <a href="{{ route('createOrder') }}" class="btn btn-info" role="button">Add Order</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -65,9 +34,11 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Number Order</th>
+                                    <th>Order Number</th>
                                     <th>Name</th>
-                                    <th>Type</th>
+                                    <th>Category</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
                                     <th>Order Date</th>
                                     <th>Delivery Date</th>
                                     <th>Quantity (Kg)</th>
@@ -77,23 +48,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>123</td>
-                                    <td>John Doe</td>
-                                    <td>2024-06-05</td>
-                                    <td>Completed</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
+                                @foreach($orders as $order)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $order->order_number }}</td>
+                                        <td>{{ $order->customer->customer_name }}</td>
+                                        <td>{{ $order->category->type_laundry }}</td> <!-- Memperbaiki ID categories -->
+                                        <td>{{ $order->phone_number }}</td>
+                                        <td>{{ $order->address }}</td>
+                                        <td>{{ $order->order_date->format('d-m-Y') }}</td>
+                                        <td>{{ $order->delivery_date ? $order->delivery_date->format('d-m-Y') : 'Not set' }}</td>
+                                        <td>{{ $order->quantity_kg }}</td> <!-- Menambahkan ID quantity_kg -->
+                                        <td>Rp {{ number_format($order->total_price, 0, ',', '.') }},00</td>
+                                        <td>{{ $order->status }}</td>
+                                        <td>
                                         <div class="btn-group" role="group">
-                                            <a href="#" class="btn btn-primary btn-sm" role="button">View</a>
-                                            <a href="#" class="btn btn-danger btn-sm" role="button" onclick="confirmDelete(this)" data-url="/delete/123">Delete</a>
+                                            <a href="" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
                                         </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -103,3 +77,14 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    function updateTotal() {
+        var selectedQuantity = document.getElementById('quantity_kg').value;
+        var selectedPrice = document.getElementById('categories').options[document.getElementById('categories').selectedIndex].getAttribute('price'); // Memperbaiki ID categories
+        var totalHarga = selectedQuantity * selectedPrice;
+        document.getElementById('total_price').value = totalHarga || 0;
+    }
+</script>
+@endpush
