@@ -61,7 +61,7 @@
                                         <td>{{ $order->status }}</td>
                                         <td>
                                         <div class="btn-group" role="group">
-                                            <a href="" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
+                                            <a href="{{ route('detailOrder', ['id' => $order->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
                                         </div>
                                         </td>
                                     </tr>

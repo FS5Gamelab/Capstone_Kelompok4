@@ -122,8 +122,8 @@ Route::delete('employees/force-delete/{id}', [EmployeesController::class, 'force
 // CRUD Order
 Route::get('/orderCustomer/create', [App\Http\Controllers\OrderController::class, 'createOrder'])->name('createOrder')->middleware('auth');
 Route::post('/orderCustomer', [App\Http\Controllers\OrderController::class, 'storeOrder'])->name('storeOrder')->middleware('auth');
-
-
+Route::get('/detailOrder', [App\Http\Controllers\OrderController::class, 'detailOrder'])->name('detailOrder')->middleware('auth');
+Route::get('/orderCustomer/detail/{id}', [OrderController::class, 'detailOrder'])->name('detailOrder');
 
 // Rute untuk halaman daftar pesanan
 Route::get('/orders', [OrderController::class, 'index'])->name('listOrders')->middleware('auth');

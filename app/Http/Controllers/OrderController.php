@@ -45,6 +45,12 @@ class OrderController extends Controller
         return view('employee.index', compact('orders'));
     }
 
+    public function detailOrder($id)
+    {
+        $order = Orders::with('customer', 'category')->findOrFail($id);
+        return view('customer.detailOrder', compact('order'));
+    }
+
 
     public function createOrder()
 
