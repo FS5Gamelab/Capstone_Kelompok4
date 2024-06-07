@@ -28,7 +28,7 @@
             <div class="small-box bg-info">
               <div class="inner">
                 <p>Total Orders</p>
-                
+                <h1>{{ $orders }}</h1>
               </div>
               <div class="icon">
                 <i class="fas fa-shopping-cart" style="color: white"></i>
