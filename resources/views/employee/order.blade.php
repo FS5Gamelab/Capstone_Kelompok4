@@ -23,7 +23,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-
+    @yield('addCss')
 
     <style>
         /* Ensure the content is not overlapped by the fixed navbar */

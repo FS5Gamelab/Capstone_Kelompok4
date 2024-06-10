@@ -87,9 +87,29 @@ class OrderController extends Controller
     }
 
     private function calculateTotalPrice($categoryId, $quantity)
-{
-    $category = Categories::find($categoryId);
-    return $category->price * $quantity;
-}
+    {
+        $category = Categories::find($categoryId);
+        return $category->price * $quantity;
+    }
 
+    public function editOrder($id)
+    {
+        $order = Orders::findOrFail($id);
+        return view('employee.edit', compact('order'));
+    }
+
+    public function updateOrder(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|string',
+            'delivery_date' => 'nullable|date|after_or_equal:order_date',
+        ]);
+
+        $order = Orders::findOrFail($id);
+        $order->status = $request->status;
+        $order->delivery_date = $request->delivery_date;
+        $order->save();
+
+        return redirect()->route('employee.index')->with('success', 'Order updated successfully.');
+    }
 }

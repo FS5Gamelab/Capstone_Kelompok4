@@ -1,4 +1,44 @@
 @extends('customer.order')
+@section('addCss')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .btn-custom {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5em 1em;
+            font-size: 1rem;
+            border-radius: 0.25em;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-custom i {
+            margin-right: 0.5em;
+            font-size: 1.2em;
+        }
+
+        .btn-custom-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-custom-primary:hover {
+            background-color: #0056b3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-custom-secondary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
+
+        .btn-custom-secondary:hover {
+            background-color: #5a6268;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+@endsection
 @section('content')
     <!-- Page Header Start -->
     <br> <Br> </Br>
@@ -26,9 +66,10 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <a href="{{ route('orderCustomer') }}" class="btn btn-primary btn-sm">Back</a>
+                            <a href="{{ route('orderCustomer') }}" class="btn btn-custom btn-custom-secondary btn-sm"> <!-- Menggunakan gaya tombol custom dan secondary -->
+                                <i class="fas fa-arrow-left"></i> Back 
+                            </a>
                         </div>
-
                         <div class="card-body">
                             <form action="{{ route('storeOrder') }}" method="post">
                                 @csrf
@@ -65,8 +106,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group text-right">
-                                    <button type="submit" class="btn btn-primary btn-sm">Create</button>
-                                    <button type="reset" class="btn btn-secondary btn-sm">Cancel</button>
+                                    <button type="submit" class="btn btn-custom btn-custom-primary">
+                                        <i class="fas fa-plus"></i> Create
+                                    </button>
+                                    <button type="reset" class="btn btn-custom btn-custom-secondary">
+                                        <i class="fas fas fa-undo"></i> Reset
                                 </div>
                             </form>
                         </div>

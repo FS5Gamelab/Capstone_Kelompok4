@@ -58,7 +58,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
 Route::post('/register', [AuthController::class, 'store']);
 
-//fotgot password and reset password
+//forgot password and reset password
 Route::get('forgot-password', [AuthController::class, 'forgot'])->name('password.request');
 Route::post('forgot-password', [AuthController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::get('reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->middleware('guest')->name('password.reset');
@@ -125,5 +125,8 @@ Route::post('/orderCustomer', [App\Http\Controllers\OrderController::class, 'sto
 Route::get('/detailOrder', [App\Http\Controllers\OrderController::class, 'detailOrder'])->name('detailOrder')->middleware('auth');
 Route::get('/orderCustomer/detail/{id}', [OrderController::class, 'detailOrder'])->name('detailOrder');
 
-// Rute untuk halaman daftar pesanan
+// Rute Employee pada halaman daftar Order
 Route::get('/orders', [OrderController::class, 'index'])->name('listOrders')->middleware('auth');
+Route::get('/employee/order/edit/{id}', [OrderController::class, 'editOrder'])->name('editOrder');
+Route::post('/employee/order/update/{id}', [OrderController::class, 'updateOrder'])->name('updateOrder');
+Route::get('/employee/orders', [OrderController::class, 'orderan'])->name('employee.index');
