@@ -173,16 +173,200 @@
                             </div>
                         </div>
                     </div>
-                    <a href="" class="btn btn-primary mt-4">Learn More</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- About End -->
 
+      <!-- Services Start -->
+      <div class="container-fluid pt-5 pb-3">
+        <div class="container">
+            <h6 class="text-secondary text-uppercase text-center font-weight-medium mb-3">Our Services</h6>
+            <h1 class="display-4 text-center mb-5">What We Offer</h1>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center bg-light mb-4 px-4" style="height: 300px;">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-3" style="width: 100px; height: 100px;">
+                            <i class="fa fa-3x fa-tshirt text-secondary"></i>
+                        </div>
+                        <h4 class="font-weight-bold m-0">Per Price</h4>
+                        <p>For individual item laundry service, we provide specialized care for delicate items such as dolls, shoes, bed sheets, curtains, blankets, baby clothes, and blazers.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center bg-light mb-4 px-4" style="height: 300px;">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-3" style="width: 100px; height: 100px;">
+                            <i class="fas fa-3x fa-soap text-secondary"></i>
+                        </div>
+                        <h4 class="font-weight-bold m-0">Complete Wash</h4>
+                        <p>The clothing typically included in complete laundry service encompasses everyday attire such as shirts, pants, and dresses, as well as formal wear like suits and sportswear.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center bg-light mb-4 px-4" style="height: 300px;">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-3" style="width: 100px; height: 100px;">
+                            <i class="fa fa-3x fa-cloud-sun text-secondary"></i>
+                        </div>
+                        <h4 class="font-weight-bold m-0">Dry Cleaning</h4>
+                        <p>The common types of garments included are Vests, Raincoats, Clothing with delicate embellishments like beads, Wedding dresses, and Formal gowns.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Services End -->
+
+     <!-- Working Process Start -->
+     <div class="container-fluid pt-5">
+        <div class="container">
+            <h6 class="text-secondary text-uppercase text-center font-weight-medium mb-3">Working Process</h6>
+            <h1 class="display-4 text-center mb-5">How We Work</h1>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4" style="width: 150px; height: 150px; border-width: 15px !important;">
+                            <h2 class="display-2 text-secondary m-0">1</h2>
+                        </div>
+                        <h3 class="font-weight-bold m-0 mt-2">Order Place</h3>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4" style="width: 150px; height: 150px; border-width: 15px !important;">
+                            <h2 class="display-2 text-secondary m-0">2</h2>
+                        </div>
+                        <h3 class="font-weight-bold m-0 mt-2">Free Pick Up</h3>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4" style="width: 150px; height: 150px; border-width: 15px !important;">
+                            <h2 class="display-2 text-secondary m-0">3</h2>
+                        </div>
+                        <h3 class="font-weight-bold m-0 mt-2">Dry Cleaning</h3>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4" style="width: 150px; height: 150px; border-width: 15px !important;">
+                            <h2 class="display-2 text-secondary m-0">4</h2>
+                        </div>
+                        <h3 class="font-weight-bold m-0 mt-2">Free Delivery</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Working Process End -->
+
+     <!-- Pricing Plan Start -->
+     <div class="container-fluid pt-5 pb-3">
+        <div class="container">
+            <h6 class="text-secondary text-uppercase text-center font-weight-medium mb-3">Our Pricing Plan</h6>
+            <h1 class="display-4 text-center mb-5">The Best Price</h1>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="bg-light text-center mb-2 pt-4">
+                        <div class="d-inline-flex flex-column align-items-center justify-content-center bg-secondary rounded-circle shadow mt-2 mb-4" style="width: 200px; height: 200px; border: 15px solid #ffffff;">
+                            <h4 class="text-white">Per Price</h4>
+                            <h1 class="display-4 text-white mb-0">
+                                <small class="align-top" style="font-size: 22px; line-height: 45px;">Rp.</small>7k<small class="align-bottom" style="font-size: 16px; line-height: 40px;"></small>
+                            </h1>
+                        </div>
+                        <div class="d-flex flex-column align-items-center py-3">
+                            <p>Refers to specific garments or items that <br> need to be washed separately or in small quantities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="bg-light text-center mb-2 pt-4">
+                        <div class="d-inline-flex flex-column align-items-center justify-content-center bg-primary rounded-circle shadow mt-2 mb-4" style="width: 200px; height: 200px; border: 15px solid #ffffff;">
+                            <h4 class="text-white">Complete Wash</h4>
+                            <h1 class="display-4 text-white mb-0">
+                                <small class="align-top" style="font-size: 22px; line-height: 45px;">Rp.</small>12k<small class="align-bottom" style="font-size: 16px; line-height: 40px;"></small>
+                            </h1>
+                        </div>
+                        <div class="d-flex flex-column align-items-center py-3">
+                            <p>Refers to laundry services that encompass the entire process of washing clothes, from washing, drying, to folding.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="bg-light text-center mb-2 pt-4">
+                        <div class="d-inline-flex flex-column align-items-center justify-content-center bg-secondary rounded-circle shadow mt-2 mb-4" style="width: 200px; height: 200px; border: 15px solid #ffffff;">
+                            <h4 class="text-white">Dry Cleaning</h4>
+                            <h1 class="display-4 text-white mb-0">
+                                <small class="align-top" style="font-size: 22px; line-height: 45px;">Rp.</small>20k<small class="align-bottom" style="font-size: 16px; line-height: 40px;"></small>
+                            </h1>
+                        </div>
+                        <div class="d-flex flex-column align-items-center py-3">
+                            <p>The process of cleaning clothes using specialized chemical solvents, vulnerable to damage if washed in the regular manner.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pricing Plan End -->
+
+      <!-- Testimonial Start -->
+      <div class="container-fluid py-5">
+        <div class="container">
+            <h6 class="text-secondary text-uppercase text-center font-weight-medium mb-3">Testimonial</h6>
+            <h1 class="display-4 text-center mb-5">Our Clients Say</h1>
+            <div class="owl-carousel testimonial-carousel">
+                <div class="testimonial-item">
+                    <img class="position-relative rounded-circle bg-white shadow mx-auto" src="img/testimonial-1.jpg" style="width: 100px; height: 100px; padding: 12px; margin-bottom: -50px; z-index: 1;" alt="">
+                    <div class="bg-light text-center p-4 pt-0">
+                        <h5 class="font-weight-medium mt-5">Rifki Fauzan Suandi</h5>
+                        <p class="text-muted font-italic">Mahasiswa</p>
+                        <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <img class="position-relative rounded-circle bg-white shadow mx-auto" src="img/testimonial-2.jpg" style="width: 100px; height: 100px; padding: 12px; margin-bottom: -50px; z-index: 1;" alt="">
+                    <div class="bg-light text-center p-4 pt-0">
+                        <h5 class="font-weight-medium mt-5">Anggi Nilamsari</h5>
+                        <p class="text-muted font-italic">Mahasiswi</p>
+                        <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <img class="position-relative rounded-circle bg-white shadow mx-auto" src="img/testimonial-3.jpg" style="width: 100px; height: 100px; padding: 12px; margin-bottom: -50px; z-index: 1;" alt="">
+                    <div class="bg-light text-center p-4 pt-0">
+                        <h5 class="font-weight-medium mt-5">Moh. Maruf</h5>
+                        <p class="text-muted font-italic">Mahasiswa</p>
+                        <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <img class="position-relative rounded-circle bg-white shadow mx-auto" src="img/testimonial-4.jpg" style="width: 100px; height: 100px; padding: 12px; margin-bottom: -50px; z-index: 1;" alt="">
+                    <div class="bg-light text-center p-4 pt-0">
+                        <h5 class="font-weight-medium mt-5">Dimas Yoga Ardyansyah</h5>
+                        <p class="text-muted font-italic">Mahasiswa</p>
+                        <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <img class="position-relative rounded-circle bg-white shadow mx-auto" src="img/testimonial-4.jpg" style="width: 100px; height: 100px; padding: 12px; margin-bottom: -50px; z-index: 1;" alt="">
+                    <div class="bg-light text-center p-4 pt-0">
+                        <h5 class="font-weight-medium mt-5">Rizal Naufal Farras Arkanda</h5>
+                        <p class="text-muted font-italic">Mahasiswa</p>
+                        <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
     <!-- Footer Start -->
     @include('employee/footer')
     <!-- Footer End -->
+
+     <!-- Back to Top -->
+     <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a> 
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
