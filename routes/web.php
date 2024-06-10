@@ -130,3 +130,11 @@ Route::get('/orders', [OrderController::class, 'index'])->name('listOrders')->mi
 Route::get('/employee/order/edit/{id}', [OrderController::class, 'editOrder'])->name('editOrder');
 Route::post('/employee/order/update/{id}', [OrderController::class, 'updateOrder'])->name('updateOrder');
 Route::get('/employee/orders', [OrderController::class, 'orderan'])->name('employee.index');
+Route::delete('/admin/orders/{id}', [OrderController::class, 'softDelete'])->name('orders.softdelete');
+
+// Soft Delete Orders
+Route::get('orders/trash', [OrderController::class, 'trash'])->name('trashOrders');
+Route::patch('orders/restore/{id}', [OrderController::class, 'restore'])->name('restoreOrders');
+Route::delete('orders/delete/{id}', [OrderController::class, 'destroy'])->name('deleteOrders');
+Route::delete('orders/force-delete/{id}', [OrderController::class, 'forceDelete'])->name('forceDeleteOrders');
+

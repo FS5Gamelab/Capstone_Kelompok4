@@ -23,6 +23,11 @@ class Orders extends Model
         'status'
     ];
 
+    protected $casts = [
+        'order_date' => 'datetime',
+        'delivery_date' => 'datetime',
+    ];
+
     public function customer()
     {
         return $this->belongsTo(Customers::class);
