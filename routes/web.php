@@ -127,3 +127,10 @@ Route::get('/orderCustomer/detail/{id}', [OrderController::class, 'detailOrder']
 
 // Rute untuk halaman daftar pesanan
 Route::get('/orders', [OrderController::class, 'index'])->name('listOrders')->middleware('auth');
+Route::delete('/admin/orders/{id}', [OrderController::class, 'softDelete'])->name('orders.softdelete');
+
+// Soft Delete Orders
+Route::get('orders/trash', [OrderController::class, 'trash'])->name('trashOrders');
+Route::patch('orders/restore/{id}', [OrderController::class, 'restore'])->name('restoreOrders');
+Route::delete('orders/delete/{id}', [OrderController::class, 'destroy'])->name('deleteOrders');
+Route::delete('orders/force-delete/{id}', [OrderController::class, 'forceDelete'])->name('forceDeleteOrders');

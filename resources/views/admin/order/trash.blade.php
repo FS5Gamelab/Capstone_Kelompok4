@@ -30,16 +30,28 @@
         $(function() {
             $("#data-table").DataTable();
         });
-        
-        function confirmDelete(id) {
+
+        function confirmRestore(id) {
             swal({
-                title: 'Confirm Delete',
-                text: 'Are You Sure You Want to Delete This Data?',
+                title: 'Confirm Restore',
+                text: 'Are you sure you want to restore this data?',
+                buttons: true
+            }).then(function(value) {
+                if (value) {
+                    document.getElementById('restore-form-' + id).submit();
+                }
+            });
+        }
+
+        function confirmDeletePermanently(id) {
+            swal({
+                title: 'Confirm Permanent Delete',
+                text: 'Are You Sure You Want to Delete This Data Permanently?',
                 dangerMode: true,
                 buttons: true
             }).then(function(value) {
                 if (value) {
-                    document.getElementById('delete-form-' + id).submit();
+                    document.getElementById('delete-permanently-form-' + id).submit();
                 }
             });
         }
@@ -53,7 +65,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">LIST ORDERS</h1>
+                    <h1 class="m-0">TRASH ORDERS</h1>
                 </div>
             </div>
         </div>
@@ -62,8 +74,7 @@
         <div class="container mt-5">
             <div class="card">
                 <div class="card-header text-left">
-                    <a class="btn btn-dark" role="button" href="/admin"><i class="fas fa-arrow-left"></i> Back</a>
-                    <a href="{{ route('trashOrders') }}" class="btn btn-danger" role="button"><i class="fas fa-trash"></i> Trash</a>
+                    <a class="btn btn-dark" role="button" href="{{ route('listOrders') }}"><i class="fas fa-arrow-left"></i> Back</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -99,15 +110,22 @@
                                         <td>Rp {{ number_format($order->total_price, 0, ',', '.') }},00</td>
                                         <td>{{ $order->status }}</td>
                                         <td>
-                                            <div class="btn-group" role="group">
-                                                <a href="#" class="btn btn-danger btn-sm" role="button" onclick="confirmDelete({{ $order->id }})">
-                                                    <i class="fas fa-trash"></i>
+                                        <div class="btn-group" role="group">
+                                                <a href="#" class="btn btn-success btn-sm" role="button" onclick="confirmRestore({{ $order->id }})">
+                                                    <i class="fas fa-trash-restore"></i> Restore
                                                 </a>
-                                                <form id="delete-form-{{ $order->id }}" action="{{ route('orders.softdelete', ['id' => $order->id]) }}" method="POST" style="display: none;">
+                                                <form id="restore-form-{{ $order->id }}" action="{{ route('restoreOrders', ['id' => $order->id]) }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                </form>
+                                                <a href="#" class="btn btn-danger btn-sm" role="button" onclick="confirmDeletePermanently({{ $order->id }})">
+                                                    <i class="fas fa-trash-alt"></i> Delete Permanently
+                                                </a>
+                                                <form id="delete-permanently-form-{{ $order->id }}" action="{{ route('forceDeleteOrders', ['id' => $order->id]) }}" method="POST" style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
-                                            </div>
+                                        </div>
                                         </td>
                                     </tr>
                                 @endforeach

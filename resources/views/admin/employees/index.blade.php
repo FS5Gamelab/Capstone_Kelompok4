@@ -34,8 +34,8 @@
     <script>
         function confirmDelete(id) {
             swal({
-                title: 'Konfirmasi Hapus',
-                text: 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
+                title: 'Confirm Delete',
+                text: 'Are You Sure You Want to Delete This Data?',
                 dangerMode: true,
                 buttons: true
             }).then(function(value) {
