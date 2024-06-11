@@ -24,6 +24,11 @@ class Customers extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Orders::class, 'customer_id', 'user_id');
+    }
+
     protected static function boot()
     {
         parent::boot();
