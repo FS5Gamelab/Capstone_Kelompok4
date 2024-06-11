@@ -7,6 +7,9 @@ use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FeedbackController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -137,4 +140,8 @@ Route::get('orders/trash', [OrderController::class, 'trash'])->name('trashOrders
 Route::patch('orders/restore/{id}', [OrderController::class, 'restore'])->name('restoreOrders');
 Route::delete('orders/delete/{id}', [OrderController::class, 'destroy'])->name('deleteOrders');
 Route::delete('orders/force-delete/{id}', [OrderController::class, 'forceDelete'])->name('forceDeleteOrders');
+
+//Feedback
+Route::post('/order/{id}/feedback', [FeedbackController::class, 'submitFeedback'])->name('submitFeedback')->middleware('auth');
+
 

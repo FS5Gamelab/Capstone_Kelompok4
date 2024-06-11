@@ -3,41 +3,93 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         .btn-custom {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5em 1em;
-            font-size: 1rem;
-            border-radius: 0.25em;
-            transition: background-color 0.3s, box-shadow 0.3s;
-        }
+                display: inline-flex;
+                align-items: center;
+                padding: 0.5em 1em;
+                font-size: 1rem;
+                border-radius: 0.25em;
+                transition: background-color 0.3s, box-shadow 0.3s;
+            }
+    
+            .btn-custom i {
+                margin-right: 0.5em;
+                font-size: 1.2em;
+            }
+    
+            .btn-custom-primary {
+                background-color: #007bff;
+                color: white;
+                border: none;
+            }
+    
+            .btn-custom-primary:hover {
+                background-color: #0056b3;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+    
+            .btn-custom-secondary {
+                background-color: #6c757d;
+                color: white;
+                border: none;
+            }
+    
+            .btn-custom-secondary:hover {
+                background-color: #5a6268;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            .rating-star {
+                color: gold;
+                font-size: 2rem;
+                cursor: pointer;
+            }
+        
+            .rating-star:hover,
+            .rating-star.selected {
+                color: darkorange;
+            }
+        
+            .rating-emoji {
+                font-size: 2rem;
+                margin-left: 10px;
+            }
+        </style>
 
-        .btn-custom i {
-            margin-right: 0.5em;
-            font-size: 1.2em;
-        }
-
-        .btn-custom-primary {
-            background-color: #007bff;
-            color: white;
-            border: none;
-        }
-
-        .btn-custom-primary:hover {
-            background-color: #0056b3;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-custom-secondary {
-            background-color: #6c757d;
-            color: white;
-            border: none;
-        }
-
-        .btn-custom-secondary:hover {
-            background-color: #5a6268;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-    </style>
+     <!-- Add this JavaScript to your existing JavaScript section -->
+     <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('.rating-star').forEach(star => {
+                star.addEventListener('click', (e) => {
+                    const rating = e.target.dataset.value;
+                    document.querySelectorAll('.rating-star').forEach(s => s.classList.remove('selected'));
+                    e.target.classList.add('selected');
+                    document.querySelector('#rating-input').value = rating;
+    
+                    // Update emoji
+                    const emoji = document.querySelector('.rating-emoji');
+                    switch (rating) {
+                        case '1':
+                            emoji.textContent = '😞';
+                            break;
+                        case '2':
+                            emoji.textContent = '😕';
+                            break;
+                        case '3':
+                            emoji.textContent = '😐';
+                            break;
+                        case '4':
+                            emoji.textContent = '🙂';
+                            break;
+                        case '5':
+                            emoji.textContent = '😃';
+                            break;
+                        default:
+                            emoji.textContent = '';
+                    }
+                });
+            });
+        });
+    </script>
+    
 @endsection
 @section('content')
 <!-- Page Header Start -->
@@ -124,13 +176,52 @@
                         </button>
                     @endif
                     @if ($order->status == 'completed')
-                        <button id="feedback-button" class="btn btn-custom btn-custom-secondary ml-2"> <!-- Menggunakan gaya tombol custom dan secondary -->
+                        <button id="feedback-button" class="btn btn-custom btn-custom-secondary ml-2" data-toggle="modal" data-target="#feedbackModal"> <!-- Menggunakan gaya tombol custom dan secondary -->
                             <i class="fas fa-comment"></i> Feedback <!-- Menggunakan ikon komentar -->
                         </button>
                     @endif
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- Feedback Modal -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form action="{{ route('submitFeedback', $order->id) }}" method="POST">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="feedbackModalLabel">Submit Feedback</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="feedback">Feedback</label>
+                        <textarea name="feedback" id="feedback" class="form-control" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">Rating</label>
+                        <div class="rating">
+                            <span class="rating-star" data-value="1">&#9733;</span>
+                            <span class="rating-star" data-value="2">&#9733;</span>
+                            <span class="rating-star" data-value="3">&#9733;</span>
+                            <span class="rating-star" data-value="4">&#9733;</span>
+                            <span class="rating-star" data-value="5">&#9733;</span>
+                            <span class="rating-emoji"></span>
+                        </div>
+                        <input type="hidden" name="rating" id="rating-input" value="0" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 @endsection

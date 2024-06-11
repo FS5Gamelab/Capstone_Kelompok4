@@ -2,118 +2,52 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Feedbacks;
+use App\Models\Feedback;
+use App\Models\Orders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FeedbackController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function submitFeedback(Request $request, $id)
     {
-        $feedbacks = Feedbacks::all();
-        return view('feedback.index', [
-            'feedbacks' => $feedbacks
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $customers = \App\Models\Customers::all();
-        $users = \App\Models\User::all();
-        $orders = \App\Models\Orders::all();
-        return view('feedback.create', [
-            'customers' => $customers,
-            'users' => $users,
-            'orders' => $orders
-        ]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //validate form
-        $this->validate($request, [
-            'id_customer' => 'required|integer',
-            'id_user' => 'required|integer',
-            'id_order' => 'required|integer',
+        // Validasi input
+        $request->validate([
             'feedback' => 'required|string',
-            'rating' => 'required|string'
+            'rating' => 'required|integer|min:1|max:5',
         ]);
 
-        //create ulasan
-        Feedbacks::create([
-            'id_customer' => $request->id_customer,
-            'id_user' => $request->id_user,
-            'id_order' => $request->id_order,
+        // Simpan feedback ke database
+        Feedback::create([
+            'id_customer'=> Auth::id(),
+            'id_order' => $id,
             'feedback' => $request->feedback,
-            'rating' =>$request->rating
+            'rating' => $request->rating,
         ]);
 
-        //redirect to index
-        return redirect(route('listFeedback'))->with('success', 'Ulasan Berhasil Disimpan');
+        return redirect()->back()->with('success', 'Feedback submitted successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Feedbacks $feedback)
+    public function store(Request $request, $orderId)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        $customers = \App\Models\Customers::all();
-        $users = \App\Models\User::all();
-        $orders = \App\Models\Orders::all();
-        $feedback = Feedbacks::findOrFail($id);
-        return view('feedback.edit', [
-            'feedback' => $feedback,
-            'customers' => $customers,
-            'users' => $users,
-            'orders' => $orders
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
-    {
-        //validasi form
-        $this->validate($request, [
-            'id_customer' => 'required|integer',
-            'id_user' => 'required|integer',
-            'id_order' => 'required|integer',
+        $request->validate([
             'feedback' => 'required|string',
-            'rating' => 'required|string'
+            'rating' => 'required|integer|min:1|max:5',
         ]);
 
-        //untuk mengambil ID Artikel
-        $feedback = Feedbacks::findOrFail($id);
+        Feedback::create([
+            'id_customer' => Auth::id(),
+            'id_order' => $orderId,
+            'feedback' => $request->feedback,
+            'rating' => $request->rating,
+        ]);
 
-        //mengarahkan ke halaman index artikel
-        return redirect(route('listFeedback'))->with('success', 'Data Ulasan Berhasil Diupdate');
+        return redirect()->route('orderCustomer')->with('success', 'Feedback submitted successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function show($orderId)
     {
-        $feedback = Feedbacks::findOrFail($id);
-
-        $feedback->delete();
-        return redirect(route('listFeedback'))->with('success', 'Data Ulasan Berhasil Dihapus');
+        $feedbacks = Feedback::where('id_order', $orderId)->get();
+        return view('feedback.show', compact('feed_backs'));
     }
 }
