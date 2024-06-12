@@ -3,67 +3,86 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         .btn-custom {
-                display: inline-flex;
-                align-items: center;
-                padding: 0.5em 1em;
-                font-size: 1rem;
-                border-radius: 0.25em;
-                transition: background-color 0.3s, box-shadow 0.3s;
-            }
-    
-            .btn-custom i {
-                margin-right: 0.5em;
-                font-size: 1.2em;
-            }
-    
-            .btn-custom-primary {
-                background-color: #007bff;
-                color: white;
-                border: none;
-            }
-    
-            .btn-custom-primary:hover {
-                background-color: #0056b3;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            }
-    
-            .btn-custom-secondary {
-                background-color: #6c757d;
-                color: white;
-                border: none;
-            }
-    
-            .btn-custom-secondary:hover {
-                background-color: #5a6268;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            }
-            .rating-star {
-                color: gold;
-                font-size: 2rem;
-                cursor: pointer;
-            }
-        
-            .rating-star:hover,
-            .rating-star.selected {
-                color: darkorange;
-            }
-        
-            .rating-emoji {
-                font-size: 2rem;
-                margin-left: 10px;
-            }
-        </style>
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5em 1em;
+            font-size: 1rem;
+            border-radius: 0.25em;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
 
-     <!-- Add this JavaScript to your existing JavaScript section -->
-     <script>
+        .btn-custom i {
+            margin-right: 0.5em;
+            font-size: 1.2em;
+        }
+
+        .btn-custom-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-custom-primary:hover {
+            background-color: #0056b3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-custom-secondary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
+
+        .btn-custom-secondary:hover {
+            background-color: #5a6268;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .rating-star {
+            color: grey;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .rating-star.selected,
+        .rating-star.hovered {
+            color: gold;
+        }
+
+        .rating-emoji {
+            font-size: 2rem;
+            margin-left: 10px;
+        }
+
+        .modal-header .close {
+            padding: 0.5rem 1rem;
+            margin: -1rem -1rem -1rem auto;
+            background-color: #f8f9fa;
+            border-radius: 0.25rem;
+            font-size: 1.5rem;
+            color: #6c757d;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .modal-header .close:hover {
+            background-color: #e2e6ea;
+            color: #343a40;
+        }
+    </style>
+
+    <!-- Add this JavaScript to your existing JavaScript section -->
+    <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            document.querySelectorAll('.rating-star').forEach(star => {
+            const stars = document.querySelectorAll('.rating-star');
+            stars.forEach(star => {
                 star.addEventListener('click', (e) => {
                     const rating = e.target.dataset.value;
                     document.querySelectorAll('.rating-star').forEach(s => s.classList.remove('selected'));
-                    e.target.classList.add('selected');
+                    for (let i = 0; i < rating; i++) {
+                        stars[i].classList.add('selected');
+                    }
                     document.querySelector('#rating-input').value = rating;
-    
+
                     // Update emoji
                     const emoji = document.querySelector('.rating-emoji');
                     switch (rating) {
@@ -86,10 +105,21 @@
                             emoji.textContent = '';
                     }
                 });
+
+                star.addEventListener('mouseover', (e) => {
+                    const rating = e.target.dataset.value;
+                    document.querySelectorAll('.rating-star').forEach(s => s.classList.remove('hovered'));
+                    for (let i = 0; i < rating; i++) {
+                        stars[i].classList.add('hovered');
+                    }
+                });
+
+                star.addEventListener('mouseout', (e) => {
+                    document.querySelectorAll('.rating-star').forEach(s => s.classList.remove('hovered'));
+                });
             });
         });
     </script>
-    
 @endsection
 @section('content')
 <!-- Page Header Start -->
@@ -200,10 +230,6 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="feedback">Feedback</label>
-                        <textarea name="feedback" id="feedback" class="form-control" rows="4" required></textarea>
-                    </div>
-                    <div class="form-group">
                         <label for="rating">Rating</label>
                         <div class="rating">
                             <span class="rating-star" data-value="1">&#9733;</span>
@@ -215,10 +241,18 @@
                         </div>
                         <input type="hidden" name="rating" id="rating-input" value="0" required>
                     </div>
+                    <div class="form-group">
+                        <label for="feedback">Feedback</label>
+                        <textarea name="feedback" id="feedback" class="form-control" rows="4" required></textarea>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                    <button type="button" class="btn btn-custom btn-custom-secondary" data-dismiss="modal">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                    <button type="submit" class="btn btn-custom btn-custom-primary">
+                        <i class="fas fa-paper-plane"></i> Submit Feedback
+                    </button>
                 </div>
             </div>
         </form>

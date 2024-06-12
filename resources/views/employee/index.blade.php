@@ -60,6 +60,43 @@
             background-color: #5a6268;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+        .status-card {
+            margin-bottom: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .status-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .status-card .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            padding: 15px;
+        }
+        .status-card .card-header i {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        .status-card .card-body {
+            padding: 20px;
+            background-color: #f8f9fa;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .status-card .card-body span {
+            font-size: 2em;
+            margin-left: 10px;
+        }
     </style>
 @endsection
 
@@ -90,7 +127,6 @@
 
 @section('content')
 <!-- Page Header Start -->
-<br> <br> <br>
 <div class="page-header container-fluid bg-secondary pt-2 pt-lg-5 pb-2 mb-5">
     <div class="container py-5">
         <div class="row align-items-center py-4">
@@ -112,6 +148,66 @@
 <div class="content-wrapper">
     <div class="content">
         <div class="container-fluid mt-5">
+             <!-- Status Cards Start -->
+            <div class="row">
+                <!-- Already Paid Card -->
+                <div class="col-lg-3 col-md-6 status-card">
+                    <div class="card">
+                        <div class="card-header bg-primary">
+                            <i class="fas fa-check-circle"></i> Already Paid
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <h5>Order Count:</h5>
+                                <span>{{ $statusCounts['already_paid'] }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Being Picked Up Card -->
+                <div class="col-lg-3 col-md-6 status-card">
+                    <div class="card">
+                        <div class="card-header bg-warning">
+                            <i class="fas fa-truck"></i> Being Picked Up
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <h5>Order Count:</h5>
+                                <span>{{ $statusCounts['being_picked_up'] }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Delivered Card -->
+                <div class="col-lg-3 col-md-6 status-card">
+                    <div class="card">
+                        <div class="card-header bg-success">
+                            <i class="fas fa-box"></i> Delivered
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <h5>Order Count:</h5>
+                                <span>{{ $statusCounts['delivered'] }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Completed Card -->
+                <div class="col-lg-3 col-md-6 status-card">
+                    <div class="card">
+                        <div class="card-header bg-secondary">
+                            <i class="fas fa-check"></i> Completed
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <h5>Order Count:</h5>
+                                <span>{{ $statusCounts['completed'] }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Status Cards End -->
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">

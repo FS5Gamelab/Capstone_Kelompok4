@@ -43,7 +43,14 @@ class OrderController extends Controller
             $order->delivery_date = $order->delivery_date ? Carbon::parse($order->delivery_date) : null;
             return $order;
         });
-        return view('employee.index', compact('orders'));
+
+        $statusCounts = [
+            'already_paid' => Orders::where('status', 'already paid')->count(),
+            'being_picked_up' => Orders::where('status', 'being picked up')->count(),
+            'delivered' => Orders::where('status', 'delivered')->count(),
+            'completed' => Orders::where('status', 'completed')->count(),
+        ];
+        return view('employee.index', compact('orders', 'statusCounts'));
     }
 
     public function detailOrder($id)
