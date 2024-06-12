@@ -1,7 +1,26 @@
 @extends('admin.master')
 @section('addCss')
     <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .table-responsive img {
+            width: 50px;
+            height: auto;
+        }
+        .table-responsive .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .table-responsive .btn {
+            margin: 2px;
+        }
+        .table-responsive .btn i {
+            font-size: 1.2em;
+        }
+    </style>
 @endsection
+
 @section('addJavascript')
     <script src="{{ asset('js/sweetalert.min.js') }}"></script>
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
@@ -12,13 +31,13 @@
         });
     </script>
     <script>
-        confirmDelete = function(button) {
+        function confirmDelete(button) {
             var url = $(button).data('url');
             swal({
-                'title': 'Confirm Delete',
-                'text': 'Are You Sure You Want to Delete This Data?',
-                'dangerMode': true,
-                'buttons': true
+                title: 'Confirm Delete',
+                text: 'Are You Sure You Want to Delete This Data?',
+                dangerMode: true,
+                buttons: true
             }).then(function(value) {
                 if (value) {
                     window.location = url;
@@ -27,7 +46,9 @@
         }
     </script>
 @endsection
-@section('content') <br><br>
+
+@section('content')
+<br><br>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -47,33 +68,35 @@
                     <a href="{{ route('trashCategory') }}" class="btn btn-danger" role="button"><i class="fas fa-trash"></i> Trash</a>
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover table-bordered" id="data-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Type of Laundry</th>
-                                <th>Working Time (Day)</th>
-                                <th>Price (Rp)</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($categoriess as $categories)
-                            <tr>
-                                <td>{{ $loop->index + 1 }}</td>
-                                <td>{{ $categories->type_laundry }}</td>
-                                <td>{{ $categories->working_time }}</td>
-                                <td>Rp {{ number_format($categories->price, 0, ',', '.') }},00</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <a href="{{ route('editCategory', ['id' => $categories->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
-                                        <a onclick="confirmDelete(this)" data-url="{{ route('deleteCategory', ['id' => $categories->id]) }}" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered" id="data-table">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Type of Laundry</th>
+                                    <th>Working Time (Day)</th>
+                                    <th>Price (Rp)</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($categoriess as $categories)
+                                <tr>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $categories->type_laundry }}</td>
+                                    <td>{{ $categories->working_time }}</td>
+                                    <td>Rp {{ number_format($categories->price, 0, ',', '.') }},00</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{{ route('editCategory', ['id' => $categories->id]) }}" class="btn btn-warning btn-sm" role="button"><i class="fas fa-edit"></i></a>
+                                            <a onclick="confirmDelete(this)" data-url="{{ route('deleteCategory', ['id' => $categories->id]) }}" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div> <!-- table-responsive -->
                 </div>
             </div>
         </div>
