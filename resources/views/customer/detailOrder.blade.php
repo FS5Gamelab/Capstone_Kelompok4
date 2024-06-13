@@ -1,6 +1,5 @@
 @extends('customer.order')
 @section('addCss')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         .btn-custom {
             display: inline-flex;
@@ -230,7 +229,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="rating">Rating</label>
+                    <label for="rating-input">Rating</label>
                         <div class="rating">
                             <span class="rating-star" data-value="1">&#9733;</span>
                             <span class="rating-star" data-value="2">&#9733;</span>

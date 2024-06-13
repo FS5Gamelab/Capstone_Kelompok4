@@ -144,4 +144,5 @@ Route::delete('orders/force-delete/{id}', [OrderController::class, 'forceDelete'
 //Feedback
 Route::post('/order/{id}/feedback', [FeedbackController::class, 'submitFeedback'])->name('submitFeedback')->middleware('auth');
 
+Route::get('/coment', [FeedbackController::class, 'comenfeedback'])->name('coment');
 

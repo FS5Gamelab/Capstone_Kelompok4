@@ -49,5 +49,9 @@ class FeedbackController extends Controller
     {
         $feedbacks = Feedback::where('id_order', $orderId)->get();
         return view('feedback.show', compact('feed_backs'));
+    }   
+    public function comenfeedback()
+    {
+        return view('customer.show');
     }
 }
