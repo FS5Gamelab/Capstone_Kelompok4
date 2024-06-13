@@ -39,12 +39,12 @@
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="input_box">
-                    <input type="email" id="email" name="email" class="form-control input-field @error('email')is-invalid @enderror" autofocus required value="{{ old('email') }}" required>
+                <input type="email" id="email" name="email" class="form-control input-field @error('email')is-invalid @enderror" autofocus required value="{{ old('email') }}" required autocomplete="email">
                     <label for="email" class="label">Email</label>
                     <i class="bx bx-user icon"></i>
                 </div>
                 <div class="input_box">
-                    <input type="password" id="password" name="password" class="input-field form-control" required>
+                    <input type="password" id="password" name="password" class="input-field form-control" required autocomplete="current-password">
                     <label for="password" class="label">Password</label>
                     <i class="bx bx-lock-alt icon"></i>
                     @error('name')

@@ -26,8 +26,8 @@
                                 @csrf
                                 
                                 <div class="form-group">
-                                    <label class="font-weight-bold">Profile Picture</label>
-                                    <input type="file" class="form-control @error('profile_picture') is-invalid @enderror" name="profile_picture">
+                                    <label for="profile_picture" class="font-weight-bold">Profile Picture</label>
+                                    <input id="profile_picture" type="file" class="form-control @error('profile_picture') is-invalid @enderror" name="profile_picture">
                                 </div>
                                 <div class="form-group">
                                     <label for="employees_name">Employee Name</label>
@@ -35,11 +35,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" id="email" class="form-control" required placeholder="Enter email">
+                                    <input type="email" name="email" id="email" class="form-control" required placeholder="Enter email" autocomplete="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" name="password" id="password" class="form-control" required placeholder="Enter password">
+                                    <input type="password" name="password" id="password" class="form-control" required placeholder="Enter password" autocomplete="current-password">
                                 </div>
                                 <div class="form-group">
                                     <label for="role">Role</label>

@@ -20,7 +20,7 @@
             <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <div class="input_box mb-3">
-                    <input type="email" id="email" name="email" class="form-control input-field @error('email')is-invalid @enderror" required value="{{ old('email') }}">
+                    <input type="email" id="email" name="email" class="form-control input-field @error('email')is-invalid @enderror" required value="{{ old('email') }}" autocomplete="email">
                     <label for="email" class="label">Email</label>
                     <i class="bx bx-envelope icon"></i>
                     @error('email')
@@ -30,7 +30,7 @@
                     @enderror
                 </div>
                 <div class="input_box mb-3">
-                    <input type="password" id="password" name="password" class="form-control input-field @error('password')is-invalid @enderror" required>
+                    <input type="password" id="password" name="password" class="form-control input-field @error('password')is-invalid @enderror" required autocomplete="current-password">
                     <label for="password" class="label">Password</label>
                     <i class="bx bx-lock-alt icon"></i>
                     @error('password')

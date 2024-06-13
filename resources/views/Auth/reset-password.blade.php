@@ -38,15 +38,15 @@
                 @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
                 <div class="input_box">
-                    <input type="email" id="email" name="email" class="form-control input-field" autofocus required value="{{ old('email') }}">
+                    <input type="email" id="email" name="email" class="form-control input-field" autofocus required value="{{ old('email') }}" autocomplete="email">
                     <label for="email" class="label">Email address</label>
                 </div>
                 <div class="input_box">
-                    <input type="password" class="input-field" id="password" name="password" required>
+                    <input type="password" class="input-field" id="password" name="password" required autocomplete="new-password">
                     <label for="password" class="label">New Password</label>
                 </div>
                 <div class="input_box">
-                    <input type="password" class="input-field" id="password_confirmation" name="password_confirmation" required>
+                    <input type="password" class="input-field" id="password_confirmation" name="password_confirmation" required autocomplete="password-confirmation">
                     <label for="password_confirmation" class="label">Confirm Password</label>
                 </div>
                 <button type="submit" class="input-submit">Reset Password</button>

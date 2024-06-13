@@ -2,7 +2,6 @@
 
 @section('content')
 <!-- Page Header Start -->
-<br> <br> <br>
 <div class="page-header container-fluid bg-secondary pt-2 pt-lg-5 pb-2 mb-5">
     <div class="container py-5">
         <div class="row align-items-center py-4">

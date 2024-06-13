@@ -1,6 +1,5 @@
 @extends('customer.order')
 @section('addCss')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         .btn-custom {
             display: inline-flex;
@@ -97,11 +96,11 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="quantity_kg">Quantity (Kg)</label>
-                                            <input type="number" name="quantity_kg" class="form-control" placeholder="Quantity in Kg" required>
+                                            <input type="number" id="quantity_kg" name="quantity_kg" class="form-control" placeholder="Quantity in Kg" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="order_date">Order Date</label>
-                                            <input type="date" name="order_date" class="form-control" required>
+                                            <input type="date" id="order_date" name="order_date" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
