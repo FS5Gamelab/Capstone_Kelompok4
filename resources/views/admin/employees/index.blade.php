@@ -18,6 +18,14 @@
         .table-responsive .btn i {
             font-size: 1.2em;
         }
+        /* New style for table cells */
+        .table-responsive tbody td {
+            vertical-align: middle;
+        }
+        .table-responsive img {
+            width: 100px; /* Memperbesar lebar gambar */
+            height: auto;
+        }
     </style>
 @endsection
 
