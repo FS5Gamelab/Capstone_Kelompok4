@@ -331,7 +331,7 @@
             </div>
             <div class="container">
                 <div class="text-center mt-5">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" onclick="window.location='{{ route('coment') }}'">
                         <i class="fas fa-comment-dots"></i> More Feedbacks
                     </button>
                 </div>

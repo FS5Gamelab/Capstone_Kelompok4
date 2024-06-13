@@ -52,6 +52,9 @@ class FeedbackController extends Controller
     }   
     public function comenfeedback()
     {
-        return view('landingpages.review');
+        $feedbacks = Feedback::all();
+        
+        // Pass the feedbacks to the view
+        return view('landingpages.review', compact('feedbacks'));
     }
 }
