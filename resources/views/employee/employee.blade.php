@@ -319,42 +319,73 @@
                 <div class="testimonial-item card p-3">
                     <div class="bg-light text-center p-4">
                         <h5 class="font-weight-medium mb-3">Rifki Fauzan Suandi</h5>
-                        <p class="text-muted mb-4">Mahasiswa</p>
-                        <p class="card-text m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                        <p class="text-muted mb-4">
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                        </p>                        
+                        <p class="card-text m-0">Pelayanan yang ramah, Wangi dan Bersih</p>
                     </div>
                 </div>
                 <div class="testimonial-item card p-3">
                     <div class="bg-light text-center p-4">
-                        <h5 class="font-weight-medium mb-3">Anggi Nilamsari</h5>
-                        <p class="text-muted mb-4">Mahasiswi</p>
-                        <p class="card-text m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                        <h5 class="font-weight-medium mb-3">Anggi Nilam Sari</h5>
+                        <p class="text-muted mb-4">
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                        </p>                        
+                        <p class="card-text m-0">Harga yang terjangkau, Rapi dan Bersih</p>
                     </div>
                 </div>
                 <div class="testimonial-item card p-3">
                     <div class="bg-light text-center p-4">
                         <h5 class="font-weight-medium mb-3">Moh. Maruf</h5>
-                        <p class="text-muted mb-4">Mahasiswa</p>
-                        <p class="card-text m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                        <p class="text-muted mb-4">
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                        </p>                        
+                        <p class="card-text m-0">Pelayanan yang ramah, Wangi dan Bersih</p>
                     </div>
                 </div>
                 <div class="testimonial-item card p-3">
                     <div class="bg-light text-center p-4">
                         <h5 class="font-weight-medium mb-3">Dimas Yoga Ardyansyah</h5>
-                        <p class="text-muted mb-4">Mahasiswa</p>
-                        <p class="card-text m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                        <p class="text-muted mb-4">
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                        </p>                        
+                        <p class="card-text m-0">Harga yang terjangkau, Rapi dan Bersih</p>
                     </div>
                 </div>
                 <div class="testimonial-item card p-3">
                     <div class="bg-light text-center p-4">
                         <h5 class="font-weight-medium mb-3">Rizal Naufal Farras Arkanda</h5>
-                        <p class="text-muted mb-4">Mahasiswa</p>
-                        <p class="card-text m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                        <p class="text-muted mb-4">
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                            <i class="fas fa-star" style="color: #f9d71c;"></i>
+                        </p>                        
+                        <p class="card-text m-0">Pelayanan yang ramah, Wangi dan Bersih</p>
                     </div>
+                </div>
                 </div>
             </div>
             <div class="container">
                 <div class="text-center mt-5">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" onclick="window.location='{{ route('coment') }}'">
                         <i class="fas fa-comment-dots"></i> More Feedbacks
                     </button>
                 </div>
