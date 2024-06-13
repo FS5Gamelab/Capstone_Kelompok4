@@ -314,52 +314,53 @@
     </div>
     <!-- Pricing Plan End -->
 
-
     <!-- Testimonial Start -->
     <div class="container-fluid py-5">
         <div class="container">
-            <h6 class="text-secondary text-uppercase text-center font-weight-medium mb-3">Testimonial</h6>
+            <h6 class="text-secondary text-uppercase text-center font-weight-medium mb-3">Feedbacks</h6>
             <h1 class="display-4 text-center mb-5">Our Clients Say</h1>
             <div class="owl-carousel testimonial-carousel">
-                <div class="testimonial-item">
-                    <img class="position-relative rounded-circle bg-white shadow mx-auto" src="img/testimonial-1.jpg" style="width: 100px; height: 100px; padding: 12px; margin-bottom: -50px; z-index: 1;" alt="">
-                    <div class="bg-light text-center p-4 pt-0">
-                        <h5 class="font-weight-medium mt-5">Rifki Fauzan Suandi</h5>
-                        <p class="text-muted font-italic">Mahasiswa</p>
-                        <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                <div class="testimonial-item card p-3">
+                    <div class="bg-light text-center p-4">
+                        <h5 class="font-weight-medium mb-3">Rifki Fauzan Suandi</h5>
+                        <p class="text-muted mb-4">Mahasiswa</p>
+                        <p class="card-text m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
                     </div>
                 </div>
-                <div class="testimonial-item">
-                    <img class="position-relative rounded-circle bg-white shadow mx-auto" src="img/testimonial-2.jpg" style="width: 100px; height: 100px; padding: 12px; margin-bottom: -50px; z-index: 1;" alt="">
-                    <div class="bg-light text-center p-4 pt-0">
-                        <h5 class="font-weight-medium mt-5">Anggi Nilamsari</h5>
-                        <p class="text-muted font-italic">Mahasiswi</p>
-                        <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                <div class="testimonial-item card p-3">
+                    <div class="bg-light text-center p-4">
+                        <h5 class="font-weight-medium mb-3">Anggi Nilamsari</h5>
+                        <p class="text-muted mb-4">Mahasiswi</p>
+                        <p class="card-text m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
                     </div>
                 </div>
-                <div class="testimonial-item">
-                    <img class="position-relative rounded-circle bg-white shadow mx-auto" src="img/testimonial-3.jpg" style="width: 100px; height: 100px; padding: 12px; margin-bottom: -50px; z-index: 1;" alt="">
-                    <div class="bg-light text-center p-4 pt-0">
-                        <h5 class="font-weight-medium mt-5">Moh. Maruf</h5>
-                        <p class="text-muted font-italic">Mahasiswa</p>
-                        <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                <div class="testimonial-item card p-3">
+                    <div class="bg-light text-center p-4">
+                        <h5 class="font-weight-medium mb-3">Moh. Maruf</h5>
+                        <p class="text-muted mb-4">Mahasiswa</p>
+                        <p class="card-text m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
                     </div>
                 </div>
-                <div class="testimonial-item">
-                    <img class="position-relative rounded-circle bg-white shadow mx-auto" src="img/testimonial-4.jpg" style="width: 100px; height: 100px; padding: 12px; margin-bottom: -50px; z-index: 1;" alt="">
-                    <div class="bg-light text-center p-4 pt-0">
-                        <h5 class="font-weight-medium mt-5">Dimas Yoga Ardyansyah</h5>
-                        <p class="text-muted font-italic">Mahasiswa</p>
-                        <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                <div class="testimonial-item card p-3">
+                    <div class="bg-light text-center p-4">
+                        <h5 class="font-weight-medium mb-3">Dimas Yoga Ardyansyah</h5>
+                        <p class="text-muted mb-4">Mahasiswa</p>
+                        <p class="card-text m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
                     </div>
                 </div>
-                <div class="testimonial-item">
-                    <img class="position-relative rounded-circle bg-white shadow mx-auto" src="img/testimonial-4.jpg" style="width: 100px; height: 100px; padding: 12px; margin-bottom: -50px; z-index: 1;" alt="">
-                    <div class="bg-light text-center p-4 pt-0">
-                        <h5 class="font-weight-medium mt-5">Rizal Naufal Farras Arkanda</h5>
-                        <p class="text-muted font-italic">Mahasiswa</p>
-                        <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
+                <div class="testimonial-item card p-3">
+                    <div class="bg-light text-center p-4">
+                        <h5 class="font-weight-medium mb-3">Rizal Naufal Farras Arkanda</h5>
+                        <p class="text-muted mb-4">Mahasiswa</p>
+                        <p class="card-text m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor ipsum clita</p>
                     </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="text-center mt-5">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-comment-dots"></i> More Feedbacks
+                    </button>
                 </div>
             </div>
         </div>

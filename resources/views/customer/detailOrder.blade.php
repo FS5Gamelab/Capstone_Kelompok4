@@ -199,6 +199,9 @@
                     </div>
                 </div>
                 <div class="form-footer text-right">
+                    <a href="{{ route('orderCustomer') }}" class="btn btn-custom btn-custom-secondary">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
                     @if ($order->status == 'queued' && $order->status != 'already paid')
                         <button id="pay-button" class="btn btn-custom btn-custom-primary"> <!-- Menggunakan gaya tombol custom -->
                             <i class="fas fa-credit-card"></i> Pay now <!-- Menggunakan ikon credit card -->

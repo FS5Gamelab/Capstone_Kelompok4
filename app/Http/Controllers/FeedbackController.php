@@ -52,6 +52,6 @@ class FeedbackController extends Controller
     }   
     public function comenfeedback()
     {
-        return view('customer.show');
+        return view('landingpages.review');
     }
 }

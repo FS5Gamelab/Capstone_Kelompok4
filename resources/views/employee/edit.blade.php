@@ -1,5 +1,45 @@
 @extends('employee.order')
 
+@section('addCss')
+    <style>
+        .btn-custom {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5em 1em;
+            font-size: 1rem;
+            border-radius: 0.25em;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-custom i {
+            margin-right: 0.5em;
+            font-size: 1.2em;
+        }
+
+        .btn-custom-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-custom-primary:hover {
+            background-color: #0056b3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-custom-secondary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
+
+        .btn-custom-secondary:hover {
+            background-color: #5a6268;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+@endsection
+
 @section('content')
 <!-- Page Header Start -->
 <div class="page-header container-fluid bg-secondary pt-2 pt-lg-5 pb-2 mb-5">
@@ -41,7 +81,13 @@
             <label for="delivery_date">Delivery Date</label>
             <input type="date" name="delivery_date" id="delivery_date" class="form-control" value="{{ $order->delivery_date ? \Carbon\Carbon::parse($order->delivery_date)->format('Y-m-d') : '' }}">
         </div>
-        <button type="submit" class="btn btn-primary">Update Order</button>
+        <button type="submit" class="btn btn-custom btn-custom-primary">
+            <i class="fas fa-save"></i> Update Order
+        </button>
+        <!-- Tombol Back -->
+        <a class="btn btn-custom btn-custom-secondary ml-2" href="{{ route('employee.index') }}">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
     </form>
 </div>
 
