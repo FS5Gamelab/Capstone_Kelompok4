@@ -35,7 +35,7 @@
                     <i class="bx bx-lock-alt icon"></i>
                     @error('password')
                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                    The password cannot be empty
+                    Password must be at least 8 characters long
                     </div>
                     @enderror
                 </div>
