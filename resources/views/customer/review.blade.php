@@ -196,115 +196,34 @@
     <section id="testimonials">
         <!-- Heading -->
         <div class="testimonial-heading">
-            <span>Comments</span>
-            <h1>Clients Say</h1>
+            <span>Feedbacks</span>
+            <h1>Customer Say</h1>
         </div>
         <!-- Testimonials Box Container -->
         <div class="testimonial-box-container">
-            <!-- BOX-1 -->
-            <div class="testimonial-box">
-                <!-- Top -->
-                <div class="box-top">
-                    <!-- Profile -->
-                    <div class="profile">
-                        <!-- Name and Username -->
-                        <div class="name-user">
-                            <strong>Touseeq Ijaz</strong>
-                            <span>@touseeqijazweb</span>
+            @foreach($feedbacks as $feedback)
+                <div class="testimonial-box">
+                    <div class="box-top">
+                        <div class="profile">
+                            <div class="name-user">
+                                <strong>{{ $feedback->customer->customer_name }}</strong>
+                            </div>
+                        </div>
+                        <div class="reviews">
+                            @for($i = 0; $i < 5; $i++)
+                                @if($i < $feedback->rating)
+                                    <i class="fas fa-star"></i>
+                                @else
+                                    <i class="far fa-star"></i>
+                                @endif
+                            @endfor
                         </div>
                     </div>
-                    <!-- Reviews -->
-                    <div class="reviews">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i><!-- Empty star -->
+                    <div class="client-comment">
+                        <p>{{ $feedback->feedback }}</p>
                     </div>
                 </div>
-                <!-- Comments -->
-                <div class="client-comment">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                </div>
-            </div>
-            <!-- BOX-2 -->
-            <div class="testimonial-box">
-                <!-- Top -->
-                <div class="box-top">
-                    <!-- Profile -->
-                    <div class="profile">
-                        <!-- Name and Username -->
-                        <div class="name-user">
-                            <strong>J.K Rowling</strong>
-                            <span>@jkrowling</span>
-                        </div>
-                    </div>
-                    <!-- Reviews -->
-                    <div class="reviews">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i><!-- Empty star -->
-                    </div>
-                </div>
-                <!-- Comments -->
-                <div class="client-comment">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                </div>
-            </div>
-            <!-- BOX-3 -->
-            <div class="testimonial-box">
-                <!-- Top -->
-                <div class="box-top">
-                    <!-- Profile -->
-                    <div class="profile">
-                        <!-- Name and Username -->
-                        <div class="name-user">
-                            <strong>Harry Potter</strong>
-                            <span>@DanielRedclief</span>
-                        </div>
-                    </div>
-                    <!-- Reviews -->
-                    <div class="reviews">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i><!-- Empty star -->
-                    </div>
-                </div>
-                <!-- Comments -->
-                <div class="client-comment">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                </div>
-            </div>
-            <!-- BOX-4 -->
-            <div class="testimonial-box">
-                <!-- Top -->
-                <div class="box-top">
-                    <!-- Profile -->
-                    <div class="profile">
-                        <!-- Name and Username -->
-                        <div class="name-user">
-                            <strong>Oliva</strong>
-                            <span>@Olivaadward</span>
-                        </div>
-                    </div>
-                    <!-- Reviews -->
-                    <div class="reviews">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i><!-- Empty star -->
-                    </div>
-                </div>
-                <!-- Comments -->
-                <div class="client-comment">
-                    <p>Pelayanannya buruk, biasa aja.</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
     <!-- Testimonials End -->

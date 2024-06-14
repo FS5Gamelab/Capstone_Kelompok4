@@ -143,6 +143,6 @@ Route::delete('orders/force-delete/{id}', [OrderController::class, 'forceDelete'
 
 //Feedback
 Route::post('/order/{id}/feedback', [FeedbackController::class, 'submitFeedback'])->name('submitFeedback')->middleware('auth');
-
-Route::get('/coment', [FeedbackController::class, 'comenfeedback'])->name('coment');
-
+Route::get('/pagesFeedback', [FeedbackController::class, 'pagesFeedback'])->name('pagesFeedback');
+Route::get('/employeeFeedback', [FeedbackController::class, 'employeeFeedback'])->name('employeeFeedback');
+Route::get('/customerFeedback', [FeedbackController::class, 'customerFeedback'])->name('customerFeedback');

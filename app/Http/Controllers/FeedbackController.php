@@ -50,11 +50,28 @@ class FeedbackController extends Controller
         $feedbacks = Feedback::where('id_order', $orderId)->get();
         return view('feedback.show', compact('feed_backs'));
     }   
-    public function comenfeedback()
+
+    public function pagesFeedback()
     {
         $feedbacks = Feedback::all();
         
         // Pass the feedbacks to the view
         return view('landingpages.review', compact('feedbacks'));
+    }
+
+    public function employeeFeedback()
+    {
+        $feedbacks = Feedback::all();
+        
+        // Pass the feedbacks to the view
+        return view('employee.review', compact('feedbacks'));
+    }
+
+    public function customerFeedback()
+    {
+        $feedbacks = Feedback::all();
+        
+        // Pass the feedbacks to the view
+        return view('customer.review', compact('feedbacks'));
     }
 }

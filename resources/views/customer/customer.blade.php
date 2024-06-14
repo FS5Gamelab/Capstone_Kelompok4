@@ -318,7 +318,7 @@
     <div class="container-fluid py-5">
         <div class="container">
             <h6 class="text-secondary text-uppercase text-center font-weight-medium mb-3">Feedbacks</h6>
-            <h1 class="display-4 text-center mb-5">Our Clients Say</h1>
+            <h1 class="display-4 text-center mb-5">Our Customer Say</h1>
             <div class="owl-carousel testimonial-carousel">
                 <div class="testimonial-item card p-3">
                     <div class="bg-light text-center p-4">
@@ -385,10 +385,11 @@
                         <p class="card-text m-0">Pelayanan yang ramah, Wangi dan Bersih</p>
                     </div>
                 </div>
+                </div>
             </div>
             <div class="container">
                 <div class="text-center mt-5">
-                    <button class="btn btn-primary" onclick="window.location='{{ route('coment') }}'">
+                    <button class="btn btn-primary" onclick="window.location='{{ route('customerFeedback') }}'">
                         <i class="fas fa-comment-dots"></i> More Feedbacks
                     </button>
                 </div>
