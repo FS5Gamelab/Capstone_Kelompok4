@@ -46,7 +46,7 @@ class AuthController extends Controller
             'address' => $validatedData['address'],
         ]);
 
-        return redirect('/login')->with('success','Registrasi berhasil. Selamat datang!');
+        return redirect('/login')->with('success','Registration successful. Welcome!');
     }
 
     public function index()
