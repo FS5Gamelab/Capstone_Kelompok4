@@ -63,10 +63,11 @@
                     </div>
                 </div>
                 <div class="input_box">
-                    <input type="submit" class="input-submit" value="Login">
+                    <input type="submit" class="input-submit btn btn-primary text-dark" value="Login">
                 </div>
                 <div class="register">
-                    <span>Don't have an account yet? <a href="{{ route('register') }}">Register</a></span>
+                    <span>Don't have an account yet? <a href="{{ route('register') }}">Register</a></span><br>
+                    <span>want back to the home page? <a href="{{ route('pages') }}">Home page</a></span>
                 </div>
             </form>
         </div>
