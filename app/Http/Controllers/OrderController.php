@@ -8,6 +8,8 @@ use App\Models\Customers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use PDF;
+
 
 class OrderController extends Controller
 {
@@ -161,5 +163,13 @@ class OrderController extends Controller
             $order->forceDelete();
         }
         return redirect()->route('trashOrders')->with('success', 'Order permanently deleted.');
+    }
+
+    public function printPdf()
+    {
+    	$order = Orders::all();
+ 
+    	$pdf = PDF::loadView('admin.order.printPdf', ['orders' => $order]);
+    	return $pdf->download('report-order.pdf');
     }
 }

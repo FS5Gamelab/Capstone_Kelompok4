@@ -64,6 +64,7 @@
                 <div class="card-header text-left">
                     <a class="btn btn-dark" role="button" href="/admin"><i class="fas fa-arrow-left"></i> Back</a>
                     <a href="{{ route('trashOrders') }}" class="btn btn-danger" role="button"><i class="fas fa-trash"></i> Trash</a>
+                    <a href="{{ route('printPdf') }}" class="btn btn-primary" role="button"><i class="fas fa-file-pdf"></i> Print PDF</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
