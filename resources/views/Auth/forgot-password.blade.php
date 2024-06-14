@@ -23,7 +23,10 @@
                     <label for="email" class="label">Email address</label>
                 </div>
                 <button type="submit" class="input-submit">Send Password Reset Link</button>
-            </form>
+            </form><br>
+            <div class="register">
+                <span>Already have an account? <a href="{{ route('login') }}">Login</a></span>
+            </div>
         </div>
     </div>
 

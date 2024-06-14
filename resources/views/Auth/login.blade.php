@@ -66,7 +66,7 @@
                     <input type="submit" class="input-submit btn btn-primary text-dark" value="Login">
                 </div>
                 <div class="register">
-                    <span>Don't have an account yet? <a href="{{ route('register') }}">Register</a></span><br>
+                    <span>Don't have an account yet? <a href="{{ route('register') }}">Register</a></span><br><br>
                     <span>want back to the home page? <a href="{{ route('pages') }}">Home page</a></span>
                 </div>
             </form>

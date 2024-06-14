@@ -78,7 +78,7 @@ class AuthController extends Controller
                     return redirect()->intended('customerPages');
                 default:
                     Auth::logout();
-                    return back()->with('loginError', 'Role tidak dikenali!');
+                    return back()->with('loginError', 'Role not found!');
             }
         }
 
@@ -112,8 +112,8 @@ class AuthController extends Controller
         );
 
         return $status === Password::RESET_LINK_SENT
-            ? back()->with('status', __('Kami telah mengirimkan link reset password ke email anda'))
-            : back()->withErrors(['email' => __('Email tidak ditemukan atau tidak valid')]);
+            ? back()->with('status', __('We have sent a password reset link to your email.'))
+            : back()->withErrors(['email' => __('Email not found or invalid')]);
     }
 
     public function showResetPasswordForm(string $token)
