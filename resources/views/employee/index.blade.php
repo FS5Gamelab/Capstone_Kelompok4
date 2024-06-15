@@ -229,32 +229,36 @@
                             </thead>
                             <tbody>
                                 @foreach($orders as $order)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $order->order_number }}</td>
-                                        <td>{{ $order->customer->customer_name }}</td>
-                                        <td>{{ $order->category->type_laundry }}</td>
-                                        <td>{{ $order->phone_number }}</td>
-                                        <td>{{ $order->customer->address }}</td>
-                                        <td>{{ $order->order_date->format('d-m-Y') }}</td>
-                                        <td>{{ $order->delivery_date ? $order->delivery_date->format('d-m-Y') : 'Not set' }}</td>
-                                        <td>{{ $order->quantity_kg }}</td>
-                                        <td>Rp {{ number_format($order->total_price, 0, ',', '.') }},00</td>
-                                        <td>
-                                            <button type="button" class="btn btn-{{ $order->status == 'queued' ? 'warning' : ($order->status == 'being picked up' ? 'info' : ($order->status == 'completed' ? 'success' : 'primary')) }} btn-sm" disabled>
-                                                <i class="fas fa-{{ $order->status == 'queued' ? 'clock' : ($order->status == 'being picked up' ? 'truck-loading' : ($order->status == 'completed' ? 'check-circle' : 'check')) }}"></i>
-                                                {{ $order->status }}
-                                            </button>
-                                        </td>
-                                        <td>
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $order->order_number }}</td>
+                                    <td>{{ $order->customer->customer_name }}</td>
+                                    <td>{{ $order->category->type_laundry }}</td>
+                                    <td>{{ $order->phone_number }}</td>
+                                    <td>{{ $order->customer->address }}</td>
+                                    <td>{{ $order->order_date->format('d-m-Y') }}</td>
+                                    <td>{{ $order->delivery_date ? $order->delivery_date->format('d-m-Y') : 'Not set' }}</td>
+                                    <td>{{ $order->quantity_kg }}</td>
+                                    <td>Rp {{ number_format($order->total_price, 0, ',', '.') }},00</td>
+                                    <td>
+                                        <button type="button" class="btn btn-{{ $order->status == 'queued' ? 'warning' : ($order->status == 'being picked up' ? 'info' : ($order->status == 'completed' ? 'success' : 'primary')) }} btn-sm" disabled>
+                                            <i class="fas fa-{{ $order->status == 'queued' ? 'clock' : ($order->status == 'being picked up' ? 'truck-loading' : ($order->status == 'completed' ? 'check-circle' : 'check')) }}"></i>
+                                            {{ $order->status }}
+                                        </button>
+                                    </td>
+                                    <td>
                                         <div class="btn-group" role="group">
-    <a href="{{ route('editOrder', ['id' => $order->id]) }}" class="btn btn-custom btn-custom-secondary btn-sm" role="button">
-        <i class="fas fa-edit"></i> Edit
-    </a>
-</div>
-
-                                        </td>
-                                    </tr>
+                                            <a href="{{ route('editOrder', ['id' => $order->id]) }}" class="btn btn-custom btn-custom-secondary btn-sm" role="button">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+                                            @if($order->type_pay == 'cod' && $order->status == 'queued')
+                                            <a href="{{ route('payCOD', ['orderId' => $order->id]) }}" class="btn btn-custom btn-custom-primary btn-sm" role="button">
+                                                <i class="fas fa-money-bill-wave"></i> Pay COD
+                                            </a>
+                                            @endif
+                                        </div>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

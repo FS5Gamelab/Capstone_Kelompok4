@@ -69,7 +69,6 @@
         }
     </style>
 
-    <!-- Add this JavaScript to your existing JavaScript section -->
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             const stars = document.querySelectorAll('.rating-star');
@@ -82,7 +81,6 @@
                     }
                     document.querySelector('#rating-input').value = rating;
 
-                    // Update emoji
                     const emoji = document.querySelector('.rating-emoji');
                     switch (rating) {
                         case '1':
@@ -166,16 +164,16 @@
                                 <td>{{ $order->customer->address }}</td>
                             </tr>
                             <tr>
+                                <th>Category</th>
+                                <td>{{ $order->category->type_laundry }}</td>
+                            </tr>
+                            <tr>
                                 <th>Order Date</th>
                                 <td>{{ \Carbon\Carbon::parse($order->order_date)->format('d-m-Y') }}</td>
                             </tr>
                             <tr>
                                 <th>Delivery Date</th>
                                 <td>{{ $order->delivery_date ? \Carbon\Carbon::parse($order->delivery_date)->format('d-m-Y') : 'Not set' }}</td>
-                            </tr>
-                            <tr>
-                                <th>Category</th>
-                                <td>{{ $order->category->type_laundry }}</td>
                             </tr>
                         </table>
                     </div>
@@ -198,18 +196,41 @@
                         </table>
                     </div>
                 </div>
+
+                <div class="mb-4">
+                    <h4>Payment</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Payment Type</th>
+                                <td>{{ $order->type_pay == 'cod' ? 'Cash on Delivery (COD)' : 'Online' }}</td>
+                            </tr>
+                            @if ($order->type_pay == 'cod')
+                                <tr>
+                                    <th>Amount Paid</th>
+                                    <td>Rp {{ number_format($order->amount_paid, 0, ',', '.') }},00</td>
+                                </tr>
+                                <tr>
+                                    <th>Change Money</th>
+                                    <td>Rp {{ number_format($order->change_money, 0, ',', '.') }},00</td>
+                                </tr>
+                            @endif
+                        </table>
+                    </div>
+                </div>
+
                 <div class="form-footer text-right">
                     <a href="{{ route('orderCustomer') }}" class="btn btn-custom btn-custom-secondary">
                         <i class="fas fa-arrow-left"></i> Back
                     </a>
-                    @if ($order->status == 'queued' && $order->status != 'already paid')
-                        <button id="pay-button" class="btn btn-custom btn-custom-primary"> <!-- Menggunakan gaya tombol custom -->
-                            <i class="fas fa-credit-card"></i> Pay now <!-- Menggunakan ikon credit card -->
+                    @if ($order->status == 'queued' && $order->status != 'already paid' && $order->type_pay == 'online')
+                        <button id="pay-button" class="btn btn-custom btn-custom-primary">
+                            <i class="fas fa-credit-card"></i> Pay now
                         </button>
                     @endif
                     @if ($order->status == 'completed')
-                        <button id="feedback-button" class="btn btn-custom btn-custom-secondary ml-2" data-toggle="modal" data-target="#feedbackModal"> <!-- Menggunakan gaya tombol custom dan secondary -->
-                            <i class="fas fa-comment"></i> Feedback <!-- Menggunakan ikon komentar -->
+                        <button id="feedback-button" class="btn btn-custom btn-custom-secondary ml-2" data-toggle="modal" data-target="#feedbackModal">
+                            <i class="fas fa-comment"></i> Feedback
                         </button>
                     @endif
                 </div>
@@ -232,7 +253,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                    <label for="rating-input">Rating</label>
+                        <label for="rating-input">Rating</label>
                         <div class="rating">
                             <span class="rating-star" data-value="1">&#9733;</span>
                             <span class="rating-star" data-value="2">&#9733;</span>

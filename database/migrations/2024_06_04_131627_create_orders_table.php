@@ -22,7 +22,10 @@ return new class extends Migration
             $table->string('address');
             $table->integer('quantity_kg'); // Quantity (kg)
             $table->integer('total_price'); // Total price
+            $table->integer('amount_paid')->nullable();
             $table->enum('status', ['queued', 'already paid', 'being picked up', 'being washed', 'being dried', 'being ironed', 'delivered', 'completed']); // Status pesanan
+            $table->enum('type_pay', ['cod', 'online']); // Payment type
+            $table->integer('change_money')->nullable(); 
             $table->softDeletes();
             $table->timestamps();
 

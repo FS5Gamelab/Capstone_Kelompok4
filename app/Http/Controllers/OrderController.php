@@ -10,11 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use PDF;
 
-
 class OrderController extends Controller
 {
-
-    
     public function index()
     {
         $orders = Orders::all();
@@ -61,9 +58,7 @@ class OrderController extends Controller
         return view('customer.detailOrder', compact('order'));
     }
 
-
     public function createOrder()
-
     {
         $categories = Categories::all();
         return view('customer.create', compact('categories'));
@@ -78,6 +73,9 @@ class OrderController extends Controller
             'quantity_kg' => 'required|integer|min:1',
             'order_date' => 'required|date',
             'delivery_date' => 'nullable|date|after_or_equal:order_date',
+            'amount_paid' => 'nullable|integer|min:0',
+            'type_pay' => 'required|in:cod,online',
+            'change_money' => 'nullable|integer|min:0'
         ]);
 
         Orders::create([
@@ -90,7 +88,10 @@ class OrderController extends Controller
             'address' => $request->address,
             'quantity_kg' => $request->quantity_kg,
             'total_price' => $this->calculateTotalPrice($request->category_id, $request->quantity_kg),
+            'amount_paid' => $request->amount_paid,
             'status' => 'queued',
+            'type_pay' => $request->type_pay,
+            'change_money' => $request->change_money,
         ]);
 
         return redirect()->route('orderCustomer')->with('success', 'Order created successfully.');
@@ -112,24 +113,27 @@ class OrderController extends Controller
     {
         $request->validate([
             'status' => 'required|string',
+            'amount_paid' => 'required|integer|min:0',
             'delivery_date' => 'nullable|date|after_or_equal:order_date',
+            'change_money' => 'nullable|integer|min:0'
         ]);
 
         $order = Orders::findOrFail($id);
         $order->status = $request->status;
+        $order->amount_paid = $request->amount_paid;
         $order->delivery_date = $request->delivery_date;
+        $order->change_money = $request->change_money;
         $order->save();
 
         return redirect()->route('employee.index')->with('success', 'Order updated successfully.');
     }
-    
+
     public function softDelete($id)
     {
-    $order = Orders::findOrFail($id);
-    $order->delete();
+        $order = Orders::findOrFail($id);
+        $order->delete();
 
-    // Redirect atau respons sesuai kebutuhan Anda
-    return redirect()->back()->with('success', 'Data berhasil dihapus.');
+        return redirect()->back()->with('success', 'Data berhasil dihapus.');
     }
 
     public function trash()
@@ -167,9 +171,40 @@ class OrderController extends Controller
 
     public function printPdf()
     {
-    	$order = Orders::all();
- 
-    	$pdf = PDF::loadView('admin.order.printPdf', ['orders' => $order]);
-    	return $pdf->download('report-order.pdf');
+        $order = Orders::all();
+
+        $pdf = PDF::loadView('admin.order.printPdf', ['orders' => $order]);
+        return $pdf->download('report-order.pdf');
     }
+
+    public function payCOD($orderId)
+    {
+        $order = Orders::findOrFail($orderId);
+        return view('employee.paycod', compact('order'));
+    }
+
+    public function processPayCOD(Request $request, $orderId)
+    {
+        $request->validate([
+            'amount_paid' => 'required|integer|min:0',
+        ]);
+
+        $order = Orders::findOrFail($orderId);
+        $totalPrice = $order->total_price;
+        $amountPaid = $request->amount_paid;
+
+        // Hitung kembalian (change money)
+        $changeMoney = $amountPaid - $totalPrice;
+
+        // Simpan jumlah yang dibayarkan (amount paid)
+        $order->amount_paid = $amountPaid;
+        // Simpan kembalian (change money)
+        $order->change_money = $changeMoney;
+        // Ubah status menjadi 'already paid'
+        $order->status = 'already paid';
+        $order->save();
+
+        return redirect()->route('employee.index')->with('success', 'Payment processed successfully.');
+}
+
 }

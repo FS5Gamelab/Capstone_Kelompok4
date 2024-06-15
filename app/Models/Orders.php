@@ -20,7 +20,10 @@ class Orders extends Model
         'address', 
         'quantity_kg', 
         'total_price', 
-        'status'
+        'amount_paid',
+        'status',
+        'type_pay',
+        'change_money'
     ];
 
     protected $casts = [

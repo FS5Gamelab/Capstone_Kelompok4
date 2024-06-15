@@ -128,6 +128,9 @@ Route::post('/orderCustomer', [App\Http\Controllers\OrderController::class, 'sto
 Route::get('/detailOrder', [App\Http\Controllers\OrderController::class, 'detailOrder'])->name('detailOrder')->middleware('auth');
 Route::get('/orderCustomer/detail/{id}', [OrderController::class, 'detailOrder'])->name('detailOrder');
 Route::get('/printPdf', [OrderController::class, 'printPdf'])->name('printPdf');
+// Pay COD
+Route::get('/paycod/{orderId}', [OrderController::class, 'payCOD'])->name('payCOD')->middleware('auth');
+Route::post('/paycod/{orderId}', [OrderController::class, 'processPayCOD'])->name('processPayCOD')->middleware('auth');
 
 // Rute Employee pada halaman daftar Order
 Route::get('/orders', [OrderController::class, 'index'])->name('listOrders')->middleware('auth');

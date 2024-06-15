@@ -102,6 +102,14 @@
                                             <label for="order_date">Order Date</label>
                                             <input type="date" id="order_date" name="order_date" class="form-control" required>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="type_pay">Payment Type</label>
+                                            <select name="type_pay" class="form-control" id="type_pay" required>
+                                                <option value="">-- Select Payment Type --</option>
+                                                <option value="cod">Cash on Delivery (COD)</option>
+                                                <option value="online">Online</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group text-right">
