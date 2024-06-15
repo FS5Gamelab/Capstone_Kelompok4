@@ -113,16 +113,12 @@ class OrderController extends Controller
     {
         $request->validate([
             'status' => 'required|string',
-            'amount_paid' => 'required|integer|min:0',
-            'delivery_date' => 'nullable|date|after_or_equal:order_date',
-            'change_money' => 'nullable|integer|min:0'
+            'delivery_date' => 'nullable|date|after_or_equal:order_date'
         ]);
 
         $order = Orders::findOrFail($id);
         $order->status = $request->status;
-        $order->amount_paid = $request->amount_paid;
         $order->delivery_date = $request->delivery_date;
-        $order->change_money = $request->change_money;
         $order->save();
 
         return redirect()->route('employee.index')->with('success', 'Order updated successfully.');
