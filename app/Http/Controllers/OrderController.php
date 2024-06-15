@@ -169,7 +169,15 @@ class OrderController extends Controller
     {
     	$order = Orders::all();
  
-    	$pdf = PDF::loadView('admin.order.printPdf', ['orders' => $order]);
+    	// Hitung total quantity dan total harga
+        $totalQuantity = $order->sum('quantity_kg');
+        $totalPrice = $order->sum('total_price');
+
+        $pdf = PDF::loadView('admin.order.printPdf', [
+            'orders' => $order,
+            'totalQuantity' => $totalQuantity,
+            'totalPrice' => $totalPrice
+    ]);
     	return $pdf->download('report-order.pdf');
     }
 }

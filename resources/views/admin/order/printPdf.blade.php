@@ -58,6 +58,12 @@
                     <td>Rp {{ number_format($order->total_price, 0, ',', '.') }},00</td>
                 </tr>
             @endforeach
+            <!-- Menambahkan total quantity dan total price -->
+            <tr>
+                <td colspan="7" style="text-align: center;"><strong>Total</strong></td>
+                <td>{{ $totalQuantity }}</td>
+                <td>Rp {{ number_format($totalPrice, 0, ',', '.') }},00</td>
+            </tr>
         </tbody>
     </table>
 </body>
