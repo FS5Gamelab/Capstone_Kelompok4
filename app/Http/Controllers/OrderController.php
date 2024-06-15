@@ -136,16 +136,11 @@ class OrderController extends Controller
     {
         $request->validate([
             'status' => 'required|string',
-            
-            'delivery_date' => 'nullable|date|after_or_equal:order_date',
-           
+            'delivery_date' => 'nullable|date|after_or_equal:order_date'
         ]);
-
         $order = Orders::findOrFail($id);
         $order->status = $request->status;
-       
         $order->delivery_date = $request->delivery_date;
-       
         $order->save();
 
         return redirect()->route('employee.index')->with('success', 'Order updated successfully.');
