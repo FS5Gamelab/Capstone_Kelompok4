@@ -150,3 +150,8 @@ Route::post('/order/{id}/feedback', [FeedbackController::class, 'submitFeedback'
 Route::get('/pagesFeedback', [FeedbackController::class, 'pagesFeedback'])->name('pagesFeedback');
 Route::get('/employeeFeedback', [FeedbackController::class, 'employeeFeedback'])->name('employeeFeedback');
 Route::get('/customerFeedback', [FeedbackController::class, 'customerFeedback'])->name('customerFeedback');
+
+//midtrans
+Route::get('/payment/success/{order}', [OrderController::class, 'paymentSuccess'])->name('payment.success');
+Route::get('/payment/pending/{order}', [OrderController::class, 'paymentPending'])->name('payment.pending');
+Route::get('/payment/error/{order}', [OrderController::class, 'paymentError'])->name('payment.error');

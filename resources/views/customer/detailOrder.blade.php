@@ -220,13 +220,34 @@
                 </div>
 
                 <div class="form-footer text-right">
+                    @if ($order->type_pay=='cod') 
                     <a href="{{ route('orderCustomer') }}" class="btn btn-custom btn-custom-secondary">
                         <i class="fas fa-arrow-left"></i> Back
                     </a>
+                    @endif
                     @if ($order->status == 'queued' && $order->status != 'already paid' && $order->type_pay == 'online')
                         <button id="pay-button" class="btn btn-custom btn-custom-primary">
                             <i class="fas fa-credit-card"></i> Pay now
                         </button>
+                        <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
+                        <script type="text/javascript">
+                            document.getElementById('pay-button').onclick = function(){
+                                snap.pay('{{ $snapToken }}', {
+                                    onSuccess: function(result){
+                                        console.log(result);
+                                        window.location.href = '{{ route("payment.success", ["order" => $order->id]) }}';
+                                    },
+                                    onPending: function(result){
+                                        console.log(result);
+                                        window.location.href = '{{ route("payment.pending", ["order" => $order->id]) }}';
+                                    },
+                                    onError: function(result){
+                                        console.log(result);
+                                        window.location.href = '{{ route("payment.error", ["order" => $order->id]) }}';
+                                    }
+                                });
+                            };
+                        </script>
                     @endif
                     @if ($order->status == 'completed')
                         <button id="feedback-button" class="btn btn-custom btn-custom-secondary ml-2" data-toggle="modal" data-target="#feedbackModal">

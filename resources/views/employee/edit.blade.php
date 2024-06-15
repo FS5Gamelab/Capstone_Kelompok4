@@ -67,8 +67,6 @@
         <div class="form-group">
             <label for="status">Order Status</label>
             <select name="status" id="status" class="form-control" required>
-                <option value="queued" {{ $order->status == 'queued' ? 'selected' : '' }}>queued</option>
-                <option value="already paid" {{ $order->status == 'already paid' ? 'selected' : '' }}>Already Paid</option>
                 <option value="being picked up" {{ $order->status == 'being picked up' ? 'selected' : '' }}>Being Picked Up</option>
                 <option value="being washed" {{ $order->status == 'being washed' ? 'selected' : '' }}>Being Washed</option>
                 <option value="being dried" {{ $order->status == 'being dried' ? 'selected' : '' }}>Being Dried</option>
