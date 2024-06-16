@@ -68,10 +68,13 @@ class OrderController extends Controller
             Config::$isProduction = config('midtrans.is_production');
             Config::$isSanitized = config('midtrans.is_sanitized');
             Config::$is3ds = config('midtrans.is_3ds');
-    
+
+            // Tambahkan pengidentifikasi unik ke order_id
+            $uniqueOrderId = $order->order_number . '_' . uniqid();
+
             $params = [
                 'transaction_details' => [
-                    'order_id' => $order->order_number,
+                    'order_id' => $uniqueOrderId,
                     'gross_amount' => $order->total_price,
                 ],
                 'customer_details' => [
@@ -81,7 +84,7 @@ class OrderController extends Controller
                     'phone' => $order->phone_number,
                 ],
             ];
-    
+
             $snapToken = Snap::getSnapToken($params);
             return view('customer.detailOrder', compact('snapToken', 'order'))->with('success', 'Order created successfully.');
         }
@@ -247,48 +250,54 @@ class OrderController extends Controller
         $totalPrice = $order->total_price;
         $amountPaid = $request->amount_paid;
 
-        // Hitung kembalian (change money)
+        // Check if the amount paid is less than the total price
+        if ($amountPaid < $totalPrice) {
+            return redirect()->back()->withErrors(['amount_paid' => 'Insufficient amount paid. Please enter the correct amount.']);
+        }
+
+        // Calculate change money
         $changeMoney = $amountPaid - $totalPrice;
 
-        // Simpan jumlah yang dibayarkan (amount paid)
+        // Save the amount paid
         $order->amount_paid = $amountPaid;
-        // Simpan kembalian (change money)
+        // Save the change money
         $order->change_money = $changeMoney;
-        // Ubah status menjadi 'already paid'
+        // Update status to 'already paid'
         $order->status = 'already paid';
         $order->save();
 
         return redirect()->route('employee.index')->with('success', 'Payment processed successfully.');
-}
+    }
 
 
-public function paymentSuccess($orderId)
-{
-    // Logic to handle successful payment
-    $order = Orders::find($orderId);
-    $order->status = 'already paid';
-    $order->save();
 
-    return redirect()->route('orderCustomer')->with('success', 'Payment successful.');
-}
+    public function paymentSuccess($orderId)
+    {
+        // Logic to handle successful payment
+        $order = Orders::find($orderId);
+        $order->status = 'already paid';
+        $order->save();
 
-public function paymentPending($orderId)
-{
-    // Logic to handle pending payment
-    $order = Orders::find($orderId);
-    $order->status = 'pending';
-    $order->save();
+        return redirect()->route('orderCustomer')->with('success', 'Payment successful.');
+    }
 
-    return redirect()->route('orderCustomer')->with('info', 'Payment pending.');
-}
+    public function paymentPending($orderId)
+    {
+        // Logic to handle pending payment
+        $order = Orders::find($orderId);
+        $order->status = 'pending';
+        $order->save();
 
-public function paymentError($orderId)
-{
-    // Logic to handle payment error
-    $order = Orders::find($orderId);
-    $order->status = 'failed';
-    $order->save();
+        return redirect()->route('orderCustomer')->with('info', 'Payment pending.');
+    }
 
-    return redirect()->route('orderCustomer')->with('error', 'Payment failed.');
-}
+    public function paymentError($orderId)
+    {
+        // Logic to handle payment error
+        $order = Orders::find($orderId);
+        $order->status = 'failed';
+        $order->save();
+
+        return redirect()->route('orderCustomer')->with('error', 'Payment failed.');
+    }
 }
