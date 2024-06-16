@@ -33,7 +33,12 @@ class OrderController extends Controller
             $order->delivery_date = $order->delivery_date ? Carbon::parse($order->delivery_date) : null;
             return $order;
         });
-        return view('customer.index', compact('orders'));
+
+        $snapToken = session('snapToken');
+        $orderId = session('orderId');
+
+        session()->forget(['snapToken', 'orderId']);
+        return view('customer.index', compact('orders','snapToken', 'orderId'));
     }
 
     public function orderan()
@@ -57,6 +62,29 @@ class OrderController extends Controller
     public function detailOrder($id)
     {   
         $order = Orders::with('customer', 'category')->findOrFail($id);
+        if ($order->type_pay == 'online' && $order->status != 'already paid') {
+            // Konfigurasi Midtrans
+            Config::$serverKey = config('midtrans.server_key');
+            Config::$isProduction = config('midtrans.is_production');
+            Config::$isSanitized = config('midtrans.is_sanitized');
+            Config::$is3ds = config('midtrans.is_3ds');
+    
+            $params = [
+                'transaction_details' => [
+                    'order_id' => $order->order_number,
+                    'gross_amount' => $order->total_price,
+                ],
+                'customer_details' => [
+                    'first_name' => Auth::user()->first_name,
+                    'last_name' => Auth::user()->last_name,
+                    'email' => Auth::user()->email,
+                    'phone' => $order->phone_number,
+                ],
+            ];
+    
+            $snapToken = Snap::getSnapToken($params);
+            return view('customer.detailOrder', compact('snapToken', 'order'))->with('success', 'Order created successfully.');
+        }
         return view('customer.detailOrder', compact('order'));
     }
 
@@ -116,7 +144,7 @@ class OrderController extends Controller
             ];
     
             $snapToken = Snap::getSnapToken($params);
-            return view('customer.detailOrder', compact('snapToken', 'order'));
+            return redirect()->route('orderCustomer')->with('success', 'Order created successfully.');
         }
         return redirect()->route('orderCustomer')->with('success', 'Order created successfully.');
     }

@@ -220,11 +220,9 @@
                 </div>
 
                 <div class="form-footer text-right">
-                    @if ($order->type_pay=='cod') 
                     <a href="{{ route('orderCustomer') }}" class="btn btn-custom btn-custom-secondary">
                         <i class="fas fa-arrow-left"></i> Back
                     </a>
-                    @endif
                     @if ($order->status == 'queued' && $order->status != 'already paid' && $order->type_pay == 'online')
                         <button id="pay-button" class="btn btn-custom btn-custom-primary">
                             <i class="fas fa-credit-card"></i> Pay now
