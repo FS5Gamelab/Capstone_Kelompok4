@@ -70,7 +70,6 @@ Route::middleware(['auth', 'role:Employee'])->group(function () {
     Route::get('/employee/order/edit/{id}', [OrderController::class, 'editOrder'])->name('editOrder');
     Route::post('/employee/order/update/{id}', [OrderController::class, 'updateOrder'])->name('updateOrder');
     Route::get('/employee/orders', [OrderController::class, 'orderan'])->name('employee.index');
-    Route::delete('/admin/orders/{id}', [OrderController::class, 'softDelete'])->name('orders.softdelete');
 
     // Pay COD
     Route::get('/paycod/{orderId}', [OrderController::class, 'payCOD'])->name('payCOD')->middleware('auth');
@@ -136,7 +135,7 @@ Route::middleware(['auth', 'role:Super-admin'])->group(function () {
     Route::delete('employees/delete/{id}', [EmployeesController::class, 'destroy'])->name('deleteEmployees');
     Route::delete('employees/force-delete/{id}', [EmployeesController::class, 'forceDelete'])->name('forceDeleteEmployees');
 
-    // Soft Delete Orders
+    // CRUD + Soft Delete Orders
     Route::get('/orders', [OrderController::class, 'index'])->name('listOrders')->middleware('auth');
     Route::delete('/admin/orders/{id}', [OrderController::class, 'softDelete'])->name('orders.softdelete');
     Route::get('orders/trash', [OrderController::class, 'trash'])->name('trashOrders');
