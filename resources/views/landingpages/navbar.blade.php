@@ -16,9 +16,15 @@
                     <a href="{{ route('pricing') }}" class="nav-item nav-link {{ Request::routeIs('pricing') ? 'active' : '' }}">Pricing</a>
                     <a href="{{ route('contact') }}" class="nav-item nav-link {{ Request::routeIs('contact') ? 'active' : '' }}">Contact</a>
                     @if (Auth::check())
-                        <a href="{{ route('admin') }}" class="nav-item nav-link">Admin</a>
+                        @if (Auth::user()->role == 'Super-admin')
+                            <li><a href="{{ route('admin') }}" class="nav-item nav-link">Admin</a></li>
+                        @elseif (Auth::user()->role == 'Employee')
+                            <li><a href="{{ route('employeePages') }}" class="nav-item nav-link">Employee</a></li>
+                        @elseif (Auth::user()->role == 'Customer')
+                            <li><a href="{{ route('customerPages') }}" class="nav-item nav-link">Customer</a></li>
+                        @endif
                     @else
-                        <a href="{{ route('login') }}" class="nav-item nav-link {{ Request::routeIs('login') ? 'active' : '' }}">Login</a>
+                        <li><a href="{{ route('login') }}" class="nav-item nav-link {{ Request::routeIs('login') ? 'active' : '' }}">Login</a></li>
                     @endif
                 </div>
             </div>
